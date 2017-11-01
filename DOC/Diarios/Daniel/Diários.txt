@@ -1,0 +1,28 @@
+Diário 30-10-2017 10:00 ás 12:00
+
+consulta e comparação dos seguintes websites para desenhar 
+protótipo de página incial:
+
+http://www.passadicosdopaiva.pt/
+http://www.naturtejo.com/
+http://www.geoparkestrela.pt/
+http://trails.visitazores.com/pt-pt
+http://manteigastrilhosverdes.com/ ????
+
+
+
+
+Diário 30-10-2017 12:00 ás 13:00
+
+Inicio da estruturação da página inicial:
+	->Menu principal
+	->Footer
+
+
+
+
+
+Diário 01-11-2017 15:00 ás 18:00
+
+3 horas de trabalho de grupo,
+Continuação da página Index (carrossel, menu, body, footer) e finalização do Layout base.

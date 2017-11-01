@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Trails4Health.Models.ProcurarTrilho
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -11,45 +12,36 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
+            <img src="~/images/escapadinhas-serra-da-estrela-roll1.jpg" alt="ASP.NET" class="img-responsive" />
+            <div class="carousel-caption" role="option" >
                 <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
+                    Promoção 1
                 </p>
             </div>
         </div>
         <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
+            <img src="~/images/estrelasserra.jpg" alt="Visual Studio" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
+                    Promoção 2
                 </p>
             </div>
         </div>
         <div class="item">
-            <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
+            <img src="~/images/serra-da-estrela-570x350.jpg" alt="Package Management" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
-                        Learn More
-                    </a>
+                    Evento A
                 </p>
             </div>
         </div>
         <div class="item">
-            <img src="~/images/banner4.svg" alt="Microsoft Azure" class="img-responsive" />
+            <img src="~/images/h2o_location_03.jpg" alt="Microsoft Azure" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
+                    Venha fazer ski
+                    <a class="btn btn-default" href="Index">
+                        Saber mais
                     </a>
                 </p>
             </div>
@@ -65,17 +57,109 @@
     </a>
 </div>
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
+
+<div class="row what">
+    <div class="col-md-3 col-sm-4 webdesign" style="visibility: visible; ">
+        <h2><a href="">NATUREZA</a></h2>
+        <p>Desfrute de uma natureza em estado puro. Refresque-se nas águas límpidas do Rio Paiva.                    </p>
     </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-           </ul>
+    <div class="col-md-3 col-sm-4 copywriting" style="visibility: visible; ">
+        <h2><a href="">BIOLOGIA</a></h2>
+        <p>Observe a biodiversidade do local, com espécies em vias de extinção na Europa.                    </p>
     </div>
+    <div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
+        <h2><a href="">GEOLOGIA</a></h2>
+        <p>Deslumbre-se com cinco geossítios do Arouca Geopark, durante o percurso.                    </p>
+    </div>
+    <div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
+        <h2><a href="">ARQUEOLOGIA</a></h2>
+        <p>Faça uma viagem ao passado, com mais de mil anos de história.                    </p>
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Perguntas frequentes</h3>
+    </div>
+    <div class="panel-body">
+        <h4><a href="">Onde dormir?</a></h4>
+        <h4><a href="">Onde comer?</a></h4>
+        <h4><a href="">O que visitar?</a></h4>
+        <h4><a href="">O que fazer?</a></h4>
+        <h4><a href="">Onde alugar material ou serviços?</a></h4>
+    </div>
+</div>
+
+<form asp-action="ProcurarTrilho" method="get">
+    <div class="panel panel-primary" style="margin-top:2ex;">
+        <div class="panel-heading">
+            <h3 class="panel-title">Procurar Trilho</h3>
+        </div>
+
+
+        <div class="panel-body">
+            
+            <div class="form-group">
+                <label asp-for="Localizacao">Localização:</label>
+                <select asp-for="Localizacao" class="form-control">
+                    <option value="">Choose an option</option>
+                    <option value="true">Guarda</option>
+                    <option value="false">Celorico</option>
+                    <option value="false">Fundao</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Dificuldade">Dificuldade:</label>
+                <select asp-for="Dificuldade" class="form-control">
+                    <option value="">Choose an option</option>
+                    <option value="true">Dificil</option>
+                    <option value="false">Intermedio</option>
+                    <option value="false">Facil</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Extencao">Extencao:</label>
+                <select asp-for="Extencao" class="form-control">
+                    <option value="">Choose an option</option>
+                    <option value="true">Longo</option>
+                    <option value="false">Intermedio</option>
+                    <option value="false">Curto</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Forma">Forma:</label>
+                <select asp-for="Forma" class="form-control">
+                    <option value="">Choose an option</option>
+                    <option value="true">Circular</option>
+                    <option value="false">Linear</option>
+                </select>
+            </div>
+
+
+            <div asp-validation-summary="All"></div>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Procurar</button>
+            <button type="reset" class="btn btn-primary">Limpar</button>
+        </div>
+      
+            
+    
+    </div>
+</form>
+
+
+        
+<div >
+    <h3>Limites do Geopark</h3>
+    <img src="~/images/limite.png" alt="ASP.NET" class="img-responsive" />
+</div>
+
+
+<div class="row what">
+    <h3>Colaboradores</h3>
+    <img src="~/images/logo.jpg" alt="ASP.NET" class="img-responsive" />
 </div>

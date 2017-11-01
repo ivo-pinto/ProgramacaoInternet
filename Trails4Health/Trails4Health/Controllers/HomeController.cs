@@ -13,19 +13,36 @@ namespace Trails4Health.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Reservas()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult ComoChegar()
         {
-            ViewData["Message"] = "Your contact page.";
-
             return View();
         }
+
+        public IActionResult Trilhos()
+        {
+            return View();
+        }
+
+        public IActionResult Fotos()
+        {
+            return View();
+        }
+
+        public IActionResult Loja()
+        {
+            return View();
+        }
+
+        public IActionResult Contactos()
+        {
+            return View();
+        }
+         
 
         public IActionResult Error()
         {

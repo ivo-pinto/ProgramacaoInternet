@@ -26,3 +26,11 @@ Diário 01-11-2017 15:00 ás 18:00
 
 3 horas de trabalho de grupo,
 Continuação da página Index (carrossel, menu, body, footer) e finalização do Layout base.
+
+
+
+
+
+Diário 02-11-2017 11:00 ás 12:30
+
+Adição de icons e algumas imagens à pagina Index, bem como formatação de algum texto da mesma página.

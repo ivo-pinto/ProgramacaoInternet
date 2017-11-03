@@ -38,11 +38,12 @@ namespace Trails4Health.Controllers
             return View();
         }
 
-        public IActionResult Contactos()
+        public IActionResult Contact()
         {
+
             return View();
         }
-         
+
 
         public IActionResult Error()
         {

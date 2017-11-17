@@ -15,6 +15,6 @@ namespace Trails4Health.Models
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<Image> Image => dbContext.Image;
+        public IEnumerable<Image> Images => dbContext.Image;
     }
 }

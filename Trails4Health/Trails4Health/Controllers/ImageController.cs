@@ -10,6 +10,7 @@ namespace Trails4Health.Controllers
     public class ImageController : Controller
     {
         private IImageRepository repository;
+        public int PageSize = 4;
 
         public ImageController(IImageRepository repository)
         {
@@ -17,9 +18,9 @@ namespace Trails4Health.Controllers
         }
 
 
-        public ViewResult List() 
+        public ViewResult List(int page = 1) 
         {
-            return View(repository.Image);
+            return View(repository.Images.Take(PageSize));
         }
     }
 }

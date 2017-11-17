@@ -17,6 +17,6 @@ namespace Trails4Health.Models
         public string IDutilizador { get; set; }
         public string IDDificuldade { get; set; }
         public int InteresseHistorico { get; set; }
-        public int BelezaPai { get; set; }
+        public int BelezaPaisagistica { get; set; }
     }
 }

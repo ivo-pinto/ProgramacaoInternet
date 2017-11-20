@@ -33,7 +33,10 @@ namespace Trails4Health
             services.AddMvc();
             //services.AddTransient<>;   por repositorios dentro do addtransient
 
+<<<<<<< HEAD
            
+=======
+>>>>>>> master
 
 
         }

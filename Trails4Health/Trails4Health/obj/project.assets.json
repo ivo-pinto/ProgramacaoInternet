@@ -10748,7 +10748,11 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\utilizador\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\checonight\\.nuget\\packages\\": {}
+>>>>>>> master
   },
   "project": {
     "version": "1.0.0",
@@ -10756,6 +10760,7 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\utilizador\\Documents\\GitHub\\TecnologiasInternet\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
       "projectName": "Trails4Health",
       "projectPath": "C:\\Users\\utilizador\\Documents\\GitHub\\TecnologiasInternet\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
@@ -10764,6 +10769,16 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\utilizador\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\checonight\\Desktop\\eng sot2 2017\\gitub\\ProgramacaoInternet\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
+      "projectName": "Trails4Health",
+      "projectPath": "C:\\Users\\checonight\\Desktop\\eng sot2 2017\\gitub\\ProgramacaoInternet\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
+      "packagesPath": "C:\\Users\\checonight\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\checonight\\Desktop\\eng sot2 2017\\gitub\\ProgramacaoInternet\\Trails4Health\\Trails4Health\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\checonight\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> master
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

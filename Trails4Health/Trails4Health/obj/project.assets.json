@@ -10749,9 +10749,13 @@
   },
   "packageFolders": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "C:\\Users\\utilizador\\.nuget\\packages\\": {}
 =======
     "C:\\Users\\checonight\\.nuget\\packages\\": {}
+>>>>>>> master
+=======
+    "C:\\Users\\utilizador\\.nuget\\packages\\": {}
 >>>>>>> master
   },
   "project": {
@@ -10760,6 +10764,7 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
+<<<<<<< HEAD
 <<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\utilizador\\Documents\\GitHub\\TecnologiasInternet\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
       "projectName": "Trails4Health",
@@ -10771,13 +10776,20 @@
         "C:\\Users\\utilizador\\AppData\\Roaming\\NuGet\\NuGet.Config",
 =======
       "projectUniqueName": "C:\\Users\\checonight\\Desktop\\eng sot2 2017\\gitub\\ProgramacaoInternet\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
+=======
+      "projectUniqueName": "C:\\Users\\utilizador\\Documents\\GitHub\\TecnologiasInternet\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
+>>>>>>> master
       "projectName": "Trails4Health",
-      "projectPath": "C:\\Users\\checonight\\Desktop\\eng sot2 2017\\gitub\\ProgramacaoInternet\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
-      "packagesPath": "C:\\Users\\checonight\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\checonight\\Desktop\\eng sot2 2017\\gitub\\ProgramacaoInternet\\Trails4Health\\Trails4Health\\obj\\",
+      "projectPath": "C:\\Users\\utilizador\\Documents\\GitHub\\TecnologiasInternet\\Trails4Health\\Trails4Health\\Trails4Health.csproj",
+      "packagesPath": "C:\\Users\\utilizador\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\utilizador\\Documents\\GitHub\\TecnologiasInternet\\Trails4Health\\Trails4Health\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\checonight\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> master
+=======
+        "C:\\Users\\utilizador\\AppData\\Roaming\\NuGet\\NuGet.Config",
 >>>>>>> master
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

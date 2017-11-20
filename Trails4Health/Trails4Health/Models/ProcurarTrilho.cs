@@ -14,6 +14,5 @@ namespace Trails4Health.Models
         public string Dificuldade { get; set; }
         public string Extencao { get; set; }
         public string Forma { get; set; }
-        public string Image { get; set; }
     }
 }

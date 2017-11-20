@@ -22,7 +22,7 @@ namespace Trails4Health.Models
         {
             dbContext.Image.AddRange(new Image { ImageID = "aa" }, new Image { ImageID = "bb" });
         }
-        dbContext.SaveChanges();
+        //dbContext.SaveChanges();
 
     }
 }

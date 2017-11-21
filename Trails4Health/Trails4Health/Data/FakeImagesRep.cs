@@ -7,10 +7,10 @@ namespace Trails4Health.Models
 {
     public class FakeImagesRep : IImageRepository
     {
-        public IEnumerable<Image> Images => new List<Image>
+        public IEnumerable<Foto> Images => new List<Foto>
         {
-            new Image { ImageID = "1um"},
-            new Image { ImageID = "2dois"}
+            new Foto { ImageID = "1um"},
+            new Foto { ImageID = "2dois"}
         };
     }
 }

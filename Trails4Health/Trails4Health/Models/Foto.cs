@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models
 {
-    public class Image
+    public class Foto
     {
         public string ImageID { get; set; }
         [Required(ErrorMessage = "Please enter location")]

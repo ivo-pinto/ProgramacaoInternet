@@ -1,7 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\ivopi\\.nuget\\packages"
+      "C:\\Users\\Sandra Carvalhinho\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Sandra Carvalhinho\\.nuget\\packages"
     ]
   }
 }

@@ -20,7 +20,7 @@ namespace Trails4Health.Models
 
         private static void EnsureImagePopulated(ApplicationDbContext dbContext)
         {
-            dbContext.Image.AddRange(new Image { ImageID = "aa" }, new Image { ImageID = "bb" });
+            dbContext.Image.AddRange(new Foto { ImageID = "aa" }, new Foto { ImageID = "bb" });
         }
         //dbContext.SaveChanges();
 

@@ -11,6 +11,6 @@ namespace Trails4Health.Models
     {
         public ApplicationDbContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<Image> Image { get; set; }
+        public DbSet<Foto> Image { get; set; }
     }
 }

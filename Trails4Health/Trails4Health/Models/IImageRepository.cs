@@ -7,6 +7,6 @@ namespace Trails4Health.Models
 {
     public interface IImageRepository
     {
-        IEnumerable<Image> Images { get; }
+        IEnumerable<Foto> Fotos { get; }
     }
 }

@@ -20,7 +20,7 @@ namespace Trails4Health.Controllers
 
         public ViewResult List(int page = 1) 
         {
-            return View(repository.Images.Take(PageSize));
+            return View(repository.Fotos.Take(PageSize));
         }
     }
 }

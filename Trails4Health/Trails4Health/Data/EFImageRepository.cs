@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace Trails4Health.Models
-{
-    public class EFImageRepository : IImageRepository
+namespace Trails4Health.Models { 
+
+    /// <summary>
+    /// corrigir tudo mal!!!!!!!!!!!!!!
+    /// </summary>
+    public class EFImageRepository
     {
         private ApplicationDbContext dbContext;
 

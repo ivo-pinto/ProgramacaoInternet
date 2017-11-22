@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models
 {
-    public class FakeImagesRep : IImageRepository
+    /// <summary>
+    /// corrigir tudo mal!!!!!!!!!!!!!!!!!!!!!
+    /// </summary>
+    public class FakeImagesRep
     {
         public IEnumerable<Foto> Images => new List<Foto>
         {
-            new Foto { ImageID = "1um"},
-            new Foto { ImageID = "2dois"}
         };
     }
 }

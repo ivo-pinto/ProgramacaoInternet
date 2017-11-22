@@ -1,0 +1,11 @@
+C:\Users\utilizador\Documents\GitHub\TecnologiasInternet\Trails4Health\Trails4Health\bin\Debug\netcoreapp2.0\Trails4Health.deps.json
+C:\Users\utilizador\Documents\GitHub\TecnologiasInternet\Trails4Health\Trails4Health\bin\Debug\netcoreapp2.0\Trails4Health.runtimeconfig.json
+C:\Users\utilizador\Documents\GitHub\TecnologiasInternet\Trails4Health\Trails4Health\bin\Debug\netcoreapp2.0\Trails4Health.runtimeconfig.dev.json
+C:\Users\utilizador\Documents\GitHub\TecnologiasInternet\Trails4Health\Trails4Health\bin\Debug\netcoreapp2.0\Trails4Health.dll
+C:\Users\utilizador\Documents\GitHub\TecnologiasInternet\Trails4Health\Trails4Health\bin\Debug\netcoreapp2.0\Trails4Health.pdb
+C:\Users\utilizador\Documents\GitHub\TecnologiasInternet\Trails4Health\Trails4Health\obj\Debug\netcoreapp2.0\Trails4Health.csprojResolveAssemblyReference.cache
+C:\Users\utilizador\Documents\GitHub\TecnologiasInternet\Trails4Health\Trails4Health\obj\Debug\netcoreapp2.0\Trails4Health.csproj.CoreCompileInputs.cache
+C:\Users\utilizador\Documents\GitHub\TecnologiasInternet\Trails4Health\Trails4Health\obj\Debug\netcoreapp2.0\Trails4Health.AssemblyInfoInputs.cache
+C:\Users\utilizador\Documents\GitHub\TecnologiasInternet\Trails4Health\Trails4Health\obj\Debug\netcoreapp2.0\Trails4Health.AssemblyInfo.cs
+C:\Users\utilizador\Documents\GitHub\TecnologiasInternet\Trails4Health\Trails4Health\obj\Debug\netcoreapp2.0\Trails4Health.dll
+C:\Users\utilizador\Documents\GitHub\TecnologiasInternet\Trails4Health\Trails4Health\obj\Debug\netcoreapp2.0\Trails4Health.pdb

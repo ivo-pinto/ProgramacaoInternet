@@ -20,7 +20,7 @@ namespace Trails4Health.Models
         public string Url { get; set; } //caminho para a imagem
 
 
-        public InsereFoto(string ImageID, string Localizacao, DateTime DataHora, string EstacaoAno, string Tipo, bool Aprovada, string Url)
+        public void InsereFoto(string ImageID, string Localizacao, DateTime DataHora, string EstacaoAno, string Tipo, bool Aprovada, string Url)
         {
             this.ImageID = ImageID;
             this.Localizacao = Localizacao;
@@ -33,14 +33,7 @@ namespace Trails4Health.Models
 
         public void ApagaFoto(Foto foto)
         {
-
-            Remove(foto);
-
-        }
-
-        public List<Foto> Consultar()
-        {
-            return ListaFotos;
+            
         }
 
 

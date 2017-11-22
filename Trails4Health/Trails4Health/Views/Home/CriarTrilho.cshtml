@@ -1,42 +1,8 @@
 ﻿@model Trails4Health.Models.Trilho
 @{
-    ViewData["Title"] = "Trilho";
+    ViewData["Title"] = "Criar Trilho";
 }
 
-<div class="row what">
-    <div class="col-md-3 col-sm-4 webdesign" style="visibility: visible; ">
-        <div class="icons">
-            <img src="~/images/icon1.png" alt="ASP.NET" class="img-responsive" />
-        </div>
-        <h2><a href="">Criar Trilho</a></h2>
-    </div>
-    <div class="col-md-3 col-sm-4 copywriting" style="visibility: visible; ">
-        <div class="icons">
-            <img src="~/images/icon2.jpg" alt="ASP.NET" class="img-responsive" />
-        </div>
-        <h2><a href="">Editar Trilho</a></h2>
-
-    </div>
-    <div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
-        <div class="icons">
-            <img src="~/images/icon3.png" alt="ASP.NET" class="img-responsive" />
-        </div>
-        <h2><a href="">Apagar Trilho</a></h2>
-
-    </div>
-    <div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
-        <div class="icons">
-            <img src="~/images/icon4.png" alt="ASP.NET" class="img-responsive" />
-        </div>
-        <h2><a href="">Ver Trilhos</a></h2>
-    </div>
-    <div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
-        <div class="icons">
-            <img src="~/images/icon4.png" alt="ASP.NET" class="img-responsive" />
-        </div>
-        <h2><a href="CompararTrilho">Comparar Trilhos</a></h2>
-    </div>
-</div>
 
 
 <form asp-action="" method="post" enctype="multipart/form-data" asp-controller="Home">
@@ -100,7 +66,7 @@
                 </select>
             </div>
 
-
+           
 
 
             <div asp-validation-summary="All"></div>

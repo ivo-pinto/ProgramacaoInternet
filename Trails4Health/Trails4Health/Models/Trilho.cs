@@ -35,6 +35,10 @@ namespace Trails4Health.Models
         [Range(minimum: 1, maximum: 5)]
         public int BelezaPai { get; set; }
 
+        [Range(1, 100)]
+        [DataType(DataType.Currency)]
+        public decimal Preco { get; set; }
+
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }
     }
 

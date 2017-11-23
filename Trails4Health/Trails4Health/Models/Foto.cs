@@ -9,16 +9,25 @@ namespace Trails4Health.Models
     public class Foto
     {
         public int FotoId;
+
         [Required(ErrorMessage = "Please enter location")]
-        public string Localizacao { get; set; } //(FK) id da tabela localizacao
+        public Localizacao Localizacao { get; set; } //(FK) id da tabela localizacao
+        public int LocalizacaoId { get; set; }
+
+        [Display(Name = "Insert Date")]
+        [DataType(DataType.Date)]
         public DateTime DataHora { get; set; }
+
+        [StringLength(60, MinimumLength = 3)]
         public string EstacaoAno { get; set; }
         [Required(ErrorMessage = "Please enter image type")]
+
         public string Tipo { get; set; } //Fauna Flora Histórico
+
         [Required(ErrorMessage = "Please upload Image")]
         public string Url { get; set; } //caminho para a imagem
 
-
+        public ICollection<FotosTrilho> FotosTrilhos { get; set; }
 
     }
 }

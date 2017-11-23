@@ -18,7 +18,7 @@ namespace Trails4Health.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder); // Apagar esta linha e definir ligações 1 para muitos e etc...
         }
 
     }

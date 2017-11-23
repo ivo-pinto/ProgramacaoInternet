@@ -8,7 +8,7 @@ namespace Trails4Health.Models
 {
     public class Foto
     {
-        public int IdFoto;
+        public int FotoId;
         [Required(ErrorMessage = "Please enter location")]
         public string Localizacao { get; set; } //(FK) id da tabela localizacao
         public DateTime DataHora { get; set; }
@@ -17,17 +17,6 @@ namespace Trails4Health.Models
         public string Tipo { get; set; } //Fauna Flora Histórico
         [Required(ErrorMessage = "Please upload Image")]
         public string Url { get; set; } //caminho para a imagem
-
-
-        public void InsereFoto(int IdFoto, string Localizacao, DateTime DataHora, string EstacaoAno, string Tipo, bool Aprovada, string Url)
-        {
-            this.IdFoto = IdFoto;
-            this.Localizacao = Localizacao;
-            this.DataHora = DataHora;
-            this.EstacaoAno = EstacaoAno;
-            this.Tipo = Tipo;
-            this.Url = Url;
-        }
 
 
 

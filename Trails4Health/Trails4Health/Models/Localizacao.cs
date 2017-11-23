@@ -7,16 +7,9 @@ namespace Trails4Health.Models
 {
     public class Localizacao
     {
-        public int IdLocalizacao;
+        public int LocalizacaoId;
         public string Nome;
         public string Coordenadas; //mudar para tipo GeoCoordinate
-
-        public Localizacao(int IdLocalizacao, string Nome, string Coordenadas)
-        {
-            this.IdLocalizacao = IdLocalizacao;
-            this.Nome = Nome;
-            this.Coordenadas = Coordenadas;
-        }
 
     }
 }

@@ -7,7 +7,7 @@ namespace Trails4Health.Models
 {
     public class Trilho
     {
-        public string TrihoID { get; set; }
+        public int TrihoId { get; set; }
         public string Nome { get; set; }
         public string Inicio { get; set; }
         public string Fim { get; set; }//nota:procurar variavel cordgps
@@ -18,5 +18,9 @@ namespace Trails4Health.Models
         public string IDDificuldade { get; set; }
         public int InteresseHistorico { get; set; }
         public int BelezaPai { get; set; }
+
+        public ICollection<FotosTrilho> FotosTrilhos { get; set; }
     }
+
+    
 }

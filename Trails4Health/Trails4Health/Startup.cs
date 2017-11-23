@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 //using Trails4Health.Data;
 using Microsoft.EntityFrameworkCore;
+using Trails4Health.Models;
 
 namespace Trails4Health
 {
@@ -32,7 +33,9 @@ namespace Trails4Health
             // Add framework services.
             services.AddMvc();
             //services.AddTransient<>;   por repositorios dentro do addtransient
-
+            services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringBooks"))
+           );
 
 
         }

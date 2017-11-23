@@ -27,21 +27,19 @@ namespace Trails4Health.Models
         public string Descricao { get; set; }
 
         [Range(minimum: 1, maximum: 5)]
-        public int DificuldadeId { get; set; }
-
-        [Range(minimum: 1, maximum: 5)]
         public int InteresseHistorico { get; set; }
 
         [Range(minimum: 1, maximum: 5)]
         public int BelezaPai { get; set; }
 
-        [Range(1, 100)]
-        [DataType(DataType.Currency)]
-        public decimal Preco { get; set; }
+        public bool Visivel { get; set; } = true;
+
 
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }
 
         public ICollection<EtapasTrilho> EtapasTrilho { get; set; }
+
+        public ICollection<EstadoTrilho> EstadosTrilho { get; set; }
     }
 
     

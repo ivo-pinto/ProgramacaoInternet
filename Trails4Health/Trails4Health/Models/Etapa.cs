@@ -10,6 +10,7 @@ namespace Trails4Health.Models
     {
 
         public int EtapaId { get; set; }
+
         public int DificuldadeId { get; set; }
         public Dificuldade Dificuldade { get; set; }
 
@@ -28,6 +29,7 @@ namespace Trails4Health.Models
 
         public int AltitudeMin { get; set; }
 
+        public ICollection<EtapasTrilho> EtapasTrilho { get; set; }
 
     }
 }

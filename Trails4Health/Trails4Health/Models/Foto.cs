@@ -20,8 +20,9 @@ namespace Trails4Health.Models
 
         [StringLength(60, MinimumLength = 3)]
         public string EstacaoAno { get; set; }
-        [Required(ErrorMessage = "Please enter image type")]
 
+
+        [Required(ErrorMessage = "Please enter image type")]
         [Range(minimum: 1, maximum: 3)]
         public int Tipo { get; set; } //Fauna Flora Histórico
 

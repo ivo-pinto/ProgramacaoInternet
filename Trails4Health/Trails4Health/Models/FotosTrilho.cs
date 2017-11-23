@@ -10,6 +10,8 @@ namespace Trails4Health.Models
     {
         public int FotosTrilhoId { get; set; }
 
+        public int FotoId { get; set; }
+
         public Foto Foto { get; set; }
 
         public int TrilhoId { get; set; } //mudar para tipo Trilho

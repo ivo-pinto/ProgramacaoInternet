@@ -17,7 +17,7 @@ namespace Trails4Health.Models
         [StringLength(60, MinimumLength = 3)]
         public string Descricao { get; set; }
 
-        public ICollection<EstadoTrilho> EstadosTrilhos { get; set; }
+        public ICollection<EstadoTrilho> EstadosTrilho { get; set; }
 
     }
 }

@@ -26,11 +26,13 @@ namespace Trails4Health.Models
         [StringLength(1000, MinimumLength = 5)]
         public string Descricao { get; set; }
 
-
+        [Range(1,5)]
         public int DificuldadeId { get; set; }
 
+        [Range(1,5)]
         public int InteresseHistorico { get; set; }
 
+        [Range(1,5)]
         public int BelezaPai { get; set; }
 
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }

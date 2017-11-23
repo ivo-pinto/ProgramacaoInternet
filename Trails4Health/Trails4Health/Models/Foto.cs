@@ -22,7 +22,8 @@ namespace Trails4Health.Models
         public string EstacaoAno { get; set; }
         [Required(ErrorMessage = "Please enter image type")]
 
-        public string Tipo { get; set; } //Fauna Flora Histórico
+        [Range(minimum: 1, maximum: 3)]
+        public int Tipo { get; set; } //Fauna Flora Histórico
 
         [Required(ErrorMessage = "Please upload Image")]
         public string Url { get; set; } //caminho para a imagem

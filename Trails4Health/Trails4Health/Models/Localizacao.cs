@@ -10,7 +10,7 @@ namespace Trails4Health.Models
     {
         public int LocalizacaoId;
 
-        [StringLength(60, MinimumLength = 3)]
+        [StringLength(maximumLength: 60, MinimumLength = 3)]
         public string Nome;
 
         public string Coordenadas; //mudar para tipo GeoCoordinate

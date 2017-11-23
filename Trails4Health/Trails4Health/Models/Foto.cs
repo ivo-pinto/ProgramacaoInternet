@@ -8,14 +8,14 @@ namespace Trails4Health.Models
 {
     public class Foto
     {
-        public int FotoId;
+        public int FotoId { get; set; }
 
         [Required(ErrorMessage = "Please enter location")]
         public Localizacao Localizacao { get; set; } //(FK) id da tabela localizacao
         public int LocalizacaoId { get; set; }
 
-        [Display(Name = "Insert Date")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataHora { get; set; }
 
         [StringLength(60, MinimumLength = 3)]

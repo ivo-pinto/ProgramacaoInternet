@@ -8,13 +8,19 @@ namespace Trails4Health.Models
 {
     public class Localizacao
     {
-        public int LocalizacaoId;
+        public int LocalizacaoId { get; set; }
 
         [StringLength(maximumLength: 60, MinimumLength = 3)]
-        public string Nome;
+        public string Nome { get; set; }
 
         public string Coordenadas; //mudar para tipo GeoCoordinate
 
+        public Etapa Etapa { get; set; } //(FK) id da tabela localizacao
+        public int EtapaId { get; set; }
+
         public ICollection<Foto> Fotos { get; set; }
+
+   
+        
     }
 }

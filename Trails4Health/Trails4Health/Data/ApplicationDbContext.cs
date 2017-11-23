@@ -27,12 +27,21 @@ namespace Trails4Health.Models
             modelBuilder.Entity<Dificuldade>().HasKey(d => new { d.DificuldadeId});
             modelBuilder.Entity<Estado>().HasKey(e => new { e.EstadoId });
             modelBuilder.Entity<EstadoTrilho>().HasKey(et => new { et.TrihoId, et.EstadoId });
-            modelBuilder.Entity<Etapa>().HasKey(e => new { e.EtapaId, e.DificuldadeId });
+            modelBuilder.Entity<Etapa>().HasKey(e => new { e.EtapaId });
             modelBuilder.Entity<EtapasTrilho>().HasKey(et => new { et.EtapaId, et.TrilhoId });
-            modelBuilder.Entity<Foto>().HasKey(f => new { f.FotoId, f.LocalizacaoId });
+            modelBuilder.Entity<Foto>().HasKey(f => new { f.FotoId });
             modelBuilder.Entity<FotosTrilho>().HasKey(ft => new { ft.FotoId, ft.TrilhoId });
             modelBuilder.Entity<Localizacao>().HasKey(l => new { l.LocalizacaoId });
             modelBuilder.Entity<Trilho>().HasKey(t => new { t.TrihoId });
+
+
+            //Localizacao Foreign Key
+           /* modelBuilder.Entity<Localizacao>()
+                .HasOne<Etapa>(l => l.Etapa)
+                .WithMany(e => e.Localizacoes)
+                .HasForeignKey(e => e.EtapaId); */
+           
+
 
             // Etapa Foreign Key
             modelBuilder.Entity<Etapa>()
@@ -44,11 +53,11 @@ namespace Trails4Health.Models
             // EtapasTrilho Foreign Key
             modelBuilder.Entity<EtapasTrilho>()
                 .HasOne(et => et.Trilho)
-                .WithMany(et => et.EtapasTrilho)
+                .WithMany(et => et.EtapasTrilhos)
                 .HasForeignKey(et => et.TrilhoId);
             modelBuilder.Entity<EtapasTrilho>()
                  .HasOne(et => et.Etapa)
-                 .WithMany(et => et.EtapasTrilho)
+                 .WithMany(et => et.EtapasTrilhos)
                  .HasForeignKey(et => et.EtapaId);
 
 
@@ -62,11 +71,11 @@ namespace Trails4Health.Models
             // EstadoTrilho Foreign Key
             modelBuilder.Entity<EstadoTrilho>()
                 .HasOne(et => et.Trilho)
-                .WithMany(t => t.EstadosTrilho)
+                .WithMany(t => t.EstadosTrilhos)
                 .HasForeignKey(et => et.EstadoId);
             modelBuilder.Entity<EstadoTrilho>()
                  .HasOne(et => et.Estado)
-                 .WithMany(e => e.EstadosTrilho)
+                 .WithMany(e => e.EstadosTrilhos)
                  .HasForeignKey(et => et.EstadoId);
 
 

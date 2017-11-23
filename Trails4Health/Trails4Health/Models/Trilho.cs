@@ -37,9 +37,9 @@ namespace Trails4Health.Models
 
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }
 
-        public ICollection<EtapasTrilho> EtapasTrilho { get; set; }
+        public ICollection<EtapasTrilho> EtapasTrilhos { get; set; }
 
-        public ICollection<EstadoTrilho> EstadosTrilho { get; set; }
+        public ICollection<EstadoTrilho> EstadosTrilhos { get; set; }
     }
 
     

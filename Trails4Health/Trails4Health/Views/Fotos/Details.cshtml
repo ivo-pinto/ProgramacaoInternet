@@ -1,0 +1,48 @@
+@model Trails4Health.Models.Foto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Foto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DataHora)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataHora)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EstacaoAno)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstacaoAno)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Localizacao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Localizacao.LocalizacaoId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.FotoId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

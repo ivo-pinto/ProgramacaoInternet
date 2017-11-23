@@ -40,6 +40,8 @@ namespace Trails4Health.Models
         public decimal Preco { get; set; }
 
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }
+
+        public ICollection<EtapasTrilho> EtapasTrilho { get; set; }
     }
 
     

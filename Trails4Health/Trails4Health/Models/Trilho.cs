@@ -8,6 +8,7 @@ namespace Trails4Health.Models
 {
     public class Trilho
     {
+
         public int TrihoId { get; set; }
 
         [StringLength(60, MinimumLength = 3)]

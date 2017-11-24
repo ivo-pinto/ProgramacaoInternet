@@ -1,0 +1,72 @@
+@model Trails4Health.Models.Trilho
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trilho</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Inicio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Inicio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fim)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AltitudeMax)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AltitudeMax)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AltitudeMin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AltitudeMin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InteresseHistorico)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InteresseHistorico)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BelezaPai)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BelezaPai)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Visivel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Visivel)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.TrihoId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

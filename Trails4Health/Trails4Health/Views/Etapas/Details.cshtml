@@ -1,0 +1,54 @@
+@model Trails4Health.Models.Etapa
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Etapa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Inicio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Inicio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fim)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AltitudeMax)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AltitudeMax)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AltitudeMin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AltitudeMin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dificuldade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dificuldade.DificuldadeId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.EtapaId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

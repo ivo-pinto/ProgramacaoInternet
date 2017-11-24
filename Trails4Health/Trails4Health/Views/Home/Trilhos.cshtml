@@ -1,0 +1,113 @@
+﻿@model Trails4Health.Models.Trilho
+@{
+    ViewData["Title"] = "Trilho";
+}
+
+<div class="row what">
+    <div class="col-md-3 col-sm-4 webdesign" style="visibility: visible; ">
+        <div class="icons">
+            <img src="~/images/icon1.png" alt="ASP.NET" class="img-responsive" />
+        </div>
+        <h2><a href="">Criar Trilho</a></h2>
+    </div>
+    <div class="col-md-3 col-sm-4 copywriting" style="visibility: visible; ">
+        <div class="icons">
+            <img src="~/images/icon2.jpg" alt="ASP.NET" class="img-responsive" />
+        </div>
+        <h2><a href="">Editar Trilho</a></h2>
+
+    </div>
+    <div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
+        <div class="icons">
+            <img src="~/images/icon3.png" alt="ASP.NET" class="img-responsive" />
+        </div>
+        <h2><a href="">Apagar Trilho</a></h2>
+
+    </div>
+    <div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
+        <div class="icons">
+            <img src="~/images/icon4.png" alt="ASP.NET" class="img-responsive" />
+        </div>
+        <h2><a href="">Ver Trilhos</a></h2>
+    </div>
+    <div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
+        <div class="icons">
+            <img src="~/images/icon4.png" alt="ASP.NET" class="img-responsive" />
+        </div>
+        <h2><a href="CompararTrilho">Comparar Trilhos</a></h2>
+    </div>
+</div>
+
+
+<form asp-action="" method="post" enctype="multipart/form-data" asp-controller="Home">
+    <div class="panel panel-primary" style="margin-top:2ex;">
+        <div class="panel-heading">
+            <h3 class="panel-title">Criar Trilho</h3>
+        </div>
+
+
+        <div class="panel-body">
+            <div class="form-group">
+                <label asp-for="Nome">Nome:</label>
+                <input asp-for="Nome" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Inicio">Local de Inicio:</label>
+                <input asp-for="Inicio" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Fim">Local de Fim:</label>
+                <input asp-for="Fim" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="AltitudeMax">Altitude Maxima:</label>
+                <input asp-for="AltitudeMax" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="AltitudeMin">Altitude Minima:</label>
+                <input asp-for="AltitudeMin" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao">Descrição:</label>
+                <input asp-for="Descricao" class="form-control" /> @*Mudar para caixa de texto*@
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Descricao">Dificuldade:</label>
+                <select asp-for="Descricao" class="form-control">
+                    <option value="">Escolha uma opção</option>
+                    <option value="1">Fácil</option>
+                    <option value="2">Médio</option>
+                    <option value="3">Dificil</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="InteresseHistorico">Interesse Histórico:</label>
+                <select asp-for="InteresseHistorico" class="form-control">
+                    <option value="">Classifique de 1 a 3</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BelezaPai">Beleza Paisagistica:</label>
+                <select asp-for="BelezaPai" class="form-control">
+                    <option value="">Classifique de 1 a 3</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+
+
+
+
+            <div asp-validation-summary="All"></div>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </div>
+    </div>
+</form>

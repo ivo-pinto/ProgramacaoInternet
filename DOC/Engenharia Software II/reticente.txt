@@ -1,0 +1,9 @@
+apresentação 6a feira 
+
+- diagrama casos de uso
+- diagrama de sequencia
+- diagrama de classes
+
+LOGIN VALIDO DENTRO DA FRONTEIRA NO DIAGRAMA DE CLASSES...?
+LIGAR ETAPA A LOCALIZAÇÃO PARA SABER A QUE ETAPA PERTENCE A FOTO
+FAZER DIAGRAMA DE SEQUENCIA

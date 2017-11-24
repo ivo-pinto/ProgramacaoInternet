@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Internal;
 
 namespace Trails4Health
 {
@@ -21,5 +22,11 @@ namespace Trails4Health
 
             host.Run();
         }
+
+        /*public static IWebHost BuildWebHost(string[] args) => WebHost.CreateDefaultBuilder(args)
+            .UseStartup<Startup>()
+            .UseDefaultServiceProvider(option => FileOptions.ValidateScopes = false)
+            .Build();*/
+
     }
 }

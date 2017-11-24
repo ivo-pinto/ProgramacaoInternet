@@ -49,7 +49,7 @@
         <div class="form-group">
             <label asp-for="Descricao" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Descricao" class="form-control" />
+                <textarea asp-for="Descricao" class="form-control"></textarea>
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
         </div>
@@ -65,14 +65,6 @@
             <div class="col-md-10">
                 <input asp-for="BelezaPai" class="form-control" />
                 <span asp-validation-for="BelezaPai" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="checkbox">
-                    <input asp-for="Visivel" />
-                    <label asp-for="Visivel"></label>
-                </div>
             </div>
         </div>
         <div class="form-group">

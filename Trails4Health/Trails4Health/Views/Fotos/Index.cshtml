@@ -13,16 +13,16 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.DataHora)
+                    Data
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.EstacaoAno)
+                    Estacao do Ano
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Tipo)
+                    Tipo
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Url)
+                    Url
                 </th>
             <th>
                 @Html.DisplayNameFor(model => model.Localizacao)
@@ -43,7 +43,15 @@
                 @Html.DisplayFor(modelItem => item.Tipo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Url)
+                <div class="form-group">
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="file" name="files" multiple />
+                        </div>
+                    </div>
+
+                </div>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Localizacao.LocalizacaoId)

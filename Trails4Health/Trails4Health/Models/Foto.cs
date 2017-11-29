@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Trails4Health.Models
         public DateTime DataHora { get; set; }
 
         [Required(ErrorMessage = "Please enter the Seasson")]
-        [StringLength(60, MinimumLength = 3)]
+        [StringLength(maximumLength: 60, MinimumLength = 3)]
         public string EstacaoAno { get; set; }
 
         [Required(ErrorMessage = "Please enter image type")]
@@ -30,6 +31,12 @@ namespace Trails4Health.Models
 
         [Required(ErrorMessage = "Please upload Image")]
         public string Url { get; set; } //caminho para a imagem
+
+        [Required(ErrorMessage = "Please Upload a Valid Image File. Only jpg format allowed")]
+        [DataType(DataType.Upload)]
+        [Display(Name = "Upload Image")]
+        [FileExtensions(Extensions = "jpg")]
+        public IFormFile Imagem { get; set; }
 
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }
 

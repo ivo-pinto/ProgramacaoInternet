@@ -23,7 +23,9 @@ namespace Trails4Health.Models
         [StringLength(maximumLength: 60, MinimumLength = 3)]
         public string Fim { get; set; }//nota:procurar variavel cordgps
 
+        [Required(ErrorMessage = "Please enter Max Altitude")]
         public int AltitudeMax { get; set; }
+        [Required(ErrorMessage = "Please enter Min Altitude")]
         public int AltitudeMin { get; set; }
 
         [Required(ErrorMessage = "Please enter Description")]
@@ -38,6 +40,7 @@ namespace Trails4Health.Models
         [Range(minimum: 1, maximum: 5)]
         public int BelezaPai { get; set; }
 
+        [Required(ErrorMessage = "Please enter the state of the trail")]
         public bool Visivel { get; set; } = true;
 
 

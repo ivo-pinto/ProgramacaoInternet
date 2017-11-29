@@ -15,7 +15,7 @@ namespace Trails4Health.Migrations
                 {
                     DificuldadeId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(maxLength: 60, nullable: true),
+                    Nome = table.Column<string>(maxLength: 60, nullable: false),
                     Observacao = table.Column<string>(maxLength: 60, nullable: true),
                     Valor = table.Column<int>(nullable: false)
                 },
@@ -31,7 +31,7 @@ namespace Trails4Health.Migrations
                     EstadoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Descricao = table.Column<string>(maxLength: 1000, nullable: true),
-                    Nome = table.Column<string>(maxLength: 60, nullable: true)
+                    Nome = table.Column<string>(maxLength: 60, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,11 +47,11 @@ namespace Trails4Health.Migrations
                     AltitudeMax = table.Column<int>(nullable: false),
                     AltitudeMin = table.Column<int>(nullable: false),
                     BelezaPai = table.Column<int>(nullable: false),
-                    Descricao = table.Column<string>(maxLength: 1000, nullable: true),
-                    Fim = table.Column<string>(maxLength: 60, nullable: true),
-                    Inicio = table.Column<string>(maxLength: 60, nullable: true),
+                    Descricao = table.Column<string>(maxLength: 1000, nullable: false),
+                    Fim = table.Column<string>(maxLength: 60, nullable: false),
+                    Inicio = table.Column<string>(maxLength: 60, nullable: false),
                     InteresseHistorico = table.Column<int>(nullable: false),
-                    Nome = table.Column<string>(maxLength: 60, nullable: true),
+                    Nome = table.Column<string>(maxLength: 60, nullable: false),
                     Visivel = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -68,9 +68,9 @@ namespace Trails4Health.Migrations
                     AltitudeMax = table.Column<int>(nullable: false),
                     AltitudeMin = table.Column<int>(nullable: false),
                     DificuldadeId = table.Column<int>(nullable: false),
-                    Fim = table.Column<string>(maxLength: 60, nullable: true),
-                    Inicio = table.Column<string>(maxLength: 60, nullable: true),
-                    Nome = table.Column<string>(maxLength: 60, nullable: true)
+                    Fim = table.Column<string>(maxLength: 60, nullable: false),
+                    Inicio = table.Column<string>(maxLength: 60, nullable: false),
+                    Nome = table.Column<string>(maxLength: 60, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -162,7 +162,7 @@ namespace Trails4Health.Migrations
                     FotoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DataHora = table.Column<DateTime>(nullable: false),
-                    EstacaoAno = table.Column<string>(maxLength: 60, nullable: true),
+                    EstacaoAno = table.Column<string>(maxLength: 60, nullable: false),
                     LocalizacaoId = table.Column<int>(nullable: false),
                     Tipo = table.Column<int>(nullable: false),
                     Url = table.Column<string>(nullable: false)

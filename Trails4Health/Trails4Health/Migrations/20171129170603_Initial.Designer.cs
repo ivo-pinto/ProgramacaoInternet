@@ -8,7 +8,7 @@ using Trails4Health.Models;
 namespace Trails4Health.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171123233914_Initial")]
+    [Migration("20171129170603_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,7 @@ namespace Trails4Health.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasMaxLength(60);
 
                     b.Property<string>("Observacao")
@@ -44,6 +45,7 @@ namespace Trails4Health.Migrations
                         .HasMaxLength(1000);
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasMaxLength(60);
 
                     b.HasKey("EstadoId");
@@ -83,12 +85,15 @@ namespace Trails4Health.Migrations
                     b.Property<int>("DificuldadeId");
 
                     b.Property<string>("Fim")
+                        .IsRequired()
                         .HasMaxLength(60);
 
                     b.Property<string>("Inicio")
+                        .IsRequired()
                         .HasMaxLength(60);
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasMaxLength(60);
 
                     b.HasKey("EtapaId");
@@ -121,6 +126,7 @@ namespace Trails4Health.Migrations
                     b.Property<DateTime>("DataHora");
 
                     b.Property<string>("EstacaoAno")
+                        .IsRequired()
                         .HasMaxLength(60);
 
                     b.Property<int>("LocalizacaoId");
@@ -183,17 +189,21 @@ namespace Trails4Health.Migrations
                     b.Property<int>("BelezaPai");
 
                     b.Property<string>("Descricao")
+                        .IsRequired()
                         .HasMaxLength(1000);
 
                     b.Property<string>("Fim")
+                        .IsRequired()
                         .HasMaxLength(60);
 
                     b.Property<string>("Inicio")
+                        .IsRequired()
                         .HasMaxLength(60);
 
                     b.Property<int>("InteresseHistorico");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasMaxLength(60);
 
                     b.Property<bool>("Visivel");

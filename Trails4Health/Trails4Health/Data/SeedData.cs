@@ -10,6 +10,7 @@ namespace Trails4Health.Data
     {
         public static void EnsurePopulated(IServiceProvider appServices)
         {
+            /*
             ApplicationDbContext context = (ApplicationDbContext)appServices.GetService(typeof(ApplicationDbContext));
             if (context.Trilhos.Any()) return;
             context.Trilhos.AddRange(
@@ -53,6 +54,7 @@ namespace Trails4Health.Data
 
 
             context.SaveChanges();
+            */
         }
     }
 }

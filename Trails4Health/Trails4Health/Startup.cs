@@ -44,7 +44,7 @@ namespace Trails4Health
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("Trails4HealthLogins")));
 
             services.AddMvc();
             //services.AddTransient<>;   por repositorios dentro do addtransient

@@ -32,11 +32,12 @@ namespace Trails4Health.Models
         [Required(ErrorMessage = "Please upload Image")]
         public string Url { get; set; } //caminho para a imagem
 
-        [Required(ErrorMessage = "Please Upload a Valid Image File. Only jpg format allowed")]
+        /*[Required(ErrorMessage = "Please Upload a Valid Image File. Only jpg format allowed")]
         [DataType(DataType.Upload)]
         [Display(Name = "Upload Image")]
         [FileExtensions(Extensions = "jpg")]
-        public IFormFile Imagem { get; set; }
+        public IFormFile Imagem { get; set; }*/
+        public byte[] Imagem { get; set; }
 
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }
 

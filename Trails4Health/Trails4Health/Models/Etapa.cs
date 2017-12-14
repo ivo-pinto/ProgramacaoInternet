@@ -26,10 +26,10 @@ namespace Trails4Health.Models
         [StringLength(60, MinimumLength = 3)]
         public string Fim { get; set; }
 
-
+        [Required(ErrorMessage = "Please enter Max Altitude")]
         public int AltitudeMax { get; set; }
 
-
+        [Required(ErrorMessage = "Please enter Min Altitude")]
         public int AltitudeMin { get; set; }
 
         public ICollection<EtapasTrilho> EtapasTrilhos { get; set; }

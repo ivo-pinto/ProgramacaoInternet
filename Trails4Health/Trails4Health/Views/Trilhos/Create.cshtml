@@ -18,6 +18,15 @@
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
         </div>
+
+        <div class="form-group">
+            <label asp-for="EtapasTrilhos" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <a asp-controller="Etapas" asp-action="Index">Seleccionar etapas do trilho</a>
+                
+            </div>
+        </div>
+
         <div class="form-group">
             <label asp-for="Inicio" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -70,8 +79,12 @@
         <div class="form-group">
             <label asp-for="BelezaPai" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="BelezaPai" class="form-control" />
-                <span asp-validation-for="BelezaPai" class="text-danger"></span>
+                <select asp-for="BelezaPai" class="form-control">
+                    <option value="">Classifique de 1 a 3</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
             </div>
         </div>
 

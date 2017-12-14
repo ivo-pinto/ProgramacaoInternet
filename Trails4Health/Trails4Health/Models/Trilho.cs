@@ -19,6 +19,8 @@ namespace Trails4Health.Models
         [StringLength(maximumLength: 60, MinimumLength = 3)]
         public string Inicio { get; set; }
 
+
+
         [Required(ErrorMessage = "Please enter the end of the Trail")]
         [StringLength(maximumLength: 60, MinimumLength = 3)]
         public string Fim { get; set; }//nota:procurar variavel cordgps
@@ -33,11 +35,11 @@ namespace Trails4Health.Models
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "Please rate the Historical Interest Value")]
-        [Range(minimum: 1, maximum: 5)]
+        [Range(minimum: 1, maximum: 3)]
         public int InteresseHistorico { get; set; }
 
         [Required(ErrorMessage = "Please rate the Beauty of the landscape")]
-        [Range(minimum: 1, maximum: 5)]
+        [Range(minimum: 1, maximum: 3)]
         public int BelezaPai { get; set; }
 
         [Required(ErrorMessage = "Please enter the state of the trail")]

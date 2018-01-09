@@ -41,5 +41,8 @@ namespace Trails4Health.Models
 
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }
 
+        // UPDATE BASE DE DADOS E APAGAR ATRIBUTO TIPO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //public ICollection<TipoFoto> TiposFotos { get; set; }
+
     }
 }

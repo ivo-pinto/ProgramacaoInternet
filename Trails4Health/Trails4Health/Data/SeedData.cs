@@ -70,7 +70,7 @@ namespace Trails4Health.Data
         private static void EnsureLocalizacoesPopulated(ApplicationDbContext dbContext)
         {
             dbContext.Localizacoes.AddRange(
-                        new Localizacao { Nome = "Guarda", Coordenadas = "45N-25S" },
+                        new Localizacao { Nome = "Guarda", Coordenadas = "" },
                         new Localizacao { Nome = "Celorico", Coordenadas = "39N-10S" },
                         new Localizacao { Nome = "Serra", Coordenadas = "40N-20S" }
                    );

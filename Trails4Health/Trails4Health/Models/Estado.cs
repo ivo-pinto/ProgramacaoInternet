@@ -12,7 +12,7 @@ namespace Trails4Health.Models
         public int EstadoId { get; set; }
 
         [Required(ErrorMessage = "Please enter State name")]
-        [StringLength(60, MinimumLength = 3)]
+        [StringLength(100, MinimumLength = 3)]
         public string Nome { get; set; }
 
 

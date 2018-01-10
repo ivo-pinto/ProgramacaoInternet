@@ -12,7 +12,7 @@ namespace Trails4Health.Models
         public int TipoFotoId { get; set; }
 
         [Required(ErrorMessage = "Please enter Trail Name")]
-        [StringLength(maximumLength: 60, MinimumLength = 3)]
+        [StringLength(maximumLength: 100, MinimumLength = 3)]
         public string Nome { get; set; }
 
         

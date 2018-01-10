@@ -12,7 +12,7 @@ namespace Trails4Health.Models
         public int TrihoId { get; set; }
 
         [Required(ErrorMessage = "Please enter Trail Name")]
-        [StringLength(maximumLength: 60, MinimumLength = 3)]
+        [StringLength(maximumLength: 100, MinimumLength = 3)]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Please enter the beggining of the Trail")]
@@ -23,14 +23,15 @@ namespace Trails4Health.Models
 
         [Required(ErrorMessage = "Please enter the end of the Trail")]
         [StringLength(maximumLength: 60, MinimumLength = 3)]
-        public string Fim { get; set; }//nota:procurar variavel cordgps
+        public string Fim { get; set; }
 
-        [Required(ErrorMessage = "Please enter Max Altitude")]
+        [Range(0, 2500, ErrorMessage = "Please enter a correct altitude number")]
         public int AltitudeMax { get; set; }
-        [Required(ErrorMessage = "Please enter Min Altitude")]
+
+        [Range(0, 2500, ErrorMessage = "Please enter a correct altitude number")]
         public int AltitudeMin { get; set; }
 
-        [Required(ErrorMessage = "Please enter Description")]
+   
         [StringLength(maximumLength: 1000, MinimumLength = 5)]
         public string Descricao { get; set; }
 
@@ -42,7 +43,8 @@ namespace Trails4Health.Models
         [Range(minimum: 1, maximum: 3)]
         public int BelezaPai { get; set; }
 
-        [Required(ErrorMessage = "Please enter the state of the trail")]
+        public int GrauDificuldade { get; set; } = 0;
+
         public bool Visivel { get; set; } = true;
 
 

@@ -18,9 +18,6 @@ namespace Trails4Health.Models
 
         public Trilho Trilho { get; set; }
 
-        [RegularExpression(@"\d{4}(-\d{2})", ErrorMessage = "Ano e Mes invalido, AAAA-MM")]
-        public string AnoMes { get; set; }
-
 
 
     }

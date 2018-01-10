@@ -20,7 +20,7 @@ namespace Trails4Health.Models
         [RegularExpression(@"\d{4}(-\d{2})(-\d{2})", ErrorMessage = "Data Inválida! Utilize o formato AAAA-MM-DD")]
         public DateTime DataFim { get; set; }
 
-        [StringLength(60, MinimumLength = 3)]
+        [StringLength(100, MinimumLength = 3)]
         public String Causa { get; set; }
     }
 }

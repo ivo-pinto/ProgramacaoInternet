@@ -34,7 +34,8 @@ namespace Trails4Health.Models
             modelBuilder.Entity<FotosTrilho>().HasKey(ft => new { ft.FotoId, ft.TrilhoId });
             modelBuilder.Entity<Localizacao>().HasKey(l => new { l.LocalizacaoId });
             modelBuilder.Entity<Trilho>().HasKey(t => new { t.TrihoId });
-           
+            modelBuilder.Entity<TipoFoto>().HasKey(t => new { t.TipoFotoId });
+
 
 
             // Etapa Foreign Key
@@ -60,12 +61,12 @@ namespace Trails4Health.Models
                 .HasOne<Localizacao>(l => l.Localizacao)
                 .WithMany(l => l.Fotos)
                 .HasForeignKey(f => f.LocalizacaoId);
+            modelBuilder.Entity<Foto>()
+                .HasOne<TipoFoto>(l => l.TipoFoto)
+                .WithMany(l => l.Fotos)
+                .HasForeignKey(f => f.TipoFotoId);
 
-            // TipoFoto Foreign Key
-            modelBuilder.Entity<TipoFoto>()
-                .HasOne<Foto>(l => l.Foto)
-                .WithMany(l => l.TiposFotos)
-                .HasForeignKey(f => f.FotoId);
+
 
 
             // EstadoTrilho Foreign Key

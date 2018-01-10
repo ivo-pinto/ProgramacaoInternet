@@ -28,7 +28,7 @@ namespace Trails4Health.Models
         public int TipoFotoId { get; set; }
         public TipoFoto TipoFoto { get; set; }
 
-        [Required(ErrorMessage = "Please Upload a Valid Image File. Only jpg format allowed")]
+        //[Required(ErrorMessage = "Please Upload a Valid Image File. Only jpg format allowed")]
        /* [DataType(DataType.Upload)]
         [Display(Name = "Upload Image")]
         [FileExtensions(Extensions = "jpg")]
@@ -38,7 +38,7 @@ namespace Trails4Health.Models
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }
 
         // UPDATE BASE DE DADOS E APAGAR ATRIBUTO TIPO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        public ICollection<TipoFoto> TiposFotos { get; set; }
+        
 
     }
 }

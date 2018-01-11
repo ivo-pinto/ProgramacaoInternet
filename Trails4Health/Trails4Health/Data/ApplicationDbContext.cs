@@ -27,8 +27,6 @@ namespace Trails4Health.Models
         {
             modelBuilder.Entity<Dificuldade>().HasKey(d => new { d.DificuldadeId});
             modelBuilder.Entity<Estado>().HasKey(e => new { e.EstadoId });
-            modelBuilder.Entity<EstadoTrilho>().HasKey(et => new { et.TrihoId, et.EstadoId });
-            modelBuilder.Entity<Etapa>().HasKey(e => new { e.EtapaId });
             modelBuilder.Entity<EtapasTrilho>().HasKey(et => new { et.EtapaId, et.TrilhoId });
             modelBuilder.Entity<Foto>().HasKey(f => new { f.FotoId });
             modelBuilder.Entity<FotosTrilho>().HasKey(ft => new { ft.FotoId, ft.TrilhoId });

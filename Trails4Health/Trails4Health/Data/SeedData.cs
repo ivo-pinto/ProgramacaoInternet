@@ -9,7 +9,7 @@ namespace Trails4Health.Data
     public static class SeedData
     {
         public static void EnsurePopulated(IServiceProvider serviceProvider)
-        {
+        { 
             ApplicationDbContext dbContext = (ApplicationDbContext)serviceProvider.GetService(typeof(ApplicationDbContext));
 
             if (!dbContext.Fotos.Any())
@@ -59,13 +59,18 @@ namespace Trails4Health.Data
 
             dbContext.SaveChanges();
         }
+        
 
         private static void EnsureEtapasTrilhosPopulated(ApplicationDbContext dbContext)
         {
+            Etapa Etapa1 = dbContext.Etapas.SingleOrDefault(e => e.Nome == "Primeira");
+            Etapa Etapa2 = dbContext.Etapas.SingleOrDefault(e => e.Nome == "Segunda");
+            Trilho Trilho1 = dbContext.Trilhos.SingleOrDefault(e => e.Nome == "Serra");
+            Trilho Trilho2 = dbContext.Trilhos.SingleOrDefault(e => e.Nome == "Rio");
+
             dbContext.EtapasTrilhos.AddRange(
-                    new EtapasTrilho { Etapa = null, Trilho = null},
-                    new EtapasTrilho { Etapa = null, Trilho = null},
-                    new EtapasTrilho { Etapa = null, Trilho = null}
+                    new EtapasTrilho { Etapa = Etapa1, Trilho = Trilho1},
+                    new EtapasTrilho { Etapa = Etapa2, Trilho = Trilho2}
                   );
         }
 
@@ -80,29 +85,40 @@ namespace Trails4Health.Data
 
         private static void EnsureFotosPopulated(ApplicationDbContext dbContext)
         {
+            Localizacao Localizacao1 = dbContext.Localizacoes.SingleOrDefault(e => e.Nome == "Guarda");
+            Localizacao Localizacao2 = dbContext.Localizacoes.SingleOrDefault(e => e.Nome == "Celorico");
+            TipoFoto TipoFoto1 = dbContext.TiposFotos.SingleOrDefault(e => e.Nome == "Fauna");
+            TipoFoto TipoFoto2 = dbContext.TiposFotos.SingleOrDefault(e => e.Nome == "Flora");
+
             dbContext.Fotos.AddRange(
-                    new Foto { EstacaoAno = "Verao", Localizacao = null, Visivel = true, Data = DateTime.Parse("05-10-2017"), TipoFoto = null, Imagem = null },
-                    new Foto { EstacaoAno = "Inverno", Localizacao = null, Visivel = true, Data = DateTime.Parse("05-10-2017"), TipoFoto = null, Imagem = null },
-                    new Foto { EstacaoAno = "Primavera", Localizacao = null, Visivel = true, Data = DateTime.Parse("05-10-2017"), TipoFoto = null, Imagem = null }
+                    new Foto { EstacaoAno = "Verao", Localizacao = Localizacao1, Visivel = true, Data = DateTime.Parse("05-10-2017"), TipoFoto = TipoFoto1, Imagem = null },
+                    new Foto { EstacaoAno = "Inverno", Localizacao = Localizacao2, Visivel = true, Data = DateTime.Parse("05-10-2018"), TipoFoto = TipoFoto1, Imagem = null },
+                    new Foto { EstacaoAno = "Primavera", Localizacao = Localizacao1, Visivel = true, Data = DateTime.Parse("05-05-2017"), TipoFoto = TipoFoto2, Imagem = null }
                   );
         }
 
         private static void EnsureFotosTrilhosPopulated(ApplicationDbContext dbContext)
         {
+            Foto Foto1 = dbContext.Fotos.SingleOrDefault(e => e.Data == DateTime.Parse("05-10-2017"));
+            Foto Foto2 = dbContext.Fotos.SingleOrDefault(e => e.Data == DateTime.Parse("05-10-2018"));
+            Trilho Trilho1 = dbContext.Trilhos.SingleOrDefault(e => e.Nome == "Serra");
+            Trilho Trilho2 = dbContext.Trilhos.SingleOrDefault(e => e.Nome == "Rio");
+
             dbContext.FotosTrilhos.AddRange(
-                    new FotosTrilho { Foto = null, Trilho = null },
-                    new FotosTrilho { Foto = null, Trilho = null },
-                    new FotosTrilho { Foto = null, Trilho = null }
+                    new FotosTrilho { Foto = Foto1, Trilho = Trilho1 },
+                    new FotosTrilho { Foto = Foto2, Trilho = Trilho2 }
                   );
         }
 
         private static void EnsureEstadosTrilhosPopulated(ApplicationDbContext dbContext)
         {
-            // Como passar trilho e estado???
+            Estado Estado1 = dbContext.Estados.SingleOrDefault(e => e.Nome == "Aberto");
+            Estado Estado2 = dbContext.Estados.SingleOrDefault(e => e.Nome == "Fechado");
+            Trilho Trilho1 = dbContext.Trilhos.SingleOrDefault(e => e.Nome == "Serra");
+            Trilho Trilho2 = dbContext.Trilhos.SingleOrDefault(e => e.Nome == "Rio");
             dbContext.EstadosTrilhos.AddRange(
-                    new EstadoTrilho { Trilho = null, Estado = null, DataInicio = DateTime.Parse("10-12-2018"), DataFim = DateTime.Parse("20-12-2018"), Causa = "Obras"},
-                    new EstadoTrilho { Trilho = null, Estado = null, DataInicio = DateTime.Parse("15-05-2018"), DataFim = DateTime.Parse("20-05-2018"), Causa = "Manutenção" },
-                    new EstadoTrilho { Trilho = null, Estado = null, DataInicio = DateTime.Parse("10-12-2018"), DataFim = DateTime.Parse("20-12-2018"), Causa = null }
+                    new EstadoTrilho { Trilho = Trilho1, Estado = Estado1, DataInicio = DateTime.Parse("10-12-2018"), DataFim = DateTime.Parse("20-12-2018"), Causa = null},
+                    new EstadoTrilho { Trilho = Trilho2, Estado = Estado2, DataInicio = DateTime.Parse("15-05-2018"), DataFim = DateTime.Parse("20-05-2018"), Causa = "Manutenção" }
                   );
         }
 
@@ -135,18 +151,22 @@ namespace Trails4Health.Data
         private static void EnsureLocalizacoesPopulated(ApplicationDbContext dbContext)
         {
             dbContext.Localizacoes.AddRange(
-                        new Localizacao { Nome = "Guarda", Coordenadas = null },
-                        new Localizacao { Nome = "Celorico", Coordenadas = null },
-                        new Localizacao { Nome = "Serra", Coordenadas = null }
+                        new Localizacao { Nome = "Guarda", Coordenadas = "N 39.607550º / W 010.072533º " },
+                        new Localizacao { Nome = "Celorico", Coordenadas = "N 3.607550º / W 099.072533º " },
+                        new Localizacao { Nome = "Serra", Coordenadas = "N 50.607550º / W 009.072533º " }
                    );
         }
 
         private static void EnsureEtapasPopulated(ApplicationDbContext dbContext)
         {
+            Dificuldade Dificuldade1 = dbContext.Dificuldades.SingleOrDefault(e => e.Nome == "Facil");
+            Dificuldade Dificuldade2 = dbContext.Dificuldades.SingleOrDefault(e => e.Nome == "Medio");
+            Dificuldade Dificuldade3 = dbContext.Dificuldades.SingleOrDefault(e => e.Nome == "Dificil");
+
             dbContext.Etapas.AddRange(
-                        new Etapa { Nome = "Primeira", Inicio = "A", Fim = "B", Dificuldade = null, AltitudeMax = 10, AltitudeMin = 15 },
-                        new Etapa { Nome = "Segunda", Inicio = "B", Fim = "C", Dificuldade = null, AltitudeMax = 1000, AltitudeMin = 900 },
-                        new Etapa { Nome = "Terceira", Inicio = "C", Fim = "A", Dificuldade = null, AltitudeMax = 1050, AltitudeMin = 1500 }
+                        new Etapa { Nome = "Primeira", Inicio = "A", Fim = "B", Dificuldade = Dificuldade1, AltitudeMax = 10, AltitudeMin = 15 },
+                        new Etapa { Nome = "Segunda", Inicio = "B", Fim = "C", Dificuldade = Dificuldade2, AltitudeMax = 1000, AltitudeMin = 900 },
+                        new Etapa { Nome = "Terceira", Inicio = "C", Fim = "A", Dificuldade = Dificuldade3, AltitudeMax = 1050, AltitudeMin = 1500 }
                    );
         }
 

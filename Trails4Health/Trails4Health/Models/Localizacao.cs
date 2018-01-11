@@ -15,10 +15,9 @@ namespace Trails4Health.Models
         [StringLength(maximumLength: 100, MinimumLength = 3)]
         public string Nome { get; set; }
 
-        public GeoCoordinate Coordenadas; //mudar para tipo GeoCoordinate ---NAO ESTA NA BD
+        [RegularExpression(@"^([-+]?)([\d]{1,2})(((\.)(\d+)(,)))(\s*)(([-+]?)([\d]{1,3})((\.)(\d+))?)$", ErrorMessage = "Coordenada Inválida! Utilize o formato 'Longitude, Latitude'")]
+        public string Coordenadas; 
 
-        
-        
 
         public ICollection<Foto> Fotos { get; set; }
 

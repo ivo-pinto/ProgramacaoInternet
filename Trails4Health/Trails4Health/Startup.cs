@@ -63,9 +63,9 @@ namespace Trails4Health
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
-           /* //Adicionar seedData - comentar quando for necessário fazer migrações
+            //Adicionar seedData - comentar quando for necessário fazer migrações
             var serviceProvider = services.BuildServiceProvider();
-            SeedData.EnsurePopulated(serviceProvider); */
+            SeedData.EnsurePopulated(serviceProvider);  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -99,7 +99,7 @@ namespace Trails4Health
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-           // SeedData.EnsurePopulated(app.ApplicationServices);
+           SeedData.EnsurePopulated(app.ApplicationServices);
 
         }
     }

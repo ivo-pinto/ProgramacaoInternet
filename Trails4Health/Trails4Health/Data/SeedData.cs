@@ -12,33 +12,29 @@ namespace Trails4Health.Data
         { 
             ApplicationDbContext dbContext = (ApplicationDbContext)serviceProvider.GetService(typeof(ApplicationDbContext));
 
-            if (!dbContext.Fotos.Any())
+            if (!dbContext.TiposFotos.Any())
             {
-                EnsureFotosPopulated(dbContext);
+                EnsureTiposFotosPopulated(dbContext);
             }
-
-            if (!dbContext.Trilhos.Any())
-            {
-                EnsureTrilhosPopulated(dbContext);
-            }
-
             if (!dbContext.Dificuldades.Any())
             {
                 EnsureDificuldadesPopulated(dbContext);
             }
-
             if (!dbContext.Localizacoes.Any())
             {
                 EnsureLocalizacoesPopulated(dbContext);
             }
-
-            if (!dbContext.Etapas.Any())
-            {
-                EnsureEtapasPopulated(dbContext);
-            }
             if (!dbContext.Estados.Any())
             {
                 EnsureEstadosPopulated(dbContext);
+            }
+            if (!dbContext.Fotos.Any())
+            {
+                EnsureFotosPopulated(dbContext);
+            }
+            if (!dbContext.Etapas.Any())
+            {
+                EnsureEtapasPopulated(dbContext);
             }
             if (!dbContext.EstadosTrilhos.Any())
             {
@@ -52,10 +48,11 @@ namespace Trails4Health.Data
             {
                 EnsureFotosTrilhosPopulated(dbContext);
             }
-            if (!dbContext.TiposFotos.Any())
+            if (!dbContext.Trilhos.Any())
             {
-                EnsureTiposFotosPopulated(dbContext);
+                EnsureTrilhosPopulated(dbContext);
             }
+
 
             dbContext.SaveChanges();
         }
@@ -126,7 +123,7 @@ namespace Trails4Health.Data
         {
             dbContext.Estados.AddRange(
                     new Estado { Nome = "Aberto", Descricao = "o trilho esta aberto ao publico" },
-                    new Estado { Nome = "Fechado", Descricao = "o trilho esta fechado ao publico" }
+                    new Estado { Nome = "Fechado", Descricao = "o trilho esta fechado ao publico" } 
                   );
         }
 

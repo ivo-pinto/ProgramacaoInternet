@@ -72,11 +72,11 @@ namespace Trails4Health.Models
             // EstadoTrilho Foreign Key
             modelBuilder.Entity<EstadoTrilho>()
                 .HasOne(et => et.Trilho)
-                .WithMany(t => t.EstadosTrilhos)
-                .HasForeignKey(et => et.EstadoId);
+                .WithMany(et => et.EstadosTrilhos)
+                .HasForeignKey(et => et.TrihoId);
             modelBuilder.Entity<EstadoTrilho>()
                  .HasOne(et => et.Estado)
-                 .WithMany(e => e.EstadosTrilhos)
+                 .WithMany(et => et.EstadosTrilhos)
                  .HasForeignKey(et => et.EstadoId);
 
 

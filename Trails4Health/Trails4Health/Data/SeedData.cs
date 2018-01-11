@@ -43,9 +43,9 @@ namespace Trails4Health.Data
         private static void EnsureFotosPopulated(ApplicationDbContext dbContext)
         {
             dbContext.Fotos.AddRange(
-                    new Foto { EstacaoAno = "Verao", Tipo = 1, Url = "~/doc/fotos", Localizacao = null },
-                    new Foto { EstacaoAno = "Inverno", Tipo = 2, Url = "~/doc/fotos", Localizacao = null },
-                    new Foto { EstacaoAno = "Primavera", Tipo = 3, Url = "~/doc/fotos", Localizacao = null }
+              //      new Foto { EstacaoAno = "Verao", Tipo = 1, Url = "~/doc/fotos", Localizacao = null },
+                //    new Foto { EstacaoAno = "Inverno", Tipo = 2, Url = "~/doc/fotos", Localizacao = null },
+                  //  new Foto { EstacaoAno = "Primavera", Tipo = 3, Url = "~/doc/fotos", Localizacao = null }
                   );
         }
 
@@ -70,9 +70,9 @@ namespace Trails4Health.Data
         private static void EnsureLocalizacoesPopulated(ApplicationDbContext dbContext)
         {
             dbContext.Localizacoes.AddRange(
-                        new Localizacao { Nome = "Guarda", Coordenadas = "" },
-                        new Localizacao { Nome = "Celorico", Coordenadas = "39N-10S" },
-                        new Localizacao { Nome = "Serra", Coordenadas = "40N-20S" }
+                        new Localizacao { Nome = "Guarda", Coordenadas = null },
+                        new Localizacao { Nome = "Celorico", Coordenadas = null },
+                        new Localizacao { Nome = "Serra", Coordenadas = null }
                    );
         }
 

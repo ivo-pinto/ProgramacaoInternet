@@ -135,9 +135,9 @@ namespace Trails4Health.Data
         private static void EnsureLocalizacoesPopulated(ApplicationDbContext dbContext)
         {
             dbContext.Localizacoes.AddRange(
-                        new Localizacao { Nome = "Guarda", Coordenadas = null, Etapa = null },
-                        new Localizacao { Nome = "Celorico", Coordenadas = null, Etapa = null },
-                        new Localizacao { Nome = "Serra", Coordenadas = null, Etapa = null }
+                        new Localizacao { Nome = "Guarda", Coordenadas = null },
+                        new Localizacao { Nome = "Celorico", Coordenadas = null },
+                        new Localizacao { Nome = "Serra", Coordenadas = null }
                    );
         }
 

@@ -16,7 +16,7 @@ namespace Trails4Health.Models
         public string Nome { get; set; }
 
         
-        [StringLength(maximumLength: 1000, MinimumLength = 5)]
+        [StringLength(maximumLength: 1000, MinimumLength = 0)]
         public string Descricao { get; set; }
 
         public ICollection<Foto> Fotos { get; set; }

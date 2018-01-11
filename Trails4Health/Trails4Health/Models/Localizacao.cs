@@ -17,8 +17,8 @@ namespace Trails4Health.Models
 
         public GeoCoordinate Coordenadas; //mudar para tipo GeoCoordinate ---NAO ESTA NA BD
 
-        public Etapa Etapa { get; set; } //(FK) id da tabela localizacao
-        public int EtapaId { get; set; }
+        
+        
 
         public ICollection<Foto> Fotos { get; set; }
 

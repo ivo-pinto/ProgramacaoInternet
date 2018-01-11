@@ -12,10 +12,12 @@ namespace Trails4Health.Models
 
         public int FotoId { get; set; }
 
+        [Required(ErrorMessage = "Please enter a Photo")]
         public Foto Foto { get; set; }
 
         public int TrilhoId { get; set; } //mudar para tipo Trilho
 
+        [Required(ErrorMessage = "Please enter a Trail")]
         public Trilho Trilho { get; set; }
 
 

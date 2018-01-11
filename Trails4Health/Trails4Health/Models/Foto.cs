@@ -18,7 +18,7 @@ namespace Trails4Health.Models
         public bool Visivel { get; set; } = false;
 
 
-        [RegularExpression(@"\d{4}(-\d{2})(-\d{2})", ErrorMessage = "Data Inválida! Utilize o formato AAAA-MM-DD")]
+        [RegularExpression(@"(\d{2})(-\d{2}-)\d{4}", ErrorMessage = "Data Inválida! Utilize o formato DD-MM-AAAA")]
         public DateTime Data { get; set; }
 
   

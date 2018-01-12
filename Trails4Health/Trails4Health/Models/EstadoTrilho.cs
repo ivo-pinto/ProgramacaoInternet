@@ -8,7 +8,7 @@ namespace Trails4Health.Models
 {
     public class EstadoTrilho
     {
-        public int EstadoTrihoId { get; set; }
+        //public int EstadoTrihoId { get; set; }
 
         public int TrihoId { get; set; }
         [Required(ErrorMessage = "Please enter Trail name")]

@@ -35,6 +35,7 @@ namespace Trails4Health.Models
             modelBuilder.Entity<Trilho>().HasKey(t => new { t.TrihoId });
             modelBuilder.Entity<TipoFoto>().HasKey(t => new { t.TipoFotoId });
             modelBuilder.Entity<EstacaoAno>().HasKey(t => new { t.EstacaoAnoId });
+            modelBuilder.Entity<EstadoTrilho>().HasKey(t => new { t.EstadoId, t.TrihoId });
 
 
 

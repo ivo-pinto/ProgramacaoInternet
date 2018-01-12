@@ -21,9 +21,8 @@ namespace Trails4Health.Models
         [RegularExpression(@"\d{4}(-\d{2})(-\d{2})", ErrorMessage = "Data Inválida! Utilize o formato AAAA-MM-DD")]
         public DateTime Data { get; set; }
 
-  
-        [StringLength(maximumLength: 60, MinimumLength = 3)]
-        public string EstacaoAno { get; set; }
+        public int EstacaoAnoId { get; set; }
+        public EstacaoAno EstacaoAno { get; set; }
 
         public int TipoFotoId { get; set; }
         public TipoFoto TipoFoto { get; set; }
@@ -36,9 +35,6 @@ namespace Trails4Health.Models
         public byte[] Imagem { get; set; }
 
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }
-
-        // UPDATE BASE DE DADOS E APAGAR ATRIBUTO TIPO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        public ICollection<TipoFoto> TiposFotos { get; set; }
 
     }
 }

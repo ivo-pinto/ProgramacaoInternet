@@ -21,6 +21,8 @@ namespace Trails4Health.Models
         public DbSet<Localizacao> Localizacoes { get; set; }
         public DbSet<Trilho> Trilhos { get; set; }
         public DbSet<TipoFoto> TiposFotos { get; set; }
+        public DbSet<EstacaoAno> EstacoesAno { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,7 +36,8 @@ namespace Trails4Health.Models
             modelBuilder.Entity<FotosTrilho>().HasKey(ft => new { ft.FotoId, ft.TrilhoId });
             modelBuilder.Entity<Localizacao>().HasKey(l => new { l.LocalizacaoId });
             modelBuilder.Entity<Trilho>().HasKey(t => new { t.TrihoId });
-           
+            modelBuilder.Entity<EstacaoAno>().HasKey(t => new { t.EstacaoAnoId });
+
 
 
             // Etapa Foreign Key
@@ -61,11 +64,6 @@ namespace Trails4Health.Models
                 .WithMany(l => l.Fotos)
                 .HasForeignKey(f => f.LocalizacaoId);
 
-            // TipoFoto Foreign Key
-            modelBuilder.Entity<TipoFoto>()
-                .HasOne<Foto>(l => l.Foto)
-                .WithMany(l => l.TiposFotos)
-                .HasForeignKey(f => f.FotoId);
 
 
             // EstadoTrilho Foreign Key

@@ -6,22 +6,18 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models
 {
-    //UPDATE BASE DE DADOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public class TipoFoto
+    public class EstacaoAno
     {
-        public int TipoFotoId { get; set; }
+        public int EstacaoAnoId { get; set; }
 
         [Required(ErrorMessage = "Please enter Trail Name")]
         [StringLength(maximumLength: 100, MinimumLength = 3)]
         public string Nome { get; set; }
 
-        
-        [StringLength(maximumLength: 1000, MinimumLength = 5)]
-        public string Descricao { get; set; }
+        [StringLength(maximumLength: 250, MinimumLength = 0)]
+        public string Observacao { get; set; }
 
         public ICollection<Foto> Fotos { get; set; }
 
-
     }
 }
-

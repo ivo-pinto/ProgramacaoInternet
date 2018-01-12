@@ -1,0 +1,89 @@
+@model Trails4Health.Models.Trilho
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Trilho</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="TrihoId" />
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Inicio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Inicio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fim)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AltitudeMax)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AltitudeMax)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AltitudeMin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AltitudeMin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InteresseHistorico)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InteresseHistorico)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BelezaPai)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BelezaPai)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GrauDificuldade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GrauDificuldade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DuracaoMedia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DuracaoMedia)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Visivel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Visivel)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

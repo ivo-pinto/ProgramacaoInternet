@@ -1,0 +1,36 @@
+@model Trails4Health.Models.EtapasTrilho
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EtapasTrilho</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EtapasTrilhoId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EtapasTrilhoId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Etapa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Etapa.Fim)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Trilho)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Trilho.Fim)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

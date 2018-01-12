@@ -1,0 +1,47 @@
+@model Trails4Health.Models.FotosTrilho
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>FotosTrilho</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="FotosTrilhoId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FotosTrilhoId" class="form-control" />
+                <span asp-validation-for="FotosTrilhoId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FotoId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="FotoId" class ="form-control" asp-items="ViewBag.FotoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TrilhoId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="TrilhoId" class ="form-control" asp-items="ViewBag.TrilhoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

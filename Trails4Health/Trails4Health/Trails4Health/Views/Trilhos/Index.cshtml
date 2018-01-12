@@ -1,0 +1,95 @@
+@model IEnumerable<Trails4Health.Models.Trilho>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Inicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fim)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AltitudeMax)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AltitudeMin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InteresseHistorico)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BelezaPai)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GrauDificuldade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DuracaoMedia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Visivel)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltitudeMax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltitudeMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InteresseHistorico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BelezaPai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrauDificuldade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DuracaoMedia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visivel)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TrihoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TrihoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TrihoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

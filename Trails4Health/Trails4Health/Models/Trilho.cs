@@ -47,9 +47,9 @@ namespace Trails4Health.Models
         [Range(minimum: 1, maximum: 5)]
         public int GrauDificuldade { get; set; } = 0;
 
-        [Required(ErrorMessage = "Please rate the Beauty of the landscape")]
-        public int EstacaoAnoId { get; set; }
-        public EstacaoAno EstacaoAno { get; set; }
+        [Required(ErrorMessage = "Duração")]
+        public int DuracaoMedia { get; set; }
+
 
         public bool Visivel { get; set; } = true;
 

@@ -100,11 +100,16 @@ namespace Trails4Health.Data
             Localizacao Localizacao2 = dbContext.Localizacoes.SingleOrDefault(e => e.Nome == "Celorico");
             TipoFoto TipoFoto1 = dbContext.TiposFotos.SingleOrDefault(e => e.Nome == "Fauna");
             TipoFoto TipoFoto2 = dbContext.TiposFotos.SingleOrDefault(e => e.Nome == "Flora");
+            EstacaoAno Verao = dbContext.EstacoesAno.SingleOrDefault(e => e.Nome == "Verão");
+            EstacaoAno Inverno = dbContext.EstacoesAno.SingleOrDefault(e => e.Nome == "Inverno");
+            EstacaoAno Outono = dbContext.EstacoesAno.SingleOrDefault(e => e.Nome == "Outono");
+            EstacaoAno Primavera = dbContext.EstacoesAno.SingleOrDefault(e => e.Nome == "Primavera");
+
 
             dbContext.Fotos.AddRange(
-                    new Foto { EstacaoAno = "Verao", Localizacao = Localizacao1, Visivel = true, Data = DateTime.Parse("05-10-2017"), TipoFoto = TipoFoto1, Imagem = null },
-                    new Foto { EstacaoAno = "Inverno", Localizacao = Localizacao2, Visivel = true, Data = DateTime.Parse("05-10-2018"), TipoFoto = TipoFoto1, Imagem = null },
-                    new Foto { EstacaoAno = "Primavera", Localizacao = Localizacao1, Visivel = true, Data = DateTime.Parse("05-05-2017"), TipoFoto = TipoFoto2, Imagem = null }
+                    new Foto { EstacaoAno = Verao, Localizacao = Localizacao1, Visivel = true, Data = DateTime.Parse("05-10-2017"), TipoFoto = TipoFoto1, Imagem = null },
+                    new Foto { EstacaoAno = Inverno, Localizacao = Localizacao2, Visivel = true, Data = DateTime.Parse("05-10-2018"), TipoFoto = TipoFoto1, Imagem = null },
+                    new Foto { EstacaoAno = Primavera, Localizacao = Localizacao1, Visivel = true, Data = DateTime.Parse("05-05-2017"), TipoFoto = TipoFoto2, Imagem = null }
                   );
         }
 

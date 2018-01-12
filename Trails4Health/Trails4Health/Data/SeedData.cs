@@ -15,46 +15,57 @@ namespace Trails4Health.Data
             if (!dbContext.TiposFotos.Any())
             {
                 EnsureTiposFotosPopulated(dbContext);
+                dbContext.SaveChanges();
             }
             if (!dbContext.EstacoesAno.Any())
             {
                 EnsureEstacoesAnoPopulated(dbContext);
+                dbContext.SaveChanges();
             }
             if (!dbContext.Dificuldades.Any())
             {
                 EnsureDificuldadesPopulated(dbContext);
+                dbContext.SaveChanges();
             }
             if (!dbContext.Localizacoes.Any())
             {
                 EnsureLocalizacoesPopulated(dbContext);
+                dbContext.SaveChanges();
             }
             if (!dbContext.Estados.Any())
             {
                 EnsureEstadosPopulated(dbContext);
+                dbContext.SaveChanges();
             }
             if (!dbContext.Fotos.Any())
             {
                 EnsureFotosPopulated(dbContext);
+                dbContext.SaveChanges();
             }
             if (!dbContext.Etapas.Any())
             {
                 EnsureEtapasPopulated(dbContext);
-            }
-            if (!dbContext.EtapasTrilhos.Any())
-            {
-                EnsureEtapasTrilhosPopulated(dbContext);
-            }
-            if (!dbContext.FotosTrilhos.Any())
-            {
-                EnsureFotosTrilhosPopulated(dbContext);
+                dbContext.SaveChanges();
             }
             if (!dbContext.Trilhos.Any())
             {
                 EnsureTrilhosPopulated(dbContext);
+                dbContext.SaveChanges();
+            }
+            if (!dbContext.FotosTrilhos.Any())
+            {
+                EnsureFotosTrilhosPopulated(dbContext);
+                dbContext.SaveChanges();
+            }
+            if (!dbContext.EtapasTrilhos.Any())
+            {
+                EnsureEtapasTrilhosPopulated(dbContext);
+                dbContext.SaveChanges();
             }
             if (!dbContext.EstadosTrilhos.Any())
             {
                 EnsureEstadosTrilhosPopulated(dbContext);
+                dbContext.SaveChanges();
             }
 
 

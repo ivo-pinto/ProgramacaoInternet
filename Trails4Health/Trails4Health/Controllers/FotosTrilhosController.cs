@@ -9,23 +9,23 @@ using Trails4Health.Models;
 
 namespace Trails4Health.Controllers
 {
-    public class EtapasController : Controller
+    public class FotosTrilhosController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public EtapasController(ApplicationDbContext context)
+        public FotosTrilhosController(ApplicationDbContext context)
         {
             _context = context;    
         }
 
-        // GET: Etapas
+        // GET: FotosTrilhos
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Etapas.Include(e => e.Dificuldade);
+            var applicationDbContext = _context.FotosTrilhos.Include(f => f.Foto).Include(f => f.Trilho);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Etapas/Details/5
+        // GET: FotosTrilhos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +33,45 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
-            var etapa = await _context.Etapas
-                .Include(e => e.Dificuldade)
-                .SingleOrDefaultAsync(m => m.EtapaId == id);
-            if (etapa == null)
+            var fotosTrilho = await _context.FotosTrilhos
+                .Include(f => f.Foto)
+                .Include(f => f.Trilho)
+                .SingleOrDefaultAsync(m => m.FotoId == id);
+            if (fotosTrilho == null)
             {
                 return NotFound();
             }
 
-            return View(etapa);
+            return View(fotosTrilho);
         }
 
-        // GET: Etapas/Create
+        // GET: FotosTrilhos/Create
         public IActionResult Create()
         {
-            ViewData["DificuldadeId"] = new SelectList(_context.Dificuldades, "DificuldadeId", "Nome");
+            ViewData["FotoId"] = new SelectList(_context.Fotos, "FotoId", "FotoId");
+            ViewData["TrilhoId"] = new SelectList(_context.Trilhos, "TrihoId", "Fim");
             return View();
         }
 
-        // POST: Etapas/Create
+        // POST: FotosTrilhos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EtapaId,DificuldadeId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin")] Etapa etapa)
+        public async Task<IActionResult> Create([Bind("FotosTrilhoId,FotoId,TrilhoId")] FotosTrilho fotosTrilho)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(etapa);
+                _context.Add(fotosTrilho);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["DificuldadeId"] = new SelectList(_context.Dificuldades, "DificuldadeId", "Nome", etapa.DificuldadeId);
-            return View(etapa);
+            ViewData["FotoId"] = new SelectList(_context.Fotos, "FotoId", "FotoId", fotosTrilho.FotoId);
+            ViewData["TrilhoId"] = new SelectList(_context.Trilhos, "TrihoId", "Fim", fotosTrilho.TrilhoId);
+            return View(fotosTrilho);
         }
 
-        // GET: Etapas/Edit/5
+        // GET: FotosTrilhos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,23 +79,24 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
-            var etapa = await _context.Etapas.SingleOrDefaultAsync(m => m.EtapaId == id);
-            if (etapa == null)
+            var fotosTrilho = await _context.FotosTrilhos.SingleOrDefaultAsync(m => m.FotoId == id);
+            if (fotosTrilho == null)
             {
                 return NotFound();
             }
-            ViewData["DificuldadeId"] = new SelectList(_context.Dificuldades, "DificuldadeId", "Nome", etapa.DificuldadeId);
-            return View(etapa);
+            ViewData["FotoId"] = new SelectList(_context.Fotos, "FotoId", "FotoId", fotosTrilho.FotoId);
+            ViewData["TrilhoId"] = new SelectList(_context.Trilhos, "TrihoId", "Fim", fotosTrilho.TrilhoId);
+            return View(fotosTrilho);
         }
 
-        // POST: Etapas/Edit/5
+        // POST: FotosTrilhos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EtapaId,DificuldadeId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin")] Etapa etapa)
+        public async Task<IActionResult> Edit(int id, [Bind("FotosTrilhoId,FotoId,TrilhoId")] FotosTrilho fotosTrilho)
         {
-            if (id != etapa.EtapaId)
+            if (id != fotosTrilho.FotoId)
             {
                 return NotFound();
             }
@@ -101,12 +105,12 @@ namespace Trails4Health.Controllers
             {
                 try
                 {
-                    _context.Update(etapa);
+                    _context.Update(fotosTrilho);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EtapaExists(etapa.EtapaId))
+                    if (!FotosTrilhoExists(fotosTrilho.FotoId))
                     {
                         return NotFound();
                     }
@@ -117,11 +121,12 @@ namespace Trails4Health.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["DificuldadeId"] = new SelectList(_context.Dificuldades, "DificuldadeId", "Nome", etapa.DificuldadeId);
-            return View(etapa);
+            ViewData["FotoId"] = new SelectList(_context.Fotos, "FotoId", "FotoId", fotosTrilho.FotoId);
+            ViewData["TrilhoId"] = new SelectList(_context.Trilhos, "TrihoId", "Fim", fotosTrilho.TrilhoId);
+            return View(fotosTrilho);
         }
 
-        // GET: Etapas/Delete/5
+        // GET: FotosTrilhos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,31 +134,32 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
-            var etapa = await _context.Etapas
-                .Include(e => e.Dificuldade)
-                .SingleOrDefaultAsync(m => m.EtapaId == id);
-            if (etapa == null)
+            var fotosTrilho = await _context.FotosTrilhos
+                .Include(f => f.Foto)
+                .Include(f => f.Trilho)
+                .SingleOrDefaultAsync(m => m.FotoId == id);
+            if (fotosTrilho == null)
             {
                 return NotFound();
             }
 
-            return View(etapa);
+            return View(fotosTrilho);
         }
 
-        // POST: Etapas/Delete/5
+        // POST: FotosTrilhos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var etapa = await _context.Etapas.SingleOrDefaultAsync(m => m.EtapaId == id);
-            _context.Etapas.Remove(etapa);
+            var fotosTrilho = await _context.FotosTrilhos.SingleOrDefaultAsync(m => m.FotoId == id);
+            _context.FotosTrilhos.Remove(fotosTrilho);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        private bool EtapaExists(int id)
+        private bool FotosTrilhoExists(int id)
         {
-            return _context.Etapas.Any(e => e.EtapaId == id);
+            return _context.FotosTrilhos.Any(e => e.FotoId == id);
         }
     }
 }

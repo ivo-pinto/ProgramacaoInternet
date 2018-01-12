@@ -1,4 +1,4 @@
-@model IEnumerable<Trails4Health.Models.Localizacao>
+@model IEnumerable<Trails4Health.Models.EstacaoAno>
 
 @{
     ViewData["Title"] = "Index";
@@ -15,9 +15,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Nome)
                 </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Etapa)
-            </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Observacao)
+                </th>
             <th></th>
         </tr>
     </thead>
@@ -28,12 +28,12 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Etapa.EtapaId)
+                @Html.DisplayFor(modelItem => item.Observacao)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.LocalizacaoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.LocalizacaoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.LocalizacaoId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.EstacaoAnoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EstacaoAnoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EstacaoAnoId">Delete</a>
             </td>
         </tr>
 }

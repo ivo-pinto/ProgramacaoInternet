@@ -11,34 +11,40 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DataHora)
+            @Html.DisplayNameFor(model => model.Visivel)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DataHora)
+            @Html.DisplayFor(model => model.Visivel)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Imagem)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Imagem)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.EstacaoAno)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.EstacaoAno)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Tipo)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Tipo)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Url)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Url)
+            @Html.DisplayFor(model => model.EstacaoAno.Nome)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Localizacao)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Localizacao.LocalizacaoId)
+            @Html.DisplayFor(model => model.Localizacao.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoFoto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoFoto.Nome)
         </dd>
     </dl>
 </div>

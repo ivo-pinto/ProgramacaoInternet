@@ -4,9 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Trilhos</h2>
+<h2>Index</h2>
 
-
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -33,6 +35,12 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.BelezaPai)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GrauDificuldade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DuracaoMedia)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Visivel)
@@ -68,6 +76,12 @@
                 @Html.DisplayFor(modelItem => item.BelezaPai)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.GrauDificuldade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DuracaoMedia)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Visivel)
             </td>
             <td>
@@ -79,42 +93,3 @@
 }
     </tbody>
 </table>
-
-
-<div class="row what">
-    <div class="col-md-3 col-sm-4 webdesign" style="visibility: visible; ">
-        <div class="icons">
-            <img src="~/images/icon1.png" alt="ASP.NET" class="img-responsive" />
-        </div>
-        <h2><a asp-action="Create">Create New Trail</a></h2>
-    </div>
-    @*<div class="col-md-3 col-sm-4 copywriting" style="visibility: visible; ">
-        <div class="icons">
-            <img src="~/images/icon2.jpg" alt="ASP.NET" class="img-responsive" />
-        </div>
-        <h2><a asp-action="Edit">Edit Trail</a></h2>
-
-    </div>
-    <div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
-        <div class="icons">
-            <img src="~/images/icon3.png" alt="ASP.NET" class="img-responsive" />
-        </div>
-        <h2><a asp-action="Delete">Delete Trail</a></h2>
-
-    </div>
-    <div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
-        <div class="icons">
-            <img src="~/images/icon4.png" alt="ASP.NET" class="img-responsive" />
-        </div>
-        <h2><a asp-action="Details">View Trails</a></h2>
-    </div>*@
-    <div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
-        <div class="icons">
-            <img src="~/images/icon4.png" alt="ASP.NET" class="img-responsive" />
-        </div>
-        <h2><a asp-controller="Home" asp-action="CompararTrilho">Compare Trails</a></h2>
-    </div>
-
-    
-
-</div>

@@ -160,9 +160,9 @@ namespace Trails4Health.Data
         private static void EnsureTrilhosPopulated(ApplicationDbContext dbContext)
         {
             dbContext.Trilhos.AddRange(
-                    new Trilho { Nome = "Serra", Inicio = "A", Fim = "B", InteresseHistorico = 1, BelezaPai = 1, AltitudeMax = 10, AltitudeMin = 5, GrauDificuldade = 2 , Descricao = "Este trilho é altamente", Visivel = true },
-                    new Trilho { Nome = "Rio", Inicio = "B", Fim = "C", InteresseHistorico = 2, BelezaPai = 5, AltitudeMax = 1000, AltitudeMin = 950, GrauDificuldade = 3, Descricao = "Este trilho é muito dificil", Visivel = true },
-                    new Trilho { Nome = "Regada", Inicio = "A", Fim = "C", InteresseHistorico = 5, BelezaPai = 3, AltitudeMax = 10, AltitudeMin = 5, GrauDificuldade = 1, Descricao = "Este trilho é Histórico", Visivel = false }
+                    new Trilho { Nome = "Serra", Inicio = "PontoA", Fim = "PontoB", InteresseHistorico = 1, BelezaPai = 1, AltitudeMax = 10, AltitudeMin = 5, GrauDificuldade = 2 , Descricao = "Este trilho é altamente", Visivel = true },
+                    new Trilho { Nome = "Rio", Inicio = "PontoB", Fim = "PontoC", InteresseHistorico = 2, BelezaPai = 5, AltitudeMax = 1000, AltitudeMin = 950, GrauDificuldade = 3, Descricao = "Este trilho é muito dificil", Visivel = true },
+                    new Trilho { Nome = "Regada", Inicio = "PontoA", Fim = "PontoC", InteresseHistorico = 5, BelezaPai = 3, AltitudeMax = 10, AltitudeMin = 5, GrauDificuldade = 1, Descricao = "Este trilho é Histórico", Visivel = false }
                   );
         }
 

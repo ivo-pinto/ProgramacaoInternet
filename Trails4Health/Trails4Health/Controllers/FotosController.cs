@@ -21,7 +21,7 @@ namespace Trails4Health.Controllers
         // GET: Fotos
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Fotos.Include(f => f.Localizacao);
+            var applicationDbContext = _context.Fotos.Include(f => f.EstacaoAno).Include(f => f.Localizacao).Include(f => f.TipoFoto);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -34,7 +34,9 @@ namespace Trails4Health.Controllers
             }
 
             var foto = await _context.Fotos
+                .Include(f => f.EstacaoAno)
                 .Include(f => f.Localizacao)
+                .Include(f => f.TipoFoto)
                 .SingleOrDefaultAsync(m => m.FotoId == id);
             if (foto == null)
             {
@@ -47,7 +49,9 @@ namespace Trails4Health.Controllers
         // GET: Fotos/Create
         public IActionResult Create()
         {
-            ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "LocalizacaoId");
+            ViewData["EstacaoAnoId"] = new SelectList(_context.EstacoesAno, "EstacaoAnoId", "Nome");
+            ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "Nome");
+            ViewData["TipoFotoId"] = new SelectList(_context.TiposFotos, "TipoFotoId", "Nome");
             return View();
         }
 
@@ -56,7 +60,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FotoId,LocalizacaoId,DataHora,EstacaoAno,Tipo,Url")] Foto foto)
+        public async Task<IActionResult> Create([Bind("FotoId,LocalizacaoId,Visivel,Data,EstacaoAnoId,TipoFotoId,Imagem")] Foto foto)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +68,9 @@ namespace Trails4Health.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "LocalizacaoId", foto.LocalizacaoId);
+            ViewData["EstacaoAnoId"] = new SelectList(_context.EstacoesAno, "EstacaoAnoId", "Nome", foto.EstacaoAnoId);
+            ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "Nome", foto.LocalizacaoId);
+            ViewData["TipoFotoId"] = new SelectList(_context.TiposFotos, "TipoFotoId", "Nome", foto.TipoFotoId);
             return View(foto);
         }
 
@@ -81,7 +87,9 @@ namespace Trails4Health.Controllers
             {
                 return NotFound();
             }
-            ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "LocalizacaoId", foto.LocalizacaoId);
+            ViewData["EstacaoAnoId"] = new SelectList(_context.EstacoesAno, "EstacaoAnoId", "Nome", foto.EstacaoAnoId);
+            ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "Nome", foto.LocalizacaoId);
+            ViewData["TipoFotoId"] = new SelectList(_context.TiposFotos, "TipoFotoId", "Nome", foto.TipoFotoId);
             return View(foto);
         }
 
@@ -90,7 +98,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FotoId,LocalizacaoId,DataHora,EstacaoAno,Tipo,Url")] Foto foto)
+        public async Task<IActionResult> Edit(int id, [Bind("FotoId,LocalizacaoId,Visivel,Data,EstacaoAnoId,TipoFotoId,Imagem")] Foto foto)
         {
             if (id != foto.FotoId)
             {
@@ -117,7 +125,9 @@ namespace Trails4Health.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "LocalizacaoId", foto.LocalizacaoId);
+            ViewData["EstacaoAnoId"] = new SelectList(_context.EstacoesAno, "EstacaoAnoId", "Nome", foto.EstacaoAnoId);
+            ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "Nome", foto.LocalizacaoId);
+            ViewData["TipoFotoId"] = new SelectList(_context.TiposFotos, "TipoFotoId", "Nome", foto.TipoFotoId);
             return View(foto);
         }
 
@@ -130,7 +140,9 @@ namespace Trails4Health.Controllers
             }
 
             var foto = await _context.Fotos
+                .Include(f => f.EstacaoAno)
                 .Include(f => f.Localizacao)
+                .Include(f => f.TipoFoto)
                 .SingleOrDefaultAsync(m => m.FotoId == id);
             if (foto == null)
             {

@@ -1,4 +1,4 @@
-@model Trails4Health.Models.Localizacao
+@model Trails4Health.Models.EstacaoAno
 
 @{
     ViewData["Title"] = "Delete";
@@ -8,10 +8,10 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Localizacao</h4>
+    <h4>EstacaoAno</h4>
     <hr />
     <dl class="dl-horizontal">
-        <input type="hidden" asp-for="LocalizacaoId" />
+        <input type="hidden" asp-for="EstacaoAnoId" />
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
@@ -19,10 +19,10 @@
             @Html.DisplayFor(model => model.Nome)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Etapa)
+            @Html.DisplayNameFor(model => model.Observacao)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Etapa.EtapaId)
+            @Html.DisplayFor(model => model.Observacao)
         </dd>
     </dl>
     

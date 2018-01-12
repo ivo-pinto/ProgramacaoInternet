@@ -1,4 +1,4 @@
-@model Trails4Health.Models.Localizacao
+@model Trails4Health.Models.FotosTrilho
 
 @{
     ViewData["Title"] = "Create";
@@ -8,20 +8,26 @@
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>Localizacao</h4>
+        <h4>FotosTrilho</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Nome" class="col-md-2 control-label"></label>
+            <label asp-for="FotosTrilhoId" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
+                <input asp-for="FotosTrilhoId" class="form-control" />
+                <span asp-validation-for="FotosTrilhoId" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="EtapaId" class="col-md-2 control-label"></label>
+            <label asp-for="FotoId" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="EtapaId" class ="form-control" asp-items="ViewBag.EtapaId"></select>
+                <select asp-for="FotoId" class ="form-control" asp-items="ViewBag.FotoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TrilhoId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="TrilhoId" class ="form-control" asp-items="ViewBag.TrilhoId"></select>
             </div>
         </div>
         <div class="form-group">

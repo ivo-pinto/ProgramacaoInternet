@@ -52,16 +52,14 @@
                 @Html.DisplayFor(modelItem => item.AltitudeMin)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Dificuldade.DificuldadeId)
+                @Html.DisplayFor(modelItem => item.Dificuldade.Nome)
             </td>
             <td>
-                <h2><a asp-action="Edit" asp-route-id="@item.EtapaId">Edit</a></h2>
-                <h2><a asp-action="Details" asp-route-id="@item.EtapaId">Details</a> </h2>
-                <h2><a asp-action="Delete" asp-route-id="@item.EtapaId">Delete</a></h2>
-                
+                <a asp-action="Edit" asp-route-id="@item.EtapaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EtapaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EtapaId">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-

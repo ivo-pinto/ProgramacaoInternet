@@ -18,15 +18,6 @@
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
         </div>
-
-        <div class="form-group">
-            <label asp-for="EtapasTrilhos" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <a asp-controller="Etapas" asp-action="Index">Seleccionar etapas do trilho</a>
-                
-            </div>
-        </div>
-
         <div class="form-group">
             <label asp-for="Inicio" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -58,36 +49,46 @@
         <div class="form-group">
             <label asp-for="Descricao" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <textarea asp-for="Descricao" class="form-control"></textarea>
+                <input asp-for="Descricao" class="form-control" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
         </div>
-
         <div class="form-group">
             <label asp-for="InteresseHistorico" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                
-                <select asp-for="InteresseHistorico" class="form-control">
-                    <option value="">Classifique de 1 a 3</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
+                <input asp-for="InteresseHistorico" class="form-control" />
+                <span asp-validation-for="InteresseHistorico" class="text-danger"></span>
             </div>
         </div>
-
         <div class="form-group">
             <label asp-for="BelezaPai" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="BelezaPai" class="form-control">
-                    <option value="">Classifique de 1 a 3</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
+                <input asp-for="BelezaPai" class="form-control" />
+                <span asp-validation-for="BelezaPai" class="text-danger"></span>
             </div>
         </div>
-
+        <div class="form-group">
+            <label asp-for="GrauDificuldade" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GrauDificuldade" class="form-control" />
+                <span asp-validation-for="GrauDificuldade" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DuracaoMedia" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DuracaoMedia" class="form-control" />
+                <span asp-validation-for="DuracaoMedia" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="Visivel" />
+                    <label asp-for="Visivel"></label>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />

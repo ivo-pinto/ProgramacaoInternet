@@ -53,7 +53,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TrihoId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin,Descricao,InteresseHistorico,BelezaPai,Visivel")] Trilho trilho)
+        public async Task<IActionResult> Create([Bind("TrihoId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin,Descricao,InteresseHistorico,BelezaPai,GrauDificuldade,DuracaoMedia,Visivel")] Trilho trilho)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TrihoId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin,Descricao,InteresseHistorico,BelezaPai,Visivel")] Trilho trilho)
+        public async Task<IActionResult> Edit(int id, [Bind("TrihoId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin,Descricao,InteresseHistorico,BelezaPai,GrauDificuldade,DuracaoMedia,Visivel")] Trilho trilho)
         {
             if (id != trilho.TrihoId)
             {

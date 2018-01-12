@@ -12,47 +12,45 @@
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="LocalizacaoId" class="col-md-2 control-label">Localizacao</label>
+            <label asp-for="LocalizacaoId" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <select asp-for="LocalizacaoId" class ="form-control" asp-items="ViewBag.LocalizacaoId"></select>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="DataHora" class="col-md-2 control-label">Data e Hora</label>
-            <div class="col-md-10">
-                <input asp-for="DataHora" class="form-control" />
-                <span asp-validation-for="DataHora" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="EstacaoAno" class="col-md-2 control-label">Estacao do Ano</label>
-            <div class="col-md-10">
-                <input asp-for="EstacaoAno" class="form-control" />
-                <span asp-validation-for="EstacaoAno" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Tipo" class="col-md-2 control-label">Tipo</label>
-            <div class="col-md-10">
-                <input asp-for="Tipo" class="form-control" />
-                <span asp-validation-for="Tipo" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Url" class="col-md-2 control-label">Url</label>
-            <div class="col-md-10">
-                <input asp-for="Url" class="form-control" />
-                <span asp-validation-for="Url" class="text-danger"></span>
-            </div>
-        </div>
-            <div class="col-md-10">
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <input type="file" name="files" />
-                    </div>
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="Visivel" />
+                    <label asp-for="Visivel"></label>
                 </div>
             </div>
-        
+        </div>
+        <div class="form-group">
+            <label asp-for="Data" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="EstacaoAnoId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="EstacaoAnoId" class ="form-control" asp-items="ViewBag.EstacaoAnoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TipoFotoId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="TipoFotoId" class ="form-control" asp-items="ViewBag.TipoFotoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Imagem" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Imagem" class="form-control" />
+                <span asp-validation-for="Imagem" class="text-danger"></span>
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />

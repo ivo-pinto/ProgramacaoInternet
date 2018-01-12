@@ -35,23 +35,29 @@ namespace Trails4Health
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             // Add framework services.
             services.AddDbContext<Trails4HealthUsersDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Trails4HealthLoginsDataBase")));
 
-            services.AddMvc();
-           
-            services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrails4Health"))
-           );
-
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+               .AddEntityFrameworkStores<Trails4HealthUsersDbContext>()
+               .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password Settings
+                options.Password.RequireDigit = true;
+
+                //Lockout Settings
+                options.Lockout.MaxFailedAccessAttempts = 10;
+
+            });
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+              options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrails4Health")));
 
             services.AddMvc();
-
-            
 
 
             // Add application services.
@@ -59,14 +65,18 @@ namespace Trails4Health
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
             //Adicionar seedData - comentar quando for necessário fazer migrações
+<<<<<<< HEAD
            // var serviceProvider = services.BuildServiceProvider();
            // SeedData.EnsurePopulated(serviceProvider);
+=======
+            var serviceProvider = services.BuildServiceProvider();
+            SeedData.EnsurePopulated(serviceProvider);  
+>>>>>>> testes
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            SeedData.EnsurePopulated(app.ApplicationServices);
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -94,6 +104,9 @@ namespace Trails4Health
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+           SeedData.EnsurePopulated(app.ApplicationServices);
+
         }
     }
 }

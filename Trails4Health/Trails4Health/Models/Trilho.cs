@@ -43,12 +43,22 @@ namespace Trails4Health.Models
         [Range(minimum: 1, maximum: 5)]
         public int BelezaPai { get; set; }
 
+<<<<<<< HEAD
         [Required(ErrorMessage = "Please rate the Dificulty")]
         [Range(minimum: 1, maximum: 5)]
         public int GrauDificuldade { get; set; } = 0;
 
         [Required(ErrorMessage = "Please enter average duration")]
         public int DuracaoMedia { get; set; } = 0;
+=======
+        [Required(ErrorMessage = "Please rate the Beauty of the landscape")]
+        [Range(minimum: 1, maximum: 5)]
+        public int GrauDificuldade { get; set; } = 0;
+
+        [Required(ErrorMessage = "Duração")]
+        public int DuracaoMedia { get; set; }
+
+>>>>>>> testes
 
         public bool Visivel { get; set; } = true;
 

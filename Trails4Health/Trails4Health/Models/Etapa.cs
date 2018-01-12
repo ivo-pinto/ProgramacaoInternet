@@ -12,6 +12,8 @@ namespace Trails4Health.Models
         public int EtapaId { get; set; }
 
         public int DificuldadeId { get; set; }
+
+        [Required(ErrorMessage = "Please enter a Dificulty")]
         public Dificuldade Dificuldade { get; set; }
 
         [Required(ErrorMessage = "Please enter Stage Name")]

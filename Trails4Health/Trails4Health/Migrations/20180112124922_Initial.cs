@@ -15,13 +15,27 @@ namespace Trails4Health.Migrations
                 {
                     DificuldadeId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(maxLength: 60, nullable: true),
-                    Observacao = table.Column<string>(maxLength: 60, nullable: true),
+                    Nome = table.Column<string>(maxLength: 100, nullable: false),
+                    Observacao = table.Column<string>(maxLength: 250, nullable: true),
                     Valor = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Dificuldades", x => x.DificuldadeId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EstacoesAno",
+                columns: table => new
+                {
+                    EstacaoAnoId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(maxLength: 100, nullable: false),
+                    Observacao = table.Column<string>(maxLength: 250, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EstacoesAno", x => x.EstacaoAnoId);
                 });
 
             migrationBuilder.CreateTable(
@@ -31,11 +45,38 @@ namespace Trails4Health.Migrations
                     EstadoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Descricao = table.Column<string>(maxLength: 1000, nullable: true),
-                    Nome = table.Column<string>(maxLength: 60, nullable: true)
+                    Nome = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Estados", x => x.EstadoId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Localizacoes",
+                columns: table => new
+                {
+                    LocalizacaoId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Localizacoes", x => x.LocalizacaoId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TiposFotos",
+                columns: table => new
+                {
+                    TipoFotoId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Descricao = table.Column<string>(maxLength: 1000, nullable: true),
+                    Nome = table.Column<string>(maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TiposFotos", x => x.TipoFotoId);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,10 +89,12 @@ namespace Trails4Health.Migrations
                     AltitudeMin = table.Column<int>(nullable: false),
                     BelezaPai = table.Column<int>(nullable: false),
                     Descricao = table.Column<string>(maxLength: 1000, nullable: true),
-                    Fim = table.Column<string>(maxLength: 60, nullable: true),
-                    Inicio = table.Column<string>(maxLength: 60, nullable: true),
+                    DuracaoMedia = table.Column<int>(nullable: false),
+                    Fim = table.Column<string>(maxLength: 60, nullable: false),
+                    GrauDificuldade = table.Column<int>(nullable: false),
+                    Inicio = table.Column<string>(maxLength: 60, nullable: false),
                     InteresseHistorico = table.Column<int>(nullable: false),
-                    Nome = table.Column<string>(maxLength: 60, nullable: true),
+                    Nome = table.Column<string>(maxLength: 100, nullable: false),
                     Visivel = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -68,9 +111,9 @@ namespace Trails4Health.Migrations
                     AltitudeMax = table.Column<int>(nullable: false),
                     AltitudeMin = table.Column<int>(nullable: false),
                     DificuldadeId = table.Column<int>(nullable: false),
-                    Fim = table.Column<string>(maxLength: 60, nullable: true),
-                    Inicio = table.Column<string>(maxLength: 60, nullable: true),
-                    Nome = table.Column<string>(maxLength: 60, nullable: true)
+                    Fim = table.Column<string>(maxLength: 100, nullable: false),
+                    Inicio = table.Column<string>(maxLength: 100, nullable: false),
+                    Nome = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -84,18 +127,55 @@ namespace Trails4Health.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EstadosTrilhos",
+                name: "Fotos",
                 columns: table => new
                 {
-                    TrihoId = table.Column<int>(nullable: false),
-                    EstadoId = table.Column<int>(nullable: false),
-                    Causa = table.Column<string>(maxLength: 60, nullable: true),
-                    DataFim = table.Column<DateTime>(nullable: false),
-                    DataInicio = table.Column<DateTime>(nullable: false)
+                    FotoId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Data = table.Column<DateTime>(nullable: false),
+                    EstacaoAnoId = table.Column<int>(nullable: false),
+                    Imagem = table.Column<byte[]>(nullable: true),
+                    LocalizacaoId = table.Column<int>(nullable: false),
+                    TipoFotoId = table.Column<int>(nullable: false),
+                    Visivel = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EstadosTrilhos", x => new { x.TrihoId, x.EstadoId });
+                    table.PrimaryKey("PK_Fotos", x => x.FotoId);
+                    table.ForeignKey(
+                        name: "FK_Fotos_EstacoesAno_EstacaoAnoId",
+                        column: x => x.EstacaoAnoId,
+                        principalTable: "EstacoesAno",
+                        principalColumn: "EstacaoAnoId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Fotos_Localizacoes_LocalizacaoId",
+                        column: x => x.LocalizacaoId,
+                        principalTable: "Localizacoes",
+                        principalColumn: "LocalizacaoId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Fotos_TiposFotos_TipoFotoId",
+                        column: x => x.TipoFotoId,
+                        principalTable: "TiposFotos",
+                        principalColumn: "TipoFotoId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EstadosTrilhos",
+                columns: table => new
+                {
+                    EstadoId = table.Column<int>(nullable: false),
+                    TrihoId = table.Column<int>(nullable: false),
+                    Causa = table.Column<string>(maxLength: 100, nullable: true),
+                    DataFim = table.Column<DateTime>(nullable: false),
+                    DataInicio = table.Column<DateTime>(nullable: false),
+                    EstadoTrihoId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EstadosTrilhos", x => new { x.EstadoId, x.TrihoId });
                     table.ForeignKey(
                         name: "FK_EstadosTrilhos_Estados_EstadoId",
                         column: x => x.EstadoId,
@@ -103,8 +183,8 @@ namespace Trails4Health.Migrations
                         principalColumn: "EstadoId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EstadosTrilhos_Trilhos_EstadoId",
-                        column: x => x.EstadoId,
+                        name: "FK_EstadosTrilhos_Trilhos_TrihoId",
+                        column: x => x.TrihoId,
                         principalTable: "Trilhos",
                         principalColumn: "TrihoId",
                         onDelete: ReferentialAction.Cascade);
@@ -136,55 +216,11 @@ namespace Trails4Health.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Localizacoes",
-                columns: table => new
-                {
-                    LocalizacaoId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    EtapaId = table.Column<int>(nullable: false),
-                    Nome = table.Column<string>(maxLength: 60, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Localizacoes", x => x.LocalizacaoId);
-                    table.ForeignKey(
-                        name: "FK_Localizacoes_Etapas_EtapaId",
-                        column: x => x.EtapaId,
-                        principalTable: "Etapas",
-                        principalColumn: "EtapaId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Fotos",
-                columns: table => new
-                {
-                    FotoId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DataHora = table.Column<DateTime>(nullable: false),
-                    EstacaoAno = table.Column<string>(maxLength: 60, nullable: true),
-                    LocalizacaoId = table.Column<int>(nullable: false),
-                    Tipo = table.Column<int>(nullable: false),
-                    Url = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Fotos", x => x.FotoId);
-                    table.ForeignKey(
-                        name: "FK_Fotos_Localizacoes_LocalizacaoId",
-                        column: x => x.LocalizacaoId,
-                        principalTable: "Localizacoes",
-                        principalColumn: "LocalizacaoId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "FotosTrilhos",
                 columns: table => new
                 {
                     FotoId = table.Column<int>(nullable: false),
                     TrilhoId = table.Column<int>(nullable: false),
-                    AnoMes = table.Column<string>(nullable: true),
                     FotosTrilhoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -205,9 +241,9 @@ namespace Trails4Health.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_EstadosTrilhos_EstadoId",
+                name: "IX_EstadosTrilhos_TrihoId",
                 table: "EstadosTrilhos",
-                column: "EstadoId");
+                column: "TrihoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Etapas_DificuldadeId",
@@ -220,19 +256,24 @@ namespace Trails4Health.Migrations
                 column: "TrilhoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Fotos_EstacaoAnoId",
+                table: "Fotos",
+                column: "EstacaoAnoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Fotos_LocalizacaoId",
                 table: "Fotos",
                 column: "LocalizacaoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Fotos_TipoFotoId",
+                table: "Fotos",
+                column: "TipoFotoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_FotosTrilhos_TrilhoId",
                 table: "FotosTrilhos",
                 column: "TrilhoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Localizacoes_EtapaId",
-                table: "Localizacoes",
-                column: "EtapaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -250,19 +291,25 @@ namespace Trails4Health.Migrations
                 name: "Estados");
 
             migrationBuilder.DropTable(
+                name: "Etapas");
+
+            migrationBuilder.DropTable(
                 name: "Fotos");
 
             migrationBuilder.DropTable(
                 name: "Trilhos");
 
             migrationBuilder.DropTable(
+                name: "Dificuldades");
+
+            migrationBuilder.DropTable(
+                name: "EstacoesAno");
+
+            migrationBuilder.DropTable(
                 name: "Localizacoes");
 
             migrationBuilder.DropTable(
-                name: "Etapas");
-
-            migrationBuilder.DropTable(
-                name: "Dificuldades");
+                name: "TiposFotos");
         }
     }
 }

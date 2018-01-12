@@ -18,16 +18,21 @@ namespace Trails4Health.Models
         public bool Visivel { get; set; } = false;
 
 
-        [RegularExpression(@"\d{4}(-\d{2})(-\d{2})", ErrorMessage = "Data Inválida! Utilize o formato AAAA-MM-DD")]
+        [RegularExpression(@"(\d{2})(-\d{2}-)\d{4}", ErrorMessage = "Data Inválida! Utilize o formato DD-MM-AAAA")]
         public DateTime Data { get; set; }
 
+<<<<<<< HEAD
+=======
+
+        [Required(ErrorMessage = "Please rate the Beauty of the landscape")]
+>>>>>>> testes
         public int EstacaoAnoId { get; set; }
         public EstacaoAno EstacaoAno { get; set; }
 
         public int TipoFotoId { get; set; }
         public TipoFoto TipoFoto { get; set; }
 
-        [Required(ErrorMessage = "Please Upload a Valid Image File. Only jpg format allowed")]
+        //[Required(ErrorMessage = "Please Upload a Valid Image File. Only jpg format allowed")]
        /* [DataType(DataType.Upload)]
         [Display(Name = "Upload Image")]
         [FileExtensions(Extensions = "jpg")]
@@ -36,5 +41,11 @@ namespace Trails4Health.Models
 
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }
 
+<<<<<<< HEAD
+=======
+     
+        
+
+>>>>>>> testes
     }
 }

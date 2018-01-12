@@ -13,7 +13,7 @@ namespace Trails4Health.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.1.4")
+                .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Trails4Health.Models.Dificuldade", b =>
@@ -22,16 +22,34 @@ namespace Trails4Health.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Nome")
-                        .HasMaxLength(60);
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.Property<string>("Observacao")
-                        .HasMaxLength(60);
+                        .HasMaxLength(250);
 
                     b.Property<int>("Valor");
 
                     b.HasKey("DificuldadeId");
 
                     b.ToTable("Dificuldades");
+                });
+
+            modelBuilder.Entity("Trails4Health.Models.EstacaoAno", b =>
+                {
+                    b.Property<int>("EstacaoAnoId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Observacao")
+                        .HasMaxLength(250);
+
+                    b.HasKey("EstacaoAnoId");
+
+                    b.ToTable("EstacoesAno");
                 });
 
             modelBuilder.Entity("Trails4Health.Models.Estado", b =>
@@ -43,7 +61,8 @@ namespace Trails4Health.Migrations
                         .HasMaxLength(1000);
 
                     b.Property<string>("Nome")
-                        .HasMaxLength(60);
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.HasKey("EstadoId");
 
@@ -52,20 +71,22 @@ namespace Trails4Health.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.EstadoTrilho", b =>
                 {
-                    b.Property<int>("TrihoId");
-
                     b.Property<int>("EstadoId");
 
+                    b.Property<int>("TrihoId");
+
                     b.Property<string>("Causa")
-                        .HasMaxLength(60);
+                        .HasMaxLength(100);
 
                     b.Property<DateTime>("DataFim");
 
                     b.Property<DateTime>("DataInicio");
 
-                    b.HasKey("TrihoId", "EstadoId");
+                    b.Property<int>("EstadoTrihoId");
 
-                    b.HasIndex("EstadoId");
+                    b.HasKey("EstadoId", "TrihoId");
+
+                    b.HasIndex("TrihoId");
 
                     b.ToTable("EstadosTrilhos");
                 });
@@ -82,13 +103,16 @@ namespace Trails4Health.Migrations
                     b.Property<int>("DificuldadeId");
 
                     b.Property<string>("Fim")
-                        .HasMaxLength(60);
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.Property<string>("Inicio")
-                        .HasMaxLength(60);
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.Property<string>("Nome")
-                        .HasMaxLength(60);
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.HasKey("EtapaId");
 
@@ -117,21 +141,25 @@ namespace Trails4Health.Migrations
                     b.Property<int>("FotoId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("DataHora");
+                    b.Property<DateTime>("Data");
 
-                    b.Property<string>("EstacaoAno")
-                        .HasMaxLength(60);
+                    b.Property<int>("EstacaoAnoId");
+
+                    b.Property<byte[]>("Imagem");
 
                     b.Property<int>("LocalizacaoId");
 
-                    b.Property<int>("Tipo");
+                    b.Property<int>("TipoFotoId");
 
-                    b.Property<string>("Url")
-                        .IsRequired();
+                    b.Property<bool>("Visivel");
 
                     b.HasKey("FotoId");
 
+                    b.HasIndex("EstacaoAnoId");
+
                     b.HasIndex("LocalizacaoId");
+
+                    b.HasIndex("TipoFotoId");
 
                     b.ToTable("Fotos");
                 });
@@ -141,8 +169,6 @@ namespace Trails4Health.Migrations
                     b.Property<int>("FotoId");
 
                     b.Property<int>("TrilhoId");
-
-                    b.Property<string>("AnoMes");
 
                     b.Property<int>("FotosTrilhoId");
 
@@ -158,16 +184,30 @@ namespace Trails4Health.Migrations
                     b.Property<int>("LocalizacaoId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("EtapaId");
-
                     b.Property<string>("Nome")
-                        .HasMaxLength(60);
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.HasKey("LocalizacaoId");
 
-                    b.HasIndex("EtapaId");
-
                     b.ToTable("Localizacoes");
+                });
+
+            modelBuilder.Entity("Trails4Health.Models.TipoFoto", b =>
+                {
+                    b.Property<int>("TipoFotoId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Descricao")
+                        .HasMaxLength(1000);
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.HasKey("TipoFotoId");
+
+                    b.ToTable("TiposFotos");
                 });
 
             modelBuilder.Entity("Trails4Health.Models.Trilho", b =>
@@ -184,16 +224,23 @@ namespace Trails4Health.Migrations
                     b.Property<string>("Descricao")
                         .HasMaxLength(1000);
 
+                    b.Property<int>("DuracaoMedia");
+
                     b.Property<string>("Fim")
+                        .IsRequired()
                         .HasMaxLength(60);
 
+                    b.Property<int>("GrauDificuldade");
+
                     b.Property<string>("Inicio")
+                        .IsRequired()
                         .HasMaxLength(60);
 
                     b.Property<int>("InteresseHistorico");
 
                     b.Property<string>("Nome")
-                        .HasMaxLength(60);
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.Property<bool>("Visivel");
 
@@ -211,7 +258,7 @@ namespace Trails4Health.Migrations
 
                     b.HasOne("Trails4Health.Models.Trilho", "Trilho")
                         .WithMany("EstadosTrilhos")
-                        .HasForeignKey("EstadoId")
+                        .HasForeignKey("TrihoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -238,9 +285,19 @@ namespace Trails4Health.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.Foto", b =>
                 {
+                    b.HasOne("Trails4Health.Models.EstacaoAno", "EstacaoAno")
+                        .WithMany("Fotos")
+                        .HasForeignKey("EstacaoAnoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Trails4Health.Models.Localizacao", "Localizacao")
                         .WithMany("Fotos")
                         .HasForeignKey("LocalizacaoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Trails4Health.Models.TipoFoto", "TipoFoto")
+                        .WithMany("Fotos")
+                        .HasForeignKey("TipoFotoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -254,14 +311,6 @@ namespace Trails4Health.Migrations
                     b.HasOne("Trails4Health.Models.Trilho", "Trilho")
                         .WithMany("FotosTrilhos")
                         .HasForeignKey("TrilhoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Trails4Health.Models.Localizacao", b =>
-                {
-                    b.HasOne("Trails4Health.Models.Etapa", "Etapa")
-                        .WithMany("Localizacoes")
-                        .HasForeignKey("EtapaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

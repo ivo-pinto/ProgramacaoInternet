@@ -21,7 +21,7 @@ namespace Trails4Health.Controllers
         // GET: Localizacoes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Localizacoes.Include(l => l.Etapa);
+            var applicationDbContext = _context.Localizacoes.Include(l => l.Fotos);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace Trails4Health.Controllers
             }
 
             var localizacao = await _context.Localizacoes
-                .Include(l => l.Etapa)
+                .Include(l => l.Fotos)
                 .SingleOrDefaultAsync(m => m.LocalizacaoId == id);
             if (localizacao == null)
             {
@@ -64,7 +64,7 @@ namespace Trails4Health.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["EtapaId"] = new SelectList(_context.Etapas, "EtapaId", "EtapaId", localizacao.EtapaId);
+            ViewData["EtapaId"] = new SelectList(_context.Etapas, "EtapaId", "EtapaId");
             return View(localizacao);
         }
 
@@ -81,7 +81,7 @@ namespace Trails4Health.Controllers
             {
                 return NotFound();
             }
-            ViewData["EtapaId"] = new SelectList(_context.Etapas, "EtapaId", "EtapaId", localizacao.EtapaId);
+            ViewData["EtapaId"] = new SelectList(_context.Etapas, "EtapaId", "EtapaId");
             return View(localizacao);
         }
 
@@ -117,7 +117,7 @@ namespace Trails4Health.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["EtapaId"] = new SelectList(_context.Etapas, "EtapaId", "EtapaId", localizacao.EtapaId);
+            ViewData["EtapaId"] = new SelectList(_context.Etapas, "EtapaId", "EtapaId");
             return View(localizacao);
         }
 
@@ -130,7 +130,7 @@ namespace Trails4Health.Controllers
             }
 
             var localizacao = await _context.Localizacoes
-                .Include(l => l.Etapa)
+                .Include(l => l.Fotos)
                 .SingleOrDefaultAsync(m => m.LocalizacaoId == id);
             if (localizacao == null)
             {

@@ -16,6 +16,10 @@ namespace Trails4Health.Data
             {
                 EnsureTiposFotosPopulated(dbContext);
             }
+            if (!dbContext.EstacoesAno.Any())
+            {
+                EnsureEstacoesAnoPopulated(dbContext);
+            }
             if (!dbContext.Dificuldades.Any())
             {
                 EnsureDificuldadesPopulated(dbContext);
@@ -68,6 +72,16 @@ namespace Trails4Health.Data
             dbContext.EtapasTrilhos.AddRange(
                     new EtapasTrilho { Etapa = Etapa1, Trilho = Trilho1},
                     new EtapasTrilho { Etapa = Etapa2, Trilho = Trilho2}
+                  );
+        }
+
+        private static void EnsureEstacoesAnoPopulated(ApplicationDbContext dbContext)
+        {
+            dbContext.EstacoesAno.AddRange(
+                    new EstacaoAno { EstacaoAnoId = 1, Nome = "Verão", Observacao = "Calor" },
+                    new EstacaoAno { EstacaoAnoId = 2, Nome = "Primavera", Observacao = "Alergias" },
+                    new EstacaoAno { EstacaoAnoId = 3, Nome = "Outono", Observacao = "Chuva" },
+                    new EstacaoAno { EstacaoAnoId = 4, Nome = "Inverno", Observacao = "Frio" }
                   );
         }
 

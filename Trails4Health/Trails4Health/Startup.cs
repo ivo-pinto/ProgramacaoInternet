@@ -35,6 +35,7 @@ namespace Trails4Health
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             // Add framework services.
             services.AddDbContext<Trails4HealthUsersDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Trails4HealthLoginsDataBase")));
@@ -53,19 +54,19 @@ namespace Trails4Health
 
             });
 
+            services.AddDbContext<ApplicationDbContext>(options =>
+              options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrails4Health")));
+
             services.AddMvc();
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrails4Health"))
-           );
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
             //Adicionar seedData - comentar quando for necessário fazer migrações
-           // var serviceProvider = services.BuildServiceProvider();
-           // SeedData.EnsurePopulated(serviceProvider);  
+            var serviceProvider = services.BuildServiceProvider();
+            SeedData.EnsurePopulated(serviceProvider);  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -99,7 +100,7 @@ namespace Trails4Health
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-          // SeedData.EnsurePopulated(app.ApplicationServices);
+           SeedData.EnsurePopulated(app.ApplicationServices);
 
         }
     }

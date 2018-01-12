@@ -40,10 +40,6 @@ namespace Trails4Health.Data
             {
                 EnsureEtapasPopulated(dbContext);
             }
-            if (!dbContext.EstadosTrilhos.Any())
-            {
-                EnsureEstadosTrilhosPopulated(dbContext);
-            }
             if (!dbContext.EtapasTrilhos.Any())
             {
                 EnsureEtapasTrilhosPopulated(dbContext);
@@ -55,6 +51,10 @@ namespace Trails4Health.Data
             if (!dbContext.Trilhos.Any())
             {
                 EnsureTrilhosPopulated(dbContext);
+            }
+            if (!dbContext.EstadosTrilhos.Any())
+            {
+                EnsureEstadosTrilhosPopulated(dbContext);
             }
 
 
@@ -78,10 +78,10 @@ namespace Trails4Health.Data
         private static void EnsureEstacoesAnoPopulated(ApplicationDbContext dbContext)
         {
             dbContext.EstacoesAno.AddRange(
-                    new EstacaoAno { EstacaoAnoId = 1, Nome = "Verão", Observacao = "Calor" },
-                    new EstacaoAno { EstacaoAnoId = 2, Nome = "Primavera", Observacao = "Alergias" },
-                    new EstacaoAno { EstacaoAnoId = 3, Nome = "Outono", Observacao = "Chuva" },
-                    new EstacaoAno { EstacaoAnoId = 4, Nome = "Inverno", Observacao = "Frio" }
+                    new EstacaoAno { Nome = "Verão", Observacao = "Calor" },
+                    new EstacaoAno { Nome = "Primavera", Observacao = "Alergias" },
+                    new EstacaoAno { Nome = "Outono", Observacao = "Chuva" },
+                    new EstacaoAno { Nome = "Inverno", Observacao = "Frio" }
                   );
         }
 

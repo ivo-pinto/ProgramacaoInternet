@@ -39,6 +39,7 @@ namespace Trails4Health.Models
 
 
 
+
             // Etapa Foreign Key
             modelBuilder.Entity<Etapa>()
                 .HasOne<Dificuldade>(e => e.Dificuldade)

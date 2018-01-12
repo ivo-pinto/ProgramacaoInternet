@@ -40,7 +40,7 @@ namespace Trails4Health
                 options.UseSqlServer(Configuration.GetConnectionString("Trails4HealthLoginsDataBase")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-               .AddEntityFrameworkStores<ApplicationDbContext>()
+               .AddEntityFrameworkStores<Trails4HealthUsersDbContext>()
                .AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
@@ -64,8 +64,8 @@ namespace Trails4Health
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
             //Adicionar seedData - comentar quando for necessário fazer migrações
-            var serviceProvider = services.BuildServiceProvider();
-            SeedData.EnsurePopulated(serviceProvider);  
+           // var serviceProvider = services.BuildServiceProvider();
+           // SeedData.EnsurePopulated(serviceProvider);  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -99,7 +99,7 @@ namespace Trails4Health
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-           SeedData.EnsurePopulated(app.ApplicationServices);
+          // SeedData.EnsurePopulated(app.ApplicationServices);
 
         }
     }

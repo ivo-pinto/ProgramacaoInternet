@@ -8,7 +8,7 @@ using Trails4Health.Models;
 namespace Trails4Health.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180111165020_Initial1")]
+    [Migration("20180112120053_Initial1")]
     partial class Initial1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,23 @@ namespace Trails4Health.Data.Migrations
                     b.ToTable("Dificuldades");
                 });
 
+            modelBuilder.Entity("Trails4Health.Models.EstacaoAno", b =>
+                {
+                    b.Property<int>("EstacaoAnoId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Observacao")
+                        .HasMaxLength(250);
+
+                    b.HasKey("EstacaoAnoId");
+
+                    b.ToTable("EstacoesAno");
+                });
+
             modelBuilder.Entity("Trails4Health.Models.Estado", b =>
                 {
                     b.Property<int>("EstadoId")
@@ -55,9 +72,9 @@ namespace Trails4Health.Data.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.EstadoTrilho", b =>
                 {
-                    b.Property<int>("TrihoId");
-
                     b.Property<int>("EstadoId");
+
+                    b.Property<int>("TrihoId");
 
                     b.Property<string>("Causa")
                         .HasMaxLength(100);
@@ -66,9 +83,11 @@ namespace Trails4Health.Data.Migrations
 
                     b.Property<DateTime>("DataInicio");
 
-                    b.HasKey("TrihoId", "EstadoId");
+                    b.Property<int>("EstadoTrihoId");
 
-                    b.HasIndex("EstadoId");
+                    b.HasKey("EstadoId", "TrihoId");
+
+                    b.HasIndex("TrihoId");
 
                     b.ToTable("EstadosTrilhos");
                 });
@@ -125,8 +144,7 @@ namespace Trails4Health.Data.Migrations
 
                     b.Property<DateTime>("Data");
 
-                    b.Property<string>("EstacaoAno")
-                        .HasMaxLength(60);
+                    b.Property<int>("EstacaoAnoId");
 
                     b.Property<byte[]>("Imagem");
 
@@ -137,6 +155,8 @@ namespace Trails4Health.Data.Migrations
                     b.Property<bool>("Visivel");
 
                     b.HasKey("FotoId");
+
+                    b.HasIndex("EstacaoAnoId");
 
                     b.HasIndex("LocalizacaoId");
 
@@ -205,6 +225,8 @@ namespace Trails4Health.Data.Migrations
                     b.Property<string>("Descricao")
                         .HasMaxLength(1000);
 
+                    b.Property<int>("DuracaoMedia");
+
                     b.Property<string>("Fim")
                         .IsRequired()
                         .HasMaxLength(60);
@@ -237,7 +259,7 @@ namespace Trails4Health.Data.Migrations
 
                     b.HasOne("Trails4Health.Models.Trilho", "Trilho")
                         .WithMany("EstadosTrilhos")
-                        .HasForeignKey("EstadoId")
+                        .HasForeignKey("TrihoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -264,6 +286,11 @@ namespace Trails4Health.Data.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.Foto", b =>
                 {
+                    b.HasOne("Trails4Health.Models.EstacaoAno", "EstacaoAno")
+                        .WithMany("Fotos")
+                        .HasForeignKey("EstacaoAnoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Trails4Health.Models.Localizacao", "Localizacao")
                         .WithMany("Fotos")
                         .HasForeignKey("LocalizacaoId")

@@ -1,0 +1,60 @@
+@model IEnumerable<Trails4Health.Models.Foto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Estacao do Ano
+                </th>
+                <th>
+                    Tipo
+                </th>
+                <th>
+                    Url
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localizacao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataHora)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstacaoAno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Url)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Localizacao.LocalizacaoId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.FotoId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.FotoId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.FotoId">Delete</a>
+                </td>
+</tr>
+        
+}
+    </tbody>
+</table>

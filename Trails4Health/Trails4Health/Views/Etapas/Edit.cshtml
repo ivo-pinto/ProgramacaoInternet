@@ -1,0 +1,71 @@
+@model Trails4Health.Models.Etapa
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Etapa</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="EtapaId" />
+        <div class="form-group">
+            <label asp-for="DificuldadeId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="DificuldadeId" class="form-control" asp-items="ViewBag.DificuldadeId"></select>
+                <span asp-validation-for="DificuldadeId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Nome" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Inicio" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Inicio" class="form-control" />
+                <span asp-validation-for="Inicio" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Fim" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Fim" class="form-control" />
+                <span asp-validation-for="Fim" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AltitudeMax" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="AltitudeMax" class="form-control" />
+                <span asp-validation-for="AltitudeMax" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AltitudeMin" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="AltitudeMin" class="form-control" />
+                <span asp-validation-for="AltitudeMin" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

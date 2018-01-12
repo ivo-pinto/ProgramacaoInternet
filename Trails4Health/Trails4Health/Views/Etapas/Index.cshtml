@@ -1,0 +1,67 @@
+@model IEnumerable<Trails4Health.Models.Etapa>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Inicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fim)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AltitudeMax)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AltitudeMin)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dificuldade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltitudeMax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltitudeMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dificuldade.DificuldadeId)
+            </td>
+            <td>
+                <h2><a asp-action="Edit" asp-route-id="@item.EtapaId">Edit</a></h2>
+                <h2><a asp-action="Details" asp-route-id="@item.EtapaId">Details</a> </h2>
+                <h2><a asp-action="Delete" asp-route-id="@item.EtapaId">Delete</a></h2>
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

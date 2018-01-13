@@ -21,8 +21,27 @@ namespace Trails4Health.Controllers
             _context = context;    
         }
 
-        
-        /*
+/*
+        [HttpPost]
+        public ActionResult Create(Foto model)
+        {
+            if (ModelState.IsValid)
+            {
+                var db = _context;
+                db.Fotos.Add(new Foto
+        {
+            Imagem = model.Imagem,
+            ImageMimeType = model.ImageMimeType
+        });
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+*/
+
+        [HttpPost]
         public ActionResult FileUpload(Foto foto)
         {
             if (foto != null)
@@ -34,25 +53,26 @@ namespace Trails4Health.Controllers
                 TipoFoto tipoFoto = foto.TipoFoto;
                 DateTime data = foto.Data;
                 bool visivel = foto.Visivel;
+
                 // file is uploaded
-
-                System.Data.SqlClient.SqlConnection sqlConnection1 =
-                new System.Data.SqlClient.SqlConnection("ConnectionStringTrails4Health");
-
-                System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = "INSERT Foto (ImageMimeType) VALUES ('TESTEEEEE')";
-                cmd.Connection = sqlConnection1;
-
-                sqlConnection1.Open();
-                cmd.ExecuteNonQuery();
-                sqlConnection1.Close();
+                _context.Add(new Foto {
+                                Imagem = image,
+                                ImageMimeType = path,
+                                Localizacao = localizacao,
+                                EstacaoAno = estacaoAno,
+                                TipoFoto = tipoFoto,
+                                Data = data,
+                                Visivel = visivel
+                            });
+                _context.SaveChanges();
 
             }
             // after successfully uploading redirect the user
             return RedirectToAction("Index", "Home");
-        }
-        */
+        } 
+
+
+
         // GET: Fotos
         public async Task<IActionResult> Index()
         {

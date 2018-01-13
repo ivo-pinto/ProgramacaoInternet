@@ -29,12 +29,9 @@ namespace Trails4Health.Models
         public int TipoFotoId { get; set; }
         public TipoFoto TipoFoto { get; set; }
 
-        //[Required(ErrorMessage = "Please Upload a Valid Image File. Only jpg format allowed")]
-       /* [DataType(DataType.Upload)]
-        [Display(Name = "Upload Image")]
-        [FileExtensions(Extensions = "jpg")]
-        public IFormFile Imagem { get; set; } */
-        public byte[] Imagem { get; set; }
+        
+        public byte[] ImageData { get; set; }
+        public string ImageMimeType { get; set; }
 
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }
 

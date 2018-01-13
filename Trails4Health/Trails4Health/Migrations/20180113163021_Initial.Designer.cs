@@ -8,7 +8,7 @@ using Trails4Health.Models;
 namespace Trails4Health.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180112124922_Initial")]
+    [Migration("20180113163021_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -145,6 +145,8 @@ namespace Trails4Health.Migrations
                     b.Property<DateTime>("Data");
 
                     b.Property<int>("EstacaoAnoId");
+
+                    b.Property<string>("ImageMimeType");
 
                     b.Property<byte[]>("Imagem");
 

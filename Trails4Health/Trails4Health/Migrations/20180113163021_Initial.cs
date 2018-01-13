@@ -134,6 +134,7 @@ namespace Trails4Health.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Data = table.Column<DateTime>(nullable: false),
                     EstacaoAnoId = table.Column<int>(nullable: false),
+                    ImageMimeType = table.Column<string>(nullable: true),
                     Imagem = table.Column<byte[]>(nullable: true),
                     LocalizacaoId = table.Column<int>(nullable: false),
                     TipoFotoId = table.Column<int>(nullable: false),

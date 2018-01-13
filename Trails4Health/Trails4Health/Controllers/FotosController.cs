@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trails4Health.Models;
+using System.IO;
+using System.Web;
+
 
 namespace Trails4Health.Controllers
 {
@@ -18,6 +21,38 @@ namespace Trails4Health.Controllers
             _context = context;    
         }
 
+        
+        /*
+        public ActionResult FileUpload(Foto foto)
+        {
+            if (foto != null)
+            {
+                byte[] image = foto.Imagem;
+                string path = foto.ImageMimeType;
+                Localizacao localizacao = foto.Localizacao;
+                EstacaoAno estacaoAno = foto.EstacaoAno;
+                TipoFoto tipoFoto = foto.TipoFoto;
+                DateTime data = foto.Data;
+                bool visivel = foto.Visivel;
+                // file is uploaded
+
+                System.Data.SqlClient.SqlConnection sqlConnection1 =
+                new System.Data.SqlClient.SqlConnection("ConnectionStringTrails4Health");
+
+                System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = "INSERT Foto (ImageMimeType) VALUES ('TESTEEEEE')";
+                cmd.Connection = sqlConnection1;
+
+                sqlConnection1.Open();
+                cmd.ExecuteNonQuery();
+                sqlConnection1.Close();
+
+            }
+            // after successfully uploading redirect the user
+            return RedirectToAction("Index", "Home");
+        }
+        */
         // GET: Fotos
         public async Task<IActionResult> Index()
         {

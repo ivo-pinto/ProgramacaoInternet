@@ -145,6 +145,8 @@ namespace Trails4Health.Migrations
 
                     b.Property<int>("EstacaoAnoId");
 
+                    b.Property<string>("ImageMimeType");
+
                     b.Property<byte[]>("Imagem");
 
                     b.Property<int>("LocalizacaoId");

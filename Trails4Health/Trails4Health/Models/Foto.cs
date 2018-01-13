@@ -21,8 +21,6 @@ namespace Trails4Health.Models
         [RegularExpression(@"(\d{2})(-\d{2}-)\d{4}", ErrorMessage = "Data Inválida! Utilize o formato DD-MM-AAAA")]
         public DateTime Data { get; set; }
 
-
-        [Required(ErrorMessage = "Please rate the Beauty of the landscape")]
         public int EstacaoAnoId { get; set; }
         public EstacaoAno EstacaoAno { get; set; }
 
@@ -30,7 +28,7 @@ namespace Trails4Health.Models
         public TipoFoto TipoFoto { get; set; }
 
         
-        public byte[] ImageData { get; set; }
+        public byte[] Imagem { get; set; }
         public string ImageMimeType { get; set; }
 
         public ICollection<FotosTrilho> FotosTrilhos { get; set; }

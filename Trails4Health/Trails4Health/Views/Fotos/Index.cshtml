@@ -6,6 +6,13 @@
 
 <h2>Index</h2>
 
+@using (Html.BeginForm("FileUpload", "Foto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label for="file">Upload Image:</label>
+    <input type="file" name="file" id="file" style="width: 100%;" />
+    <input type="submit" value="Upload" class="submit" />
+}
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>

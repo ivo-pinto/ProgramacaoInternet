@@ -1,0 +1,12 @@
+@model IEnumerable<Foto>
+    @{
+        ViewData["Title"] = "Fotos";
+    }
+    @foreach (var p in Model)
+    {
+        <div>
+            <h3>@p.ImageMimeType</h3>
+            @p.Imagem
+            <h4>@p.FotoId</h4>
+        </div>
+    }

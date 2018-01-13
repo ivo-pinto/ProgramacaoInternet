@@ -1,0 +1,15 @@
+3.13.	Semântica de Classes
+Algoritmo do dígito de controlo do NIF para classe de turista e professor
+1. Multiplicar:
+8.º dígito por 2
+7.º dígito por 3
+6.º dígito por 4
+5.º dígito por 5
+4.º dígito por 6
+3.º dígito por 7
+2.º dígito por 8
+1.º digito por 9
+2. Somar todos os resultados.
+3. Calcular o resto da divisão da soma por 11 (ou seja, o Módulo de 11)
+4. Se resto for igual 0 ou a 1 o dígito de controlo será 0.
+5. Senão o dígito de controlo é 11-resto.

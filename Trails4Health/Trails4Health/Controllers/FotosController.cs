@@ -12,10 +12,10 @@ using Trails4Health.Models.ViewModels;
 
 namespace Trails4Health.Controllers
 {
-    [RequireHttps]
+    
     public class FotosController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private ApplicationDbContext _context;
 
         public int PageSize = 3;
 
@@ -23,15 +23,6 @@ namespace Trails4Health.Controllers
         {
             _context = context;    
         }
-
-        private bool FotoExist(int id)
-        {
-            return _context.Fotos.Any(e => e.FotoId == id);
-        }
-
-
-
-
 
 
         [HttpPost]
@@ -52,7 +43,7 @@ namespace Trails4Health.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FotoExist(foto.FotoId))
+                    if (!FotoExists(foto.FotoId))
                     {
                         return NotFound();
                     }
@@ -70,14 +61,13 @@ namespace Trails4Health.Controllers
             return View(foto);
         }
 
-
-        /*
+     
                 public ViewResult List(int page = 1)
                 {
                     return View(
                         new FotoListViewModel
                         {
-                            Fotos = _context.Fotos
+                            Foto = _context.Fotos
                                 .OrderBy(p => p.FotoId)
                                 .Skip(PageSize * (page - 1))
                                 .Take(PageSize),
@@ -90,7 +80,7 @@ namespace Trails4Health.Controllers
                         }
                     );
                 }
-                */
+                
         /*
                 [HttpPost]
                 public ActionResult Create(Foto model)
@@ -295,5 +285,5 @@ namespace Trails4Health.Controllers
         {
             return _context.Fotos.Any(e => e.FotoId == id);
         }
-    }
+    } 
 }

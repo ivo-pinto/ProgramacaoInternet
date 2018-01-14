@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Trails4Health.Models
+namespace Trails4Health.Models.ViewModels
 {
-    public class IFotoRepository
+    interface IFotosRepository
     {
         IEnumerable<Foto> Fotos { get; }
-        IEnumerable<EstacaoAno> EstacoesAno { get; }
         IEnumerable<TipoFoto> TiposFotos { get; }
         IEnumerable<Localizacao> Localizacoes { get; }
+        IEnumerable<EstacaoAno> EstacaoAno { get; }
     }
 }

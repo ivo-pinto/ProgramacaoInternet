@@ -12,6 +12,7 @@ using Trails4Health.Models.ViewModels;
 
 namespace Trails4Health.Controllers
 {
+    [RequireHttps]
     public class FotosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,26 +24,73 @@ namespace Trails4Health.Controllers
             _context = context;    
         }
 
-
-        public ViewResult List(int page = 1)
+        private bool FotoExist(int id)
         {
-            return View(
-                new FotoListViewModel
-                {
-                    Fotos = _context.Fotos
-                        .OrderBy(p => p.FotoId)
-                        .Skip(PageSize * (page - 1))
-                        .Take(PageSize),
-                    PagingInfo = new PagingInfo
-                    {
-                        CurrentPage = page,
-                        ItemsPerPage = PageSize,
-                        TotalItems = _context.Fotos.Count()
-                    }
-                }
-            );
+            return _context.Fotos.Any(e => e.FotoId == id);
         }
 
+
+
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddFoto(int id, [Bind("FotoId,Visivel,Data,Imagem,ImageMimeType,LocalizacaoId,EstacaoAnoId,TipoFotoId")] Foto foto)
+        {
+            if (id != foto.FotoId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(foto);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!FotoExist(foto.FotoId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                // ---------------------------------Rever para onde dirigir utilizador--------------------------------------------------------------
+                return RedirectToAction("Index");
+            }
+            ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "LocalizacaoId", foto.LocalizacaoId);
+            ViewData["EstacaoAnoId"] = new SelectList(_context.EstacoesAno, "EstacaoAnoId", "EstacaoAnoId", foto.EstacaoAnoId);
+            ViewData["TipoFotoId"] = new SelectList(_context.Fotos, "TipoFotoId", "TipoFotoId", foto.TipoFotoId);
+            return View(foto);
+        }
+
+
+        /*
+                public ViewResult List(int page = 1)
+                {
+                    return View(
+                        new FotoListViewModel
+                        {
+                            Fotos = _context.Fotos
+                                .OrderBy(p => p.FotoId)
+                                .Skip(PageSize * (page - 1))
+                                .Take(PageSize),
+                            PagingInfo = new PagingInfo
+                            {
+                                CurrentPage = page,
+                                ItemsPerPage = PageSize,
+                                TotalItems = _context.Fotos.Count()
+                            }
+                        }
+                    );
+                }
+                */
         /*
                 [HttpPost]
                 public ActionResult Create(Foto model)

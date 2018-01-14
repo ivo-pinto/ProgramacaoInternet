@@ -62,7 +62,7 @@ namespace Trails4Health.Controllers
                     }
                 }
                 // ---------------------------------Rever para onde dirigir utilizador--------------------------------------------------------------
-                return RedirectToAction("Index");
+                return RedirectToAction("Index  ");
             }
             ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "LocalizacaoId", foto.LocalizacaoId);
             ViewData["EstacaoAnoId"] = new SelectList(_context.EstacoesAno, "EstacaoAnoId", "EstacaoAnoId", foto.EstacaoAnoId);

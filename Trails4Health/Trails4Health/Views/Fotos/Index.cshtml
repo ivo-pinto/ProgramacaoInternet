@@ -1,7 +1,3 @@
-@using Trails4Health.Models.ViewModels
-@addTagHelper Trails4Health.Infrastructure.*, Trails4Health
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model FotoListViewModel
 @model IEnumerable<Trails4Health.Models.Foto>
 
 @{
@@ -16,63 +12,49 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Visivel)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Data)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Imagem)
-                </th>
             <th>
-                @Html.DisplayNameFor(model => model.EstacaoAno)
+                Estacao do Ano
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Localizacao)
+                Url
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TipoFoto)
+                benfica
+            </th>
+            <th>
+                36
+            </th>
+            <th>
+                37
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Visivel)
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstacaoAno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoFoto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imagem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Localizacao.LocalizacaoId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.FotoId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.FotoId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.FotoId">Delete</a>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Imagem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstacaoAno.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Localizacao.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoFoto.Nome)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.FotoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.FotoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.FotoId">Delete</a>
-            </td>
-        </tr>
-}
-
-    </tbody>
-</table>
-
-<div page-model="@Model.PagingInfo"
-     css-classes-enabled="true"
-     css-class-page="btn btn-sm"
-     css-class-page-normal="btn-default"
-     css-class-page-selected="btn-primary"
-     class="pull-right">
-</div>
+            </tr>
+        }
+        </tbody>
+    </table>

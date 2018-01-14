@@ -1,12 +1,31 @@
-@model IEnumerable<Foto>
-    @{
-        ViewData["Title"] = "Fotos";
-    }
-    @foreach (var p in Model)
+@using Trails4Health.Models.ViewModels
+@addTagHelper Trails4Health.Infrastructure.*, Trails4Health
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model FotoListViewModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h2>Products List</h2>
+
+    @foreach (Foto p in Model.Fotos)
     {
-        <div>
-            <h3>@p.ImageMimeType</h3>
-            @p.Imagem
-            <h4>@p.FotoId</h4>
-        </div>
-    }
+        
+      <div class="well well-sm">
+          <h3>@p.EstacaoAno</h3>
+              @p.Data
+              @p.FotoId
+              @p.Localizacao
+      </div>
+
+
+     }
+
+<div page-model="@Model.PagingInfo"
+     css-classes-enabled="true"
+     css-class-page="btn btn-sm"
+     css-class-page-normal="btn-default"
+     css-class-page-selected="btn-primary"
+     class="pull-right">
+</div>

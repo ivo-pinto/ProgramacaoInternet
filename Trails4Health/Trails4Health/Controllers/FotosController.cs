@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Trails4Health.Models;
 using System.IO;
 using System.Web;
-
+using Trails4Health.Models.ViewModels;
 
 namespace Trails4Health.Controllers
 {
@@ -16,60 +16,85 @@ namespace Trails4Health.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        public int PageSize = 3;
+
         public FotosController(ApplicationDbContext context)
         {
             _context = context;    
         }
 
-/*
-        [HttpPost]
-        public ActionResult Create(Foto model)
-        {
-            if (ModelState.IsValid)
-            {
-                var db = _context;
-                db.Fotos.Add(new Foto
-        {
-            Imagem = model.Imagem,
-            ImageMimeType = model.ImageMimeType
-        });
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            return View(model);
+        public ViewResult List(int page = 1)
+        {
+            return View(
+                new FotoListViewModel
+                {
+                    Fotos = _context.Fotos
+                        .OrderBy(p => p.FotoId)
+                        .Skip(PageSize * (page - 1))
+                        .Take(PageSize),
+                    PagingInfo = new PagingInfo
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = PageSize,
+                        TotalItems = _context.Fotos.Count()
+                    }
+                }
+            );
         }
-*/
 
-        [HttpPost]
-        public ActionResult FileUpload(Foto foto)
-        {
-            if (foto != null)
-            {
-                byte[] image = foto.Imagem;
-                string path = foto.ImageMimeType;
-                Localizacao localizacao = foto.Localizacao;
-                EstacaoAno estacaoAno = foto.EstacaoAno;
-                TipoFoto tipoFoto = foto.TipoFoto;
-                DateTime data = foto.Data;
-                bool visivel = foto.Visivel;
+        /*
+                [HttpPost]
+                public ActionResult Create(Foto model)
+                {
+                    if (ModelState.IsValid)
+                    {
+                        var db = _context;
+                        db.Fotos.Add(new Foto
+                {
+                    Imagem = model.Imagem,
+                    ImageMimeType = model.ImageMimeType
+                });
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
 
-                // file is uploaded
-                _context.Add(new Foto {
-                                Imagem = image,
-                                ImageMimeType = path,
-                                Localizacao = localizacao,
-                                EstacaoAno = estacaoAno,
-                                TipoFoto = tipoFoto,
-                                Data = data,
-                                Visivel = visivel
-                            });
-                _context.SaveChanges();
+                    return View(model);
+                }
 
-            }
-            // after successfully uploading redirect the user
-            return RedirectToAction("Index", "Home");
-        } 
+
+                [HttpPost]
+                public ActionResult FileUpload(Foto foto)
+                {
+                    if (foto != null)
+                    {
+                        byte[] image = foto.Imagem;
+                        string path = foto.ImageMimeType;
+                        Localizacao localizacao = foto.Localizacao;
+                        EstacaoAno estacaoAno = foto.EstacaoAno;
+                        TipoFoto tipoFoto = foto.TipoFoto;
+                        DateTime data = foto.Data;
+                        bool visivel = foto.Visivel;
+
+                        // file is uploaded
+                        _context.Add(new Foto {
+                                        Imagem = image,
+                                        ImageMimeType = path,
+                                        Localizacao = localizacao,
+                                        EstacaoAno = estacaoAno,
+                                        TipoFoto = tipoFoto,
+                                        Data = data,
+                                        Visivel = visivel
+                                    });
+                        _context.SaveChanges();
+
+                    }
+                    // after successfully uploading redirect the user
+                    return RedirectToAction("Index", "Home");
+                } 
+
+            */
+
 
 
 

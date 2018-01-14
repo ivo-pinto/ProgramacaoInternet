@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Trails4Health.Models;
@@ -115,6 +116,9 @@ namespace Trails4Health.Data
             EstacaoAno Inverno = dbContext.EstacoesAno.SingleOrDefault(e => e.Nome == "Inverno");
             EstacaoAno Outono = dbContext.EstacoesAno.SingleOrDefault(e => e.Nome == "Outono");
             EstacaoAno Primavera = dbContext.EstacoesAno.SingleOrDefault(e => e.Nome == "Primavera");
+            var file1 = Directory.GetFiles("~/Images/Animais.jpg");
+            var file2 = Directory.GetFiles("~/Images/Cao.jpg");
+            var file3 = Directory.GetFiles("~/Images/Neve.jpg");
 
 
             dbContext.Fotos.AddRange(

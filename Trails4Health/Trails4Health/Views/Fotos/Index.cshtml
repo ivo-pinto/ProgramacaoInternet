@@ -1,3 +1,7 @@
+@using Trails4Health.Models.ViewModels
+@addTagHelper Trails4Health.Infrastructure.*, Trails4Health
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model FotoListViewModel
 @model IEnumerable<Trails4Health.Models.Foto>
 
 @{
@@ -5,13 +9,6 @@
 }
 
 <h2>Index</h2>
-
-@using (Html.BeginForm("FileUpload", "Foto", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <label for="file">Upload Image:</label>
-    <input type="file" name="file" id="file" style="width: 100%;" />
-    <input type="submit" value="Upload" class="submit" />
-}
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -71,3 +68,11 @@
 
     </tbody>
 </table>
+
+<div page-model="@Model.PagingInfo"
+     css-classes-enabled="true"
+     css-class-page="btn btn-sm"
+     css-class-page-normal="btn-default"
+     css-class-page-selected="btn-primary"
+     class="pull-right">
+</div>

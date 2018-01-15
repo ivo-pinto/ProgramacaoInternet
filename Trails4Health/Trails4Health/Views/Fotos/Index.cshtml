@@ -1,0 +1,67 @@
+@model FotoListViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Imagem
+            </th>
+            <th>
+                Data
+            </th>
+            <th>
+                Estacao do Ano
+            </th>
+            <th>
+                Tipo de Foto
+            </th>
+            <th>
+                Localizacao
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Foto item in Model.Fotos)
+        {
+            <tr>
+                <td>
+                   
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstacaoAno.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoFoto.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Localizacao.Nome)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.FotoId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.FotoId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.FotoId">Delete</a>
+            </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <div page-model="@Model.PagingInfo"
+         css-classes-enabled="true"
+         css-class-page="btn btn-sm"
+         css-class-page-normal="btn-default"
+         css-class-page-selected="btn-primary"
+         class=" bg-faded p-4 my-4 pagination mb-0">
+    </div>

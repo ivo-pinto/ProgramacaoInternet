@@ -12,19 +12,19 @@
     <thead>
         <tr>
             <th>
+                Imagem
+            </th>
+            <th>
+                Data
+            </th>
+            <th>
                 Estacao do Ano
             </th>
             <th>
-                Url
+                Tipo de Foto
             </th>
             <th>
-                benfica
-            </th>
-            <th>
-                36
-            </th>
-            <th>
-                37
+                Localizacao
             </th>
             <th></th>
         </tr>
@@ -34,19 +34,19 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Data)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EstacaoAno)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TipoFoto)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Imagem)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Localizacao.LocalizacaoId)
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstacaoAno.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoFoto.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Localizacao.Nome)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.FotoId">Edit</a> |

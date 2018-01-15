@@ -1,4 +1,4 @@
-@model IEnumerable<Trails4Health.Models.Foto>
+@model FotoListViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -30,11 +30,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (Foto item in Model.Fotos)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Imagem)
+                   
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Data)
@@ -58,11 +58,10 @@
         </tbody>
     </table>
 
-@*
     <div page-model="@Model.PagingInfo"
          css-classes-enabled="true"
          css-class-page="btn btn-sm"
          css-class-page-normal="btn-default"
          css-class-page-selected="btn-primary"
          class=" bg-faded p-4 my-4 pagination mb-0">
-    </div>*@
+    </div>

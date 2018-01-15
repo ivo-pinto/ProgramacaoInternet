@@ -9,6 +9,7 @@ using Trails4Health.Models;
 using System.IO;
 using System.Web;
 using Trails4Health.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Trails4Health.Controllers
 {
@@ -19,12 +20,14 @@ namespace Trails4Health.Controllers
 
         public int PageSize = 3;
 
+        
+
         public FotosController(ApplicationDbContext context)
         {
             _context = context;    
         }
 
-
+        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddFoto(int id, [Bind("FotoId,Visivel,Data,Imagem,ImageMimeType,LocalizacaoId,EstacaoAnoId,TipoFotoId")] Foto foto)
@@ -60,15 +63,16 @@ namespace Trails4Health.Controllers
             ViewData["TipoFotoId"] = new SelectList(_context.Fotos, "TipoFotoId", "TipoFotoId", foto.TipoFotoId);
             return View(foto);
         }
-
+*/
      
-                public ViewResult List(int page = 1)
+                public ViewResult Index(int page = 1)
                 {
                     return View(
                         new FotoListViewModel
                         {
-                            Foto = _context.Fotos
-                                .OrderBy(p => p.FotoId)
+                            
+            Fotos = _context.Fotos
+                                .Include(f => f.EstacaoAno).Include(f => f.Localizacao).Include(f => f.TipoFoto)
                                 .Skip(PageSize * (page - 1))
                                 .Take(PageSize),
                             PagingInfo = new PagingInfo
@@ -136,12 +140,12 @@ namespace Trails4Health.Controllers
 
 
 
-        // GET: Fotos
+      /*  // GET: Fotos
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Fotos.Include(f => f.EstacaoAno).Include(f => f.Localizacao).Include(f => f.TipoFoto);
             return View(await applicationDbContext.ToListAsync());
-        }
+        } */
 
         // GET: Fotos/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -177,12 +181,26 @@ namespace Trails4Health.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FotoId,LocalizacaoId,Visivel,Data,EstacaoAnoId,TipoFotoId,Imagem")] Foto foto)
+        public async Task<IActionResult> Create([Bind("LocalizacaoId,Visivel,Data,EstacaoAnoId,TipoFotoId,UploadFicheiro")] FotoViewModel foto)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(foto);
+                var imagem = new Foto {
+                    LocalizacaoId = foto.LocalizacaoId,
+                    Visivel = foto.Visivel,
+                    Data = foto.Data,
+                    EstacaoAnoId = foto.EstacaoAnoId,
+                    TipoFotoId = foto.TipoFotoId
+                };
+                using (var memoryStream = new MemoryStream())
+                {
+                    await foto.UploadFicheiro.CopyToAsync(memoryStream);
+                    imagem.Imagem = memoryStream.ToArray();
+                }
+                //_context.Add(foto);
+                _context.Add(imagem);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -216,7 +234,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FotoId,LocalizacaoId,Visivel,Data,EstacaoAnoId,TipoFotoId,Imagem")] Foto foto)
+        public async Task<IActionResult> Edit(int id, [Bind("LocalizacaoId,Visivel,Data,EstacaoAnoId,TipoFotoId,Imagem")] Foto foto)
         {
             if (id != foto.FotoId)
             {

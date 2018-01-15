@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Trails4Health.Models.ViewModels
 {
     public class FotoListViewModel
     {
-        public IEnumerable<Foto> Foto { get; set; }
+        public IEnumerable<Foto> Fotos { get; set; }
         public PagingInfo PagingInfo { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-@model Trails4Health.Models.Foto
+@model FotoViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-<form asp-action="Create">
+<form asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="form-horizontal">
         <h4>Foto</h4>
         <hr />
@@ -20,43 +20,40 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <div class="checkbox">
-                    <input asp-for="Visivel" />
+                    <input asp-for="Visivel" /> 
                     <label asp-for="Visivel"></label>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Data" class="col-md-2 control-label"></label>
+            <label asp-for="Data" class="col-md-2 control-label"></label> 
             <div class="col-md-10">
                 <input asp-for="Data" class="form-control" />
                 <span asp-validation-for="Data" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="EstacaoAnoId" class="col-md-2 control-label"></label>
+            <label asp-for="EstacaoAnoId" class="col-md-2 control-label"></label> 
             <div class="col-md-10">
                 <select asp-for="EstacaoAnoId" class ="form-control" asp-items="ViewBag.EstacaoAnoId"></select>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="TipoFotoId" class="col-md-2 control-label"></label>
+            <label asp-for="TipoFotoId" class="col-md-2 control-label"></label> 
             <div class="col-md-10">
                 <select asp-for="TipoFotoId" class ="form-control" asp-items="ViewBag.TipoFotoId"></select>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Imagem" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Imagem" class="form-control" />
-                <span asp-validation-for="Imagem" class="text-danger"></span>
+            Ficheiro
+                <input type="file" asp-for="UploadFicheiro" />
+        </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
 </form>
 
 <div>

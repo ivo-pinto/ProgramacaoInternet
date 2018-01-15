@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trails4Health.Models
 {
-    //UPDATE BASE DE DADOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
     public class TipoFoto
     {
         public int TipoFotoId { get; set; }

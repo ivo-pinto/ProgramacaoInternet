@@ -57,16 +57,15 @@ namespace Trails4Health
             services.AddDbContext<ApplicationDbContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrails4Health")));
 
-            services.AddMvc();
+
 
 
             // Add application services.
+            services.AddTransient<IFotoRepository, EFFotoRepository>();
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddMvc();
 
-            //Adicionar seedData - comentar quando for necessário fazer migrações
-            var serviceProvider = services.BuildServiceProvider();
-            SeedData.EnsurePopulated(serviceProvider);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

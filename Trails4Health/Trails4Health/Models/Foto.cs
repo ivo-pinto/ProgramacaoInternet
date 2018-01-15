@@ -17,8 +17,7 @@ namespace Trails4Health.Models
 
         public bool Visivel { get; set; } = false;
 
-
-        [RegularExpression(@"(\d{2})(-\d{2}-)\d{4}", ErrorMessage = "Data Inválida! Utilize o formato DD-MM-AAAA")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Data { get; set; }
 
         public int EstacaoAnoId { get; set; }

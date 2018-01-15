@@ -13,37 +13,34 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Nome)
+                    Nome
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Inicio)
+                    Inicio
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Fim)
+                    Fim
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.AltitudeMax)
+                    Altitude Maxima
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.AltitudeMin)
+                    Altitude Minima
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Descricao)
+                    Descricao
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.InteresseHistorico)
+                    Interesse Historico
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.BelezaPai)
+                    Beleza Paisagistica
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.GrauDificuldade)
+                    Grau Dificuldade
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DuracaoMedia)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Visivel)
+                    Duracao Media
                 </th>
             <th></th>
         </tr>
@@ -80,9 +77,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DuracaoMedia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Visivel)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TrihoId">Edit</a> |

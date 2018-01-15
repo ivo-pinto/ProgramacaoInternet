@@ -18,11 +18,10 @@ namespace Trails4Health.Models
         [Required(ErrorMessage = "Please enter State")]
         public Estado Estado { get; set; }
 
-
-        [RegularExpression(@"(\d{2})(-\d{2}-)\d{4}", ErrorMessage = "Data Inválida! Utilize o formato AAAA-MM-DD")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataInicio { get; set; }
 
-        [RegularExpression(@"(\d{2})(-\d{2}-)\d{4})", ErrorMessage = "Data Inválida! Utilize o formato AAAA-MM-DD")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataFim { get; set; }
 
         [StringLength(100, MinimumLength = 3)]

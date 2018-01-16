@@ -7,8 +7,8 @@ using Trails4Health.Models;
 
 namespace Trails4Health.Migrations
 {
-   
-    [Migration("20180113163021_Initial")]
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20180115234618_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

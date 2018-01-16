@@ -1,4 +1,4 @@
-@model IEnumerable<Trails4Health.Models.Trilho>
+@model TrilhosListViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -46,7 +46,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (Trilho item in Model.Trilhos) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
@@ -87,3 +87,15 @@
 }
     </tbody>
 </table>
+
+<div page-model="@Model.PagingInfo"
+     css-classes-enabled="true"
+     css-class-page="btn btn-sm"
+     css-class-page-normal="btn-default"
+     css-class-page-selected="btn-primary"
+     class=" bg-faded p-4 my-4 pagination mb-0">
+</div>
+
+<div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
+    <h2><a href="CompararTrilho">Comparar Trilhos</a></h2>
+</div>

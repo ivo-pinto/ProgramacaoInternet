@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trails4Health.Models;
+using Trails4Health.Models.ViewModels;
 
 namespace Trails4Health.Controllers
 {
@@ -13,16 +14,39 @@ namespace Trails4Health.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        public int PageSize = 3;
+
         public TrilhosController(ApplicationDbContext context)
         {
             _context = context;    
         }
 
-        // GET: Trilhos
-        public async Task<IActionResult> Index()
+
+        public ViewResult Index(int page = 1)
         {
-            return View(await _context.Trilhos.ToListAsync());
+            return View(
+                new TrilhosListViewModel
+                {
+
+                   Trilhos = _context.Trilhos
+                        .Skip(PageSize * (page - 1))
+                        .Take(PageSize),
+                    PagingInfo = new PagingInfo
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = PageSize,
+                        TotalItems = _context.Trilhos.Count()
+                    }
+                }
+            );
         }
+        
+
+        // GET: Trilhos
+       // public async Task<IActionResult> Index()
+       // {
+        //    return View(await _context.Trilhos.ToListAsync());
+      //  }
 
         // GET: Trilhos/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -45,6 +69,7 @@ namespace Trails4Health.Controllers
         // GET: Trilhos/Create
         public IActionResult Create()
         {
+            
             return View();
         }
 
@@ -53,11 +78,25 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TrihoId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin,Descricao,InteresseHistorico,BelezaPai,GrauDificuldade,DuracaoMedia,Visivel")] Trilho trilho)
+        public async Task<IActionResult> Create([Bind("Nome,Inicio,Fim,Altitude Maxima,Altitude Minima,Descricao,Interesse Historico,Beleza Paisagistica,Grau Dificuldade,Duracao Media")] TrilhoViewModel trilho)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(trilho);
+                var novoTrilho = new Trilho
+                {
+                    Nome = trilho.Nome,
+                    Inicio = trilho.Inicio,
+                    Fim = trilho.Fim,
+                    AltitudeMax = trilho.AltitudeMax,
+                    AltitudeMin = trilho.AltitudeMin,
+                    Descricao = trilho.Descricao,
+                    InteresseHistorico = trilho.InteresseHistorico,
+                    BelezaPai = trilho.BelezaPai,
+                    GrauDificuldade = trilho.GrauDificuldade,
+                    DuracaoMedia = trilho.DuracaoMedia
+
+                };
+                _context.Add(novoTrilho);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -85,7 +124,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TrihoId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin,Descricao,InteresseHistorico,BelezaPai,GrauDificuldade,DuracaoMedia,Visivel")] Trilho trilho)
+        public async Task<IActionResult> Edit(int id, [Bind("Nome,Inicio,Fim,Altitude Maxima,Altitude Minima,Descricao,Interesse Historico,Beleza Paisagistica,Grau Dificuldade,Duracao Media")] Trilho trilho)
         {
             if (id != trilho.TrihoId)
             {
@@ -124,7 +163,7 @@ namespace Trails4Health.Controllers
             }
 
             var trilho = await _context.Trilhos
-                .SingleOrDefaultAsync(m => m.TrihoId == id);
+               .SingleOrDefaultAsync(m => m.TrihoId == id);
             if (trilho == null)
             {
                 return NotFound();

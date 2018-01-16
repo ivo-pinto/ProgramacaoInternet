@@ -13,6 +13,20 @@
     <dl class="dl-horizontal">
         <input type="hidden" asp-for="FotoId" />
         <dt>
+            @Html.DisplayNameFor(model => model.Imagem)
+        </dt>
+        <dd>
+            @{
+                if (Model.Imagem != null)
+                {
+                    var base64 = Convert.ToBase64String(Model.Imagem);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    <img style="width:25em; height:15em;" display: block;" src="@imgSrc" alt="Card image">
+
+                }
+            }
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Visivel)
         </dt>
         <dd>
@@ -23,12 +37,6 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Data)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagem)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Imagem)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.EstacaoAno)

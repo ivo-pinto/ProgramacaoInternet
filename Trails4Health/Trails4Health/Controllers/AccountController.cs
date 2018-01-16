@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using Trails4Health.Models;
 using Trails4Health.Models.AccountViewModels;
 using Trails4Health.Services;
+using Trails4Health.Data;
 
 namespace Trails4Health.Controllers
 {
@@ -39,6 +40,7 @@ namespace Trails4Health.Controllers
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            UsersSeedData.EnsurePopulatedAsync(userManager).Wait();
         }
 
         //

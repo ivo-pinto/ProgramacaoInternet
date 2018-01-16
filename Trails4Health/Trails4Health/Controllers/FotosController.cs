@@ -71,7 +71,7 @@ namespace Trails4Health.Controllers
                         new FotoListViewModel
                         {
                             
-            Fotos = _context.Fotos
+                            Fotos = _context.Fotos
                                 .Include(f => f.EstacaoAno).Include(f => f.Localizacao).Include(f => f.TipoFoto)
                                 .Skip(PageSize * (page - 1))
                                 .Take(PageSize),
@@ -81,6 +81,7 @@ namespace Trails4Health.Controllers
                                 ItemsPerPage = PageSize,
                                 TotalItems = _context.Fotos.Count()
                             }
+                            
                         }
                     );
                 }

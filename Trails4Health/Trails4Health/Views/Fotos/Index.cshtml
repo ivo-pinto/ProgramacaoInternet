@@ -34,7 +34,17 @@
         {
             <tr>
                 <td>
-                   
+                    <div class="col-lg-6" align="center" style="margin-bottom:2em">
+                        @{
+                            if (item.Imagem != null)
+                            {
+                                var base64 = Convert.ToBase64String(item.Imagem);
+                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                <img class="img-fluid mb-4 mb-lg-0" src="@imgSrc" style="width:25em; height:15em;" alt="">
+
+                            }
+                        }
+                    </div>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Data)
@@ -65,3 +75,4 @@
          css-class-page-selected="btn-primary"
          class=" bg-faded p-4 my-4 pagination mb-0">
     </div>
+

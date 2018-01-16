@@ -8,6 +8,18 @@
     <div class="panel-heading">
         <h3>Edit @Model.FotoId</h3>
     </div>
+    <div class="form-group" align="center">
+                @{
+                    if (Model.Imagem != null)
+                    {
+                        var base64 = Convert.ToBase64String(Model.Imagem);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        <img style="width:25em; height:15em;" display: block;" src="@imgSrc" alt="Card image">
+
+                    }
+                }
+                
+            </div>
     @using (Html.BeginForm("Edit", "Admin",
          FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -20,6 +32,10 @@
                     case "FotoId":
                     case "Imagem":
                     case "ImageMimeType":
+                    case "LocalizacaoId":
+                    case "EstacaoAnoId":
+                    case "TipoFotoId":
+                    case "FotosTrilhos":
                         // do nothing
                         break;
                     default:
@@ -40,30 +56,6 @@
                         break;
                 }
             }
-            <div class="form-group">
-                <div style="position:relative;">
-                    <label>Image</label>
-                    <a class='btn' href='javascript:;'>
-                        Choose File...
-                        <input type="file" name="Image" size="40"
-                               style="position:absolute;z-index:2;top:0;
- left:0;filter: alpha(opacity=0); opacity:0;
-background-color:transparent;color:transparent;"
-                               onchange='$("#upload-file-info").html($(this).val());'>
-                    </a>
-                    <span class='label label-info' id="upload-file-info"></span>
-                </div>
-                @if (Model.Imagem == null)
-                {
-                    <div class="form-control-static">No Image</div>
- }
-                else
-                {
-                    <img class="img-thumbnail" width="150" height="150"
-                         src="@Url.Action("GetImage", "Foto",
-new { Model.FotoId })" />
-                }
-            </div>
         </div>
         <div class="panel-footer">
             <input type="submit" value="Save" class="btn btn-primary" />

@@ -257,7 +257,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LocalizacaoId,Visivel,Data,EstacaoAnoId,TipoFotoId,Imagem")] Foto foto)
+        public async Task<IActionResult> Edit(int id, [Bind("FotoId,LocalizacaoId,Data,EstacaoAnoId,TipoFotoId,Visivel,Imagem")] FotoEditViewModel foto)
         {
             if (id != foto.FotoId)
             {

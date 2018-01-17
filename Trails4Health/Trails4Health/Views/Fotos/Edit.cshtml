@@ -4,140 +4,74 @@
     ViewBag.Title = "Admin: Edit " + @Model.FotoId;
 }
 
-<div class="panel">
+<div class="panel panel-default">
     <div class="panel-heading">
         <h3>Edit @Model.FotoId</h3>
     </div>
-    @using (Html.BeginForm("Edit", "Admin",
-         FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <div class="panel-body" id="row1">
-            @Html.HiddenFor(m => m.FotoId)
-            @foreach (var property in ViewData.ModelMetadata.Properties)
-            {
-                switch (property.PropertyName)
+
+    <div class="panel-body" style="margin:0 15%">
+        @using (Html.BeginForm("Edit", "Admin",
+                 FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row" style="width:50%;float:left">
+                @Html.HiddenFor(m => m.FotoId)
+                @foreach (var property in ViewData.ModelMetadata.Properties)
                 {
-                    case "FotoId":
-                    case "Imagem":
-                    case "ImageMimeType":
-                    case "LocalizacaoId":
-                    case "EstacaoAnoId":
-                    case "TipoFotoId":
-                    case "FotosTrilhos":
-                        // do nothing
-                        break;
-                    default:
-                        <div class="form-group">
-                            <label>@(property.DisplayName ?? property.PropertyName)</label>
-                            @if (property.PropertyName == "Description")
+                    switch (property.PropertyName)
+                    {
+                        case "FotoId":
+                        case "Imagem":
+                        case "ImageMimeType":
+                        case "LocalizacaoId":
+                        case "EstacaoAnoId":
+                        case "TipoFotoId":
+                        case "FotosTrilhos":
+                            // do nothing
+                            break;
+                        default:
+                            <div class="form-group">
+                                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                                @if (property.PropertyName == "Description")
                             {
-                                @Html.TextArea(property.PropertyName, null,
+                                    @Html.TextArea(property.PropertyName, null,
  new { @class = "form-control", rows = 5 })
-                            }
-                            else
-                            {
-                                @Html.TextBox(property.PropertyName, null,
+                                }
+                                else
+                                {
+                                    @Html.TextBox(property.PropertyName, null,
  new { @class = "form-control" })
-                            }
-                            @Html.ValidationMessage(property.PropertyName)
-                        </div>
-                        break;
+                                }
+                                @Html.ValidationMessage(property.PropertyName)
+                            </div>
+                            break;
+                    }
                 }
-            }
-        </div>
-        <div class="form-group" id="column1">
-            @{
-                if (Model.Imagem != null)
-                {
-                    var base64 = Convert.ToBase64String(Model.Imagem);
-                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                    <img style="width:25em; height:15em;" display: block;" src="@imgSrc" alt="Card image">
-
-                }
-            }
-
-        </div>
-        <div class="panel-footer">
-            <input type="submit" value="Save" class="btn btn-primary" />
-            @Html.ActionLink("Cancel and return to List", "Index", null, new
-{
-    @class = "btn btn-default"
-})
-        </div>
-    }
-</div>
-
-
-
-@*
-    @{
-        ViewData["Title"] = "Edit";
-    }
-
-        <h2>Edit</h2>
-
-        <form asp-action="Edit">
-            <div class="form-horizontal">
-                <h4>Foto</h4>
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="FotoId" />
-                <div class="form-group">
-                    <label asp-for="LocalizacaoId" class="control-label col-md-2"></label>
-                    <div class="col-md-10">
-                        <select asp-for="LocalizacaoId" class="form-control" asp-items="ViewBag.LocalizacaoId"></select>
-                        <span asp-validation-for="LocalizacaoId" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            <input asp-for="Visivel" />
-                            <label asp-for="Visivel"></label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Data" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="Data" class="form-control" />
-                        <span asp-validation-for="Data" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="EstacaoAnoId" class="control-label col-md-2"></label>
-                    <div class="col-md-10">
-                        <select asp-for="EstacaoAnoId" class="form-control" asp-items="ViewBag.EstacaoAnoId"></select>
-                        <span asp-validation-for="EstacaoAnoId" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="TipoFotoId" class="control-label col-md-2"></label>
-                    <div class="col-md-10">
-                        <select asp-for="TipoFotoId" class="form-control" asp-items="ViewBag.TipoFotoId"></select>
-                        <span asp-validation-for="TipoFotoId" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Imagem" class="col-md-2 control-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="Imagem" class="form-control" />
-                        <span asp-validation-for="Imagem" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
-                    </div>
-                </div>
             </div>
-        </form>
+            <div class="row" style="width:50%;float:right">
+                @{
+                    if (Model.Imagem != null)
+                    {
+                        var base64 = Convert.ToBase64String(Model.Imagem);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        <img style="width:25em; height:15em;" display: block;" src="@imgSrc" alt="Card image">
 
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
+                    }
+                }
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="modal-footer" >
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Cancel and return to List", "Index", null, new
+           {
+               @class = "btn btn-default"
+           })
+            </div>
+                    }
+    </div>
+</div>
 
         @section Scripts {
             @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
         }
-*@
+

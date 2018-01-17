@@ -7,5 +7,8 @@ namespace Trails4Health.Models.ViewModels
 {
     public class CompararTrilhoViewModels
     {
+        
+
+
     }
 }

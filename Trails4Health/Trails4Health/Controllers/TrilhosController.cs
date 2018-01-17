@@ -40,13 +40,32 @@ namespace Trails4Health.Controllers
                 }
             );
         }
-        
+
+        public ViewResult CompararTrilho(int page = 1)
+        {
+            return View(
+                new TrilhosListViewModel
+                {
+
+                    Trilhos = _context.Trilhos
+                        .Skip(PageSize * (page - 1))
+                        .Take(PageSize),
+                    PagingInfo = new PagingInfo
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = PageSize,
+                        TotalItems = _context.Trilhos.Count()
+                    }
+                }
+            );
+        }
+
 
         // GET: Trilhos
-       // public async Task<IActionResult> Index()
-       // {
+        // public async Task<IActionResult> Index()
+        // {
         //    return View(await _context.Trilhos.ToListAsync());
-      //  }
+        //  }
 
         // GET: Trilhos/Details/5
         public async Task<IActionResult> Details(int? id)

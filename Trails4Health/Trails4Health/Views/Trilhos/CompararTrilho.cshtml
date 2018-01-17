@@ -1,0 +1,147 @@
+@model TrilhosListViewModel
+@{
+    ViewData["Title"] = "CompararTrilho";
+}
+
+<h2>CompararFoto</h2>
+
+
+<div style="width:50%; float:left">
+    <ul>
+        <li>
+            <select>
+                @foreach (Trilho item in Model.Trilhos)
+                {
+                    <option>@Html.DisplayFor(modelItem => item.Nome)</option>
+                }
+            </select>
+        </li>
+    </ul> @*comboBox*@
+    @foreach (Trilho item in Model.Trilhos.Where<Trilho>(t => t.TrihoId))
+    {
+        <form>
+            <fieldset>
+                <legend>@Html.DisplayFor(modelItem => item.Nome)</legend>
+                <div class="form-group row">
+                    <label for="inicio" class="col-sm-2 col-form-label">Inicio</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly="" class="form-control-plaintext" id="inicio" value="@Html.DisplayFor(modelItem => item.Inicio)">
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    }
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        Inicio
+                    </th>
+                    <th>
+                        Fim
+                    </th>
+                    <th>
+                        Altitude Maxima
+                    </th>
+                    <th>
+                        Altitude Minima
+                    </th>
+                    <th>
+                        Descricao
+                    </th>
+                    <th>
+                        Interesse Historico
+                    </th>
+                    <th>
+                        Beleza Paisagistica
+                    </th>
+                    <th>
+                        Grau Dificuldade
+                    </th>
+                    <th>
+                        Duracao Media
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Trilho item in Model.Trilhos)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Inicio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fim)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AltitudeMax)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AltitudeMin)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InteresseHistorico)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BelezaPai)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GrauDificuldade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DuracaoMedia)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.TrihoId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.TrihoId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.TrihoId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+<div style="width:50%; float:right">
+    <ul>
+        <li>
+            <select>
+
+                @foreach (Trilho item in Model.Trilhos)
+        {
+            <option>@Html.DisplayFor(modelItem => item.Nome)</option>
+}
+            </select>
+        </li>
+       
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div page-model="@Model.PagingInfo"
+     css-classes-enabled="true"
+     css-class-page="btn btn-sm"
+     css-class-page-normal="btn-default"
+     css-class-page-selected="btn-primary"
+     class=" bg-faded p-4 my-4 pagination mb-0">
+</div>

@@ -17,8 +17,48 @@
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
-    
-    <nav class="navbar navbar-default navbar-fixed-top top-nav-collapse" style="background-color:black">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="">
+            <img width="40%" src="~/images/geoparkestrela.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Etapas" asp-action="Index">Etapas</a>
+                </li>
+                <li class="nav-item">
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <button type="button" class="btn btn-primary">Trilhos</button>
+                        <div class="btn-group" role="group">
+                            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 36px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="CompararTrilho">Comparar Trilhos</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Trilhos" asp-action="Index">Vizualizar Trilhos</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Fotos" asp-action="Index">Fotos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+
+
+    @* <nav class="navbar navbar-default navbar-fixed-top top-nav-collapse" style="background-color:black">
         <div class="container-fluid">
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -31,7 +71,20 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Reservas</a></li>
                     <li><a asp-area="" asp-controller="Etapas" asp-action="Index">Etapas</a></li>
-                    <li><a asp-area="" asp-controller="Trilhos" asp-action="Index">Trilhos</a></li>
+                    <li>
+                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                            <button type="button" class="btn btn-primary">Trilhos</button>
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 36px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="CompararTrilho">Comparar Trilhos</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Trilhos" asp-action="Index">Vizualizar Trilhos</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+
                     <li><a asp-area="" asp-controller="Fotos" asp-action="Index">Fotos</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Loja">Loja</a></li>
                     <li style="margin-right:270px"><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
@@ -47,10 +100,10 @@
                         <a class="page-scroll" href="/pt"><img width="7%" src="images/fr.png"></a>
                     </li>
 
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
-        </div>
+                </ul>*@
+    @await Html.PartialAsync("_LoginPartial")
+    </div>
+    </div>
     </nav>
     <div class="container body-content">
 
@@ -59,12 +112,12 @@
         @RenderBody()
         <hr />
 
-        
+
 
 
 
         <footer class="container-fluid footer">
-            <div class="row" >
+            <div class="row">
                 <div class="col-md-12">
                     <h4>
                         <a href="Index">PÁGINA PRINCIPAL</a> |
@@ -74,7 +127,10 @@
                         <a href="Index">CONTACTOS</a> |
                         <a href="www.facebook.com">FACEBOOK</a>
                     </h4>
-            <p>&copy; 2017 - Trails4Health</p>
+                    <p>&copy; 2017 - Trails4Health</p>
+
+                </div>
+            </div>
         </footer>
     </div>
 
@@ -101,6 +157,11 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-    
+
 </body>
 </html>
+
+
+
+
+

@@ -40,3 +40,51 @@ textarea {
 .card-columns {
     display: inline-block 
 }
+
+
+#esquerda {
+    position: absolute;
+    width: 30%;
+    /largura/ height: 250px;
+    /altura/ top: 10%;
+    /100 pixels a partir do topo da página/ left: 5%;
+    /150 pixels a partir da margem esquerda da página/ background-color: #ffcc00;
+    /cor de fundo do div/
+}
+
+#centro {
+    position: absolute;
+    width: 30%;
+    /largura/ height: 250px;
+    /altura/ top: 10%;
+    /100 pixels a partir do topo da página/ left: 35%;
+    /150 pixels a partir da margem esquerda da página/ background-color: #ffcc00;
+    /cor de fundo do div/
+}
+
+#direita {
+    position: absolute;
+    width: 30%;
+    /largura/ height: 250px;
+    /altura/ top: 10%;
+    /100 pixels a partir do topo da página/ left: 65%;
+    /150 pixels a partir da margem esquerda da página/ background-color: #ffca00;
+    /cor de fundo do div/
+}
+
+#row1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#column1 {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#column2 {
+    display: flex;
+    flex-direction: column;
+}

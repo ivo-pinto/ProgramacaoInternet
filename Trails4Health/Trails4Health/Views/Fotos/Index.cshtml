@@ -8,73 +8,12 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-@*
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Imagem
-                </th>
-                <th>
-                    Data
-                </th>
-                <th>
-                    Estacao do Ano
-                </th>
-                <th>
-                    Tipo de Foto
-                </th>
-                <th>
-                    Localizacao
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Foto item in Model.Fotos)
-            {
-                <tr>
-                    <td>
-                        <div class="col-lg-6" align="center" style="margin-bottom:2em">
-                            @{
-                                if (item.Imagem != null)
-                                {
-                                    var base64 = Convert.ToBase64String(item.Imagem);
-                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                                    <img class="img-fluid mb-4 mb-lg-0" src="@imgSrc" style="width:25em; height:15em;" alt="">
 
-                                }
-                            }
-                        </div>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Data)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EstacaoAno.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TipoFoto.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Localizacao.Nome)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.FotoId">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.FotoId">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.FotoId">Delete</a>
-                </td>
-                </tr>
-            }
-            </tbody>
-        </table>
-*@
-
-<div class="card-columns" >
+<div class="card-columns" id="row1">
     @foreach (Foto item in Model.Fotos)
     {
 
-        <div class="card" >
+        <div class="card" id="column1">
             <h3 class="card-header">@Html.DisplayFor(modelItem => item.Localizacao.Nome)</h3>
             @{
                 if (item.Imagem != null)

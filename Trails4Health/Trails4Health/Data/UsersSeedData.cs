@@ -9,7 +9,7 @@ namespace Trails4Health.Data
 {
     public class UsersSeedData
     {
-        public static async Task EnsurePopulatedAsync(UserManager<ApplicationUser> userManager)
+        /*public static async Task EnsurePopulatedAsync(UserManager<ApplicationUser> userManager)
         {
             const string adminUser = "Admin";
             const string adminPassword = "Secret123$";
@@ -18,7 +18,8 @@ namespace Trails4Health.Data
             {
                 user = new ApplicationUser() { UserName = adminUser };
                 await userManager.CreateAsync(user, adminPassword);
-            }
-        }
+            } 
+        } 
+    */
     }
 }

@@ -40,7 +40,7 @@ namespace Trails4Health.Controllers
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
-            UsersSeedData.EnsurePopulatedAsync(userManager).Wait();
+           // UsersSeedData.EnsurePopulatedAsync(userManager).Wait();
         }
 
         //

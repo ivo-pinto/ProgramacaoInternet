@@ -85,7 +85,29 @@ namespace Trails4Health.Controllers
                         }
                     );
                 }
-                
+
+
+
+        public ViewResult CompararTrilho(int page = 1)
+        {
+            return View(
+                new FotoListViewModel
+                {
+
+                    Fotos = _context.Fotos
+                        .Include(f => f.EstacaoAno).Include(f => f.Localizacao).Include(f => f.TipoFoto)
+                        .Skip(PageSize * (page - 1))
+                        .Take(PageSize),
+                    PagingInfo = new PagingInfo
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = PageSize,
+                        TotalItems = _context.Fotos.Count()
+                    }
+
+                }
+            );
+        }
         /*
                 [HttpPost]
                 public ActionResult Create(Foto model)
@@ -141,12 +163,12 @@ namespace Trails4Health.Controllers
 
 
 
-      /*  // GET: Fotos
-        public async Task<IActionResult> Index()
-        {
-            var applicationDbContext = _context.Fotos.Include(f => f.EstacaoAno).Include(f => f.Localizacao).Include(f => f.TipoFoto);
-            return View(await applicationDbContext.ToListAsync());
-        } */
+        /*  // GET: Fotos
+          public async Task<IActionResult> Index()
+          {
+              var applicationDbContext = _context.Fotos.Include(f => f.EstacaoAno).Include(f => f.Localizacao).Include(f => f.TipoFoto);
+              return View(await applicationDbContext.ToListAsync());
+          } */
 
         // GET: Fotos/Details/5
         public async Task<IActionResult> Details(int? id)

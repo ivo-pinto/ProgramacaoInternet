@@ -3,10 +3,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Fotos</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Adicionar Nova Foto</a>
 </p>
 
 <div class="card-columns" id="row1">
@@ -29,9 +29,9 @@
                 <li class="list-group-item">Estacao do Ano: @Html.DisplayFor(modelItem => item.EstacaoAno.Nome)</li>
                 <li class="list-group-item">Tipo de Foto: @Html.DisplayFor(modelItem => item.TipoFoto.Nome)</li>
                 <li class="list-group-item" align="center">
-                    <a class="card-link" asp-action="Edit" asp-route-id="@item.FotoId">Edit</a> |
-                    <a class="card-link" asp-action="Details" asp-route-id="@item.FotoId">Details</a> |
-                    <a class="card-link" asp-action="Delete" asp-route-id="@item.FotoId">Delete</a>
+                    <a class="card-link" asp-action="Edit" asp-route-id="@item.FotoId">Editar</a> |
+                    <a class="card-link" asp-action="Details" asp-route-id="@item.FotoId">Detalhes</a> |
+                    <a class="card-link" asp-action="Delete" asp-route-id="@item.FotoId">Apagar</a>
                 </li>
             </ul>
         </div>

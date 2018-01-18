@@ -8,6 +8,7 @@
 <h2>Create</h2>
 
 <form asp-action="Create">
+    <div class="form-horizontal">
         <h4>Trilho</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -33,35 +34,35 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="AltitudeMax" class="col-md-2 control-label">Altitude Mï¿½xima</label>
+            <label asp-for="AltitudeMax" class="col-md-2 control-label">Altitude Máxima</label>
             <div class="col-md-10">
                 <input asp-for="AltitudeMax" class="form-control" />
                 <span asp-validation-for="AltitudeMax" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="AltitudeMin" class="col-md-2 control-label">Altitude Mï¿½nima</label>
+            <label asp-for="AltitudeMin" class="col-md-2 control-label">Altitude Mínima</label>
             <div class="col-md-10">
                 <input asp-for="AltitudeMin" class="form-control" />
                 <span asp-validation-for="AltitudeMin" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Descricao" class="col-md-2 control-label">Descriï¿½ï¿½o</label>
+            <label asp-for="Descricao" class="col-md-2 control-label">Descrição</label>
             <div class="col-md-10">
                 <input asp-for="Descricao" class="form-control" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="InteresseHistorico" class="col-md-2 control-label">Interesse Histï¿½rico</label>
+            <label asp-for="InteresseHistorico" class="col-md-2 control-label">Interesse Histórico</label>
             <div class="col-md-10">
                 <input asp-for="InteresseHistorico" class="form-control" />
                 <span asp-validation-for="InteresseHistorico" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="BelezaPai" class="col-md-2 control-label"> Beleza Paisagï¿½stica</label>
+            <label asp-for="BelezaPai" class="col-md-2 control-label"> Beleza Paisagística</label>
             <div class="col-md-10">
                 <input asp-for="BelezaPai" class="form-control" />
                 <span asp-validation-for="BelezaPai" class="text-danger"></span>
@@ -75,7 +76,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="DuracaoMedia" class="col-md-2 control-label">Duraï¿½ï¿½o Mï¿½dia</label>
+            <label asp-for="DuracaoMedia" class="col-md-2 control-label">Duração Média</label>
             <div class="col-md-10">
                 <input asp-for="DuracaoMedia" class="form-control" />
                 <span asp-validation-for="DuracaoMedia" class="text-danger"></span>

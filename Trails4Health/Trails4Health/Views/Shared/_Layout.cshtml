@@ -21,40 +21,34 @@
     <nav class="navbar navbar-default navbar-static-top top-nav-collapse" style="background-color:black">
         <div class="container-fluid">
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
+                
+                    <div>
                         <a class="navbar-brand" href="" style="margin-right:100px">
                             <img width="40%" src="~/images/geoparkestrela.png">
                         </a>
-                    </li>
-
+                    </div>
+                <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Reservas</a></li>
                     <li><a asp-area="" asp-controller="Etapas" asp-action="Index">Etapas</a></li>
                     <li>
                         <a asp-area="" asp-controller="Trilhos" asp-action="Index" class="nav-link dropdown-toggle" data-toggle="dropdown" id="themes" aria-expanded="false">Trilhos <span class="caret"></span></a>
                         <div class="dropdown-menu" aria-labelledby="themes">
-                            <a class="dropdown-item" >Ver trilhos</a>
+                            <a class="dropdown-item">Ver trilhos</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" >Comparar trilhos</a>
+                            <a class="dropdown-item">Comparar trilhos</a>
                         </div>
                     </li>
-                        <li><a asp-area="" asp-controller="Fotos" asp-action="Index">Fotos</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Loja">Loja</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-
-
-                        <li>
-                            <a class="page-scroll" href="/pt"><img width="7%" src="images/pt.png"></a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="/pt"><img width="7%" src="~/images/es.png"></a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="/pt"><img width="7%" src="images/fr.png"></a>
-                        </li>
-
-</ul>
+                    <li><a asp-area="" asp-controller="Fotos" asp-action="Index">Fotos</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Loja">Loja</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                </ul>
+                @*<div class="navbar navbar-right">
+        <a class="page-scroll" href="/pt"><img  src="images/pt.png"></a>
+        <a class="page-scroll" href="/pt"><img src="~/images/es.png"></a>
+        <a class="page-scroll" href="/pt"><img src="images/fr.png"></a>
+    </div>
+                *@
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>

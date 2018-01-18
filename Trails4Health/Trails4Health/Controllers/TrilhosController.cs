@@ -65,47 +65,13 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
-            ////CompararTrilhoViewModels ctvm = new CompararTrilhoViewModels();
-            //id1 = ctvm.Trilho1.TrilhoId;
-            //id2 = ctvm.Trilho2.TrilhoId;
-            var trilho1 = await _context.Trilhos
-                .SingleOrDefaultAsync(m => m.TrilhoId == id1);
-            var trilho2 = await _context.Trilhos
-                .SingleOrDefaultAsync(m => m.TrilhoId == id1);
+            CompararTrilhoViewModels ctvm = new CompararTrilhoViewModels();
+            id1 = ctvm.Trilho1.TrilhoId;
+            id2 = ctvm.Trilho2.TrilhoId;
 
 
-            TrilhoViewModel trilhovm = new TrilhoViewModel
-            {
-                Nome = trilho1.Nome,
-                Inicio = trilho1.Inicio,
-                Fim = trilho1.Fim,
-                AltitudeMax = trilho1.AltitudeMax,
-                AltitudeMin = trilho1.AltitudeMin,
-                Descricao = trilho1.Descricao,
-                InteresseHistorico = trilho1.InteresseHistorico,
-                BelezaPai = trilho1.BelezaPai,
-                GrauDificuldade = trilho1.GrauDificuldade,
-                DuracaoMedia = trilho1.DuracaoMedia
-            };
-
-            return View(trilhovm);
-
-            //TrilhoViewModel trilhovm1 = new TrilhoViewModel
-            //{
-            //    Nome = trilho2.Nome,
-            //    Inicio = trilho2.Inicio,
-            //    Fim = trilho2.Fim,
-            //    AltitudeMax = trilho2.AltitudeMax,
-            //    AltitudeMin = trilho2.AltitudeMin,
-            //    Descricao = trilho2.Descricao,
-            //    InteresseHistorico = trilho2.InteresseHistorico,
-            //    BelezaPai = trilho2.BelezaPai,
-            //    GrauDificuldade = trilho2.GrauDificuldade,
-            //    DuracaoMedia = trilho2.DuracaoMedia
-            //};
-
-
-            //return View(trilhovm1);
+            
+            return View(ctvm);
         }
 
 

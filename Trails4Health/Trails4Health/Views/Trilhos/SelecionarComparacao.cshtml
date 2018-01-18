@@ -5,23 +5,37 @@
 
 <h2>SelecionarComparacao</h2>
 
+
+    <div class="form-group col-lg-4">
+        Trilhos
+        <select asp-for="@Model.Trilhos" class="form-control" asp-items="ViewBag.Nome"></select>
+    </div>
+<div class="form-group col-lg-4">
+    Trilhos
+    <select asp-for="@Model.Trilhos" class="form-control" asp-items="ViewBag.Nome"></select>
+</div>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="CompararTrilho" class="btn btn-default" />
+        <a asp-controller="Trilhos" asp-action="CompararTrilho" asp-route-id="@Model.TrilhoId1."> Comparar Trilho</a>
+    </div>
+</div>
+
 @*
-@Html.DropDownListFor(
-    m => m.?????, // Specifies where to store selected country Id
-                  // It needs to be null for the default selection to work!
+        @Html.DropDownListFor(
+        m => m.?????, // Specifies where to store selected country Id
+                      // It needs to be null for the default selection to work!
 
-    new SelectList(Model.Trilhos, // IEnumerable<Country>, contains all countries loaded from a database
-                   "TrilhoId",   // Use Country.Id as a data source for the values of dropdown items
-                   "Nome", // Use Country.Name as a data source for the text of dropdown items
-                   1 // Specifies Australia (which has ID of 13) as the element selected by default
-                   ),
+        new SelectList(Model.Trilhos, // IEnumerable<Country>, contains all countries loaded from a database
+                       "TrilhoId",   // Use Country.Id as a data source for the values of dropdown items
+                       "Nome", // Use Country.Name as a data source for the text of dropdown items
+                       1 // Specifies Australia (which has ID of 13) as the element selected by default
+                       ),
 
-    // Text of option that prompts user to select
-    "- Selecione um Trilho -"
-)
-
-
+        // Text of option that prompts user to select
+        "- Selecione um Trilho -"
+    )
 *@
-
 
 

@@ -11,8 +11,9 @@ namespace Trails4Health.Models.ViewModels
 
 
 
-    
-        
+       // public int TrilhoId { get; set; }
+
+
         public string Nome { get; set; }
 
       

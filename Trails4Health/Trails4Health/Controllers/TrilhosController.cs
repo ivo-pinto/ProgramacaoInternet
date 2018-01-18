@@ -32,43 +32,80 @@ namespace Trails4Health.Controllers
                    Trilhos = _context.Trilhos
                         .Skip(PageSize * (page - 1))
                         .Take(PageSize),
-                    PagingInfo = new PagingInfo
-                    {
-                        CurrentPage = page,
-                        ItemsPerPage = PageSize,
-                        TotalItems = _context.Trilhos.Count()
-                    }
+                   
                 }
             );
         }
 
         
+
+        public IActionResult SelecionarComparacao()
+        {
+            // Colocar registos da dbo.Trilhos numa lista
+            TrilhosListViewModel tlvm = new TrilhosListViewModel();
+            var trilhos = _context.Trilhos;
+            tlvm.Trilhos = trilhos.ToListAsync().Result;
+
+            ViewData["TrilhoId"] = new SelectList(_context.Trilhos, "TrilhoID", "Nome");
+            ViewData["Nome"] = new SelectList(_context.Trilhos, "TrilhoId", "Nome");
+            return View(tlvm);
+        }
+
+        public IActionResult CompararTrilho()
+        {
+
+            return View();
+        }
+
         public async Task<IActionResult> CompararTrilho(int? id1, int? id2)
         {
-            id1 = 1;
-            id2 = 2;
+            
             if ((id1 == null)|| (id2 == null))
             {
                 return NotFound();
             }
 
-            CompararTrilhoViewModels ctvm = new CompararTrilhoViewModels();
-
-            var tr1 = await _context.Trilhos
+            ////CompararTrilhoViewModels ctvm = new CompararTrilhoViewModels();
+            //id1 = ctvm.Trilho1.TrilhoId;
+            //id2 = ctvm.Trilho2.TrilhoId;
+            var trilho1 = await _context.Trilhos
+                .SingleOrDefaultAsync(m => m.TrilhoId == id1);
+            var trilho2 = await _context.Trilhos
                 .SingleOrDefaultAsync(m => m.TrilhoId == id1);
 
-            ctvm.Trilho1 = tr1;
-            var tr2 = await _context.Trilhos
-                .SingleOrDefaultAsync(m => m.TrilhoId == id1);
 
-            ctvm.Trilho1 = tr2;
-
-
-            if ((tr1 == null)|| (tr2 == null))
+            TrilhoViewModel trilhovm = new TrilhoViewModel
             {
-                return NotFound();
-            }
-            return View(ctvm);
+                Nome = trilho1.Nome,
+                Inicio = trilho1.Inicio,
+                Fim = trilho1.Fim,
+                AltitudeMax = trilho1.AltitudeMax,
+                AltitudeMin = trilho1.AltitudeMin,
+                Descricao = trilho1.Descricao,
+                InteresseHistorico = trilho1.InteresseHistorico,
+                BelezaPai = trilho1.BelezaPai,
+                GrauDificuldade = trilho1.GrauDificuldade,
+                DuracaoMedia = trilho1.DuracaoMedia
+            };
+
+            return View(trilhovm);
+
+            //TrilhoViewModel trilhovm1 = new TrilhoViewModel
+            //{
+            //    Nome = trilho2.Nome,
+            //    Inicio = trilho2.Inicio,
+            //    Fim = trilho2.Fim,
+            //    AltitudeMax = trilho2.AltitudeMax,
+            //    AltitudeMin = trilho2.AltitudeMin,
+            //    Descricao = trilho2.Descricao,
+            //    InteresseHistorico = trilho2.InteresseHistorico,
+            //    BelezaPai = trilho2.BelezaPai,
+            //    GrauDificuldade = trilho2.GrauDificuldade,
+            //    DuracaoMedia = trilho2.DuracaoMedia
+            //};
+
+
+            //return View(trilhovm1);
         }
 
 
@@ -102,6 +139,8 @@ namespace Trails4Health.Controllers
             
             return View();
         }
+
+
 
         // POST: Trilhos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

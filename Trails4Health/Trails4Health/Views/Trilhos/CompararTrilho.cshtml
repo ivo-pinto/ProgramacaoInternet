@@ -25,7 +25,8 @@
         </form>
 *@
 
-    
+  @foreach (Trilho T in Model.Trilho1.TrilhoId)
+  {
 <div style="width:50%; float:right">
     <div>
         <h4>Trilho</h4>
@@ -100,7 +101,10 @@
         </dl>
     </div>
 </div>
+  }
 
+@foreach (Trilho T in Model.Trilho2)
+{
 <div style="width:50%; float:left">
     <div>
         <h4>Trilho</h4>
@@ -177,6 +181,10 @@
 </div>
 
 
+
+
+}
+ 
 
 
 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trails4Health.Models;
+using Trails4Health.Models.ViewModels;
 
 namespace Trails4Health.Controllers
 {
@@ -23,6 +24,19 @@ namespace Trails4Health.Controllers
         {
             return View(await _context.Trilhos.ToListAsync());
         }
+
+        public ViewResult SelecionarTrilhos()
+        {
+            return View(
+                new SelecionarTrilhosViewModel
+                {
+
+                    Trilhos = _context.Trilhos
+
+                }
+            );
+        }
+
 
         // GET: Trilhos/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -27,43 +27,7 @@ namespace Trails4Health.Controllers
             _context = context;    
         }
 
-        /*
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddFoto(int id, [Bind("FotoId,Visivel,Data,Imagem,ImageMimeType,LocalizacaoId,EstacaoAnoId,TipoFotoId")] Foto foto)
-        {
-            if (id != foto.FotoId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(foto);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!FotoExists(foto.FotoId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                // ---------------------------------Rever para onde dirigir utilizador--------------------------------------------------------------
-                return RedirectToAction("Index  ");
-            }
-            ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "LocalizacaoId", foto.LocalizacaoId);
-            ViewData["EstacaoAnoId"] = new SelectList(_context.EstacoesAno, "EstacaoAnoId", "EstacaoAnoId", foto.EstacaoAnoId);
-            ViewData["TipoFotoId"] = new SelectList(_context.Fotos, "TipoFotoId", "TipoFotoId", foto.TipoFotoId);
-            return View(foto);
-        }
-*/
+        
      
                 public ViewResult Index(int page = 1)
                 {
@@ -108,67 +72,7 @@ namespace Trails4Health.Controllers
                 }
             );
         }
-        /*
-                [HttpPost]
-                public ActionResult Create(Foto model)
-                {
-                    if (ModelState.IsValid)
-                    {
-                        var db = _context;
-                        db.Fotos.Add(new Foto
-                {
-                    Imagem = model.Imagem,
-                    ImageMimeType = model.ImageMimeType
-                });
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
-
-                    return View(model);
-                }
-
-
-                [HttpPost]
-                public ActionResult FileUpload(Foto foto)
-                {
-                    if (foto != null)
-                    {
-                        byte[] image = foto.Imagem;
-                        string path = foto.ImageMimeType;
-                        Localizacao localizacao = foto.Localizacao;
-                        EstacaoAno estacaoAno = foto.EstacaoAno;
-                        TipoFoto tipoFoto = foto.TipoFoto;
-                        DateTime data = foto.Data;
-                        bool visivel = foto.Visivel;
-
-                        // file is uploaded
-                        _context.Add(new Foto {
-                                        Imagem = image,
-                                        ImageMimeType = path,
-                                        Localizacao = localizacao,
-                                        EstacaoAno = estacaoAno,
-                                        TipoFoto = tipoFoto,
-                                        Data = data,
-                                        Visivel = visivel
-                                    });
-                        _context.SaveChanges();
-
-                    }
-                    // after successfully uploading redirect the user
-                    return RedirectToAction("Index", "Home");
-                } 
-
-            */
-
-
-
-
-        /*  // GET: Fotos
-          public async Task<IActionResult> Index()
-          {
-              var applicationDbContext = _context.Fotos.Include(f => f.EstacaoAno).Include(f => f.Localizacao).Include(f => f.TipoFoto);
-              return View(await applicationDbContext.ToListAsync());
-          } */
+       
 
         // GET: Fotos/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -257,7 +161,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FotoId,LocalizacaoId,Data,EstacaoAnoId,TipoFotoId,Visivel,Imagem")] FotoEditViewModel foto)
+        public async Task<IActionResult> Edit(int id, [Bind("FotoId,LocalizacaoId,Visivel,Data,EstacaoAnoId,TipoFotoId,Imagem,ImageMimeType")] Foto foto)
         {
             if (id != foto.FotoId)
             {

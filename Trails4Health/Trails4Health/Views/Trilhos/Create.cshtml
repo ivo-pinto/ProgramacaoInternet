@@ -4,8 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
+<meta charset="ISO-8859-1">
 <h2>Create</h2>
-
+@*
 <form asp-action="Create">
     <div class="form-horizontal">
         <h4>Trilho</h4>
@@ -99,8 +100,88 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+<form asp-action="" method="post" enctype="multipart/form-data" asp-controller="Home">
+    <div class="panel panel-primary" style="margin-top:2ex;">
+        <div class="panel-heading">
+            <h3 class="panel-title">Criar Trilho</h3>
+        </div>
+
+
+        <div class="panel-body">
+            <div class="form-group">
+                <label asp-for="@Model.Nome">Nome:</label>
+                <input asp-for="@Model.Nome" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Inicio">Local de Inicio:</label>
+                <input asp-for="@Model.Inicio" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Fim">Local de Fim:</label>
+                <input asp-for="@Model.Fim" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.AltitudeMax">Altitude Maxima:</label>
+                <input asp-for="@Model.AltitudeMax" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.AltitudeMin">Altitude Minima:</label>
+                <input asp-for="@Model.AltitudeMax" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Descricao">Descricao:</label>
+                <input asp-for="@Model.Descricao" class="form-control" /> @*Mudar para caixa de texto*@
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.GrauDificuldade">Dificuldade:</label>
+                <select asp-for="@Model.GrauDificuldade" class="form-control">
+                    <option value="">Escolha uma opção</option>
+                    <option value="1">Muito Facil</option>
+                    <option value="2">Facil</option>
+                    <option value="3">Medio</option>
+                    <option value="4">Dificil</option>
+                    <option value="5">MuitoDificil</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.InteresseHistorico">Interesse Historico:</label>
+                <select asp-for="@Model.InteresseHistorico" class="form-control">
+                    <option value="">Classifique quanto ao Interesse Historico</option>
+                    <option value="1">Muito Pouco Interessante</option>
+                    <option value="2">Pouco Interessante</option>
+                    <option value="3">Razoavelmente Interessante</option>
+                    <option value="4">Interessante</option>
+                    <option value="5">Muito Interessante</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.BelezaPai">Beleza Paisagistica:</label>
+                <select asp-for="@Model.BelezaPai" class="form-control">
+                    <option value="">Classifique quanto a Beleza Paisagistica</option>
+                    <option value="1">Muito Pouco Interessante</option>
+                    <option value="2">Pouco Interessante</option>
+                    <option value="3">Razoavelmente Interessante</option>
+                    <option value="4">Interessante</option>
+                    <option value="5">Muito Interessante</option>
+                </select>
+            </div>
+
+
+
+
+            <div asp-validation-summary="All"></div>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Criar Trilho</button>
+
+        </div>
+    </div>
+</form>

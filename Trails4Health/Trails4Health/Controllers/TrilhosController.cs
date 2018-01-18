@@ -46,16 +46,16 @@ namespace Trails4Health.Controllers
             var trilhos = _context.Trilhos;
             tlvm.Trilhos = trilhos.ToListAsync().Result;
 
-            ViewData["TrilhoId"] = new SelectList(_context.Trilhos, "TrilhoID", "Nome");
+            ViewData["TrilhoId"] = new SelectList(_context.Trilhos, "TrilhoId", "Nome");
             ViewData["Nome"] = new SelectList(_context.Trilhos, "TrilhoId", "Nome");
             return View(tlvm);
         }
 
-        public IActionResult CompararTrilho()
-        {
+        //public IActionResult CompararTrilho()
+        //{
 
-            return View();
-        }
+        //    return View();
+        //}
 
         public async Task<IActionResult> CompararTrilho(int? id1, int? id2)
         {
@@ -66,11 +66,15 @@ namespace Trails4Health.Controllers
             }
 
             CompararTrilhoViewModels ctvm = new CompararTrilhoViewModels();
-            id1 = ctvm.Trilho1.TrilhoId;
-            id2 = ctvm.Trilho2.TrilhoId;
-
-
             
+          
+            var tr1 = await _context.Trilhos
+                .SingleOrDefaultAsync(m => m.TrilhoId == id1);
+            var tr2 = await _context.Trilhos
+                .SingleOrDefaultAsync(m => m.TrilhoId == id2);
+
+
+
             return View(ctvm);
         }
 

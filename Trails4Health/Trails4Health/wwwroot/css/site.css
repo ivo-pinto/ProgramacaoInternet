@@ -1,5 +1,4 @@
-﻿
-body {
+﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -37,40 +36,32 @@ textarea {
     }
 }
 
-/* Split the screen in half */
-.split {
-    height: 100%;
-    width: 50%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
+.card-columns {
+    display: inline-block
 }
 
-/* Control the left side */
+
 .left {
     left: 0;
-    background-color: #111;
 }
 
-/* Control the right side */
 .right {
     right: 0;
-    background-color: red;
 }
 
-/* If you want the content centered horizontally and vertically */
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+#row1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-    /* Style the image inside the centered container, if needed */
-    .centered img {
-        width: 150px;
-        border-radius: 50%;
-    }
+#column1 {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#column2 {
+    display: flex;
+    flex-direction: column;
+}

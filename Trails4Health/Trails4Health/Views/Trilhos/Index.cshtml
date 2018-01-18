@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Trilhos</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Criar Novo Trilho</a>
 </p>
 <table class="table">
     <thead>
@@ -79,9 +79,9 @@
                 @Html.DisplayFor(modelItem => item.DuracaoMedia)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TrihoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TrihoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TrihoId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.TrilhoId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.TrilhoId">Vizualizar</a> |
+                <a asp-action="Delete" asp-route-id="@item.TrilhoId">Apagar</a>
             </td>
         </tr>
 }
@@ -96,6 +96,3 @@
      class=" bg-faded p-4 my-4 pagination mb-0">
 </div>
 
-<div class="col-md-3 col-sm-4 coding" style="visibility: visible; ">
-    <h2><a href="CompararTrilho">Comparar Trilhos</a></h2>
-</div>

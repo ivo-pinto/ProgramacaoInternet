@@ -1,0 +1,62 @@
+@model Trails4Health.Models.Foto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Foto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Imagem)
+        </dt>
+        <dd>
+            @{
+                if (Model.Imagem != null)
+                {
+                    var base64 = Convert.ToBase64String(Model.Imagem);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    <img style="width:25em; height:15em;" display: block;" src="@imgSrc" alt="Card image">
+
+                }
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EstacaoAno)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstacaoAno.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Localizacao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Localizacao.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoFoto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoFoto.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Visivel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Visivel)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.FotoId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

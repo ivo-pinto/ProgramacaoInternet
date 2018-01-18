@@ -1,0 +1,85 @@
+@model Foto
+
+@{
+    ViewBag.Title = "Admin: Edit " + @Model.FotoId;
+}
+
+<form asp-action="Edit">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Editar Foto</h3>
+        </div>
+
+        <div class="panel-body" style="margin:0 15%">
+            <div class="row" style="width:50%;float:left">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="FotoId" />
+                <div class="form-group">
+                    <label asp-for="LocalizacaoId" class="control-label col-md-2">Localizacao</label>
+                    <div class="col-md-10">
+                        <select asp-for="LocalizacaoId" class="form-control" asp-items="ViewBag.LocalizacaoId"></select>
+                        <span asp-validation-for="LocalizacaoId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Data" class="col-md-2 control-label">Data</label>
+                    <div class="col-md-10">
+                        <input asp-for="Data" class="form-control" />
+                        <span asp-validation-for="Data" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EstacaoAnoId" class="control-label col-md-2">Estacao</label>
+                    <div class="col-md-10">
+                        <select asp-for="EstacaoAnoId" class="form-control" asp-items="ViewBag.EstacaoAnoId"></select>
+                        <span asp-validation-for="EstacaoAnoId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TipoFotoId" class="control-label col-md-2">Tipo</label>
+                    <div class="col-md-10">
+                        <select asp-for="TipoFotoId" class="form-control" asp-items="ViewBag.TipoFotoId"></select>
+                        <span asp-validation-for="TipoFotoId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            <input asp-for="Visivel" />
+                            <label asp-for="Visivel">Visibilidade</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="width:50%;float:right">
+                 <input asp-for="@Model.Imagem" type="hidden" />
+                @{
+                    if (Model.Imagem != null)
+                    {
+                        var base64 = Convert.ToBase64String(Model.Imagem);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        <img style="width:25em; height:15em;" display: block;" src="@imgSrc" alt="Card image">
+
+                    }
+                }
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="modal-footer">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+
+
+

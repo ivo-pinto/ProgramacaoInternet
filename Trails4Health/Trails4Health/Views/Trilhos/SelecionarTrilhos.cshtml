@@ -1,0 +1,28 @@
+@model SelecionarTrilhosViewModel
+@{
+    ViewData["Title"] = "SelecionarTrilhos";
+}
+
+<h2>SelecionarTrilhos</h2>
+
+    @{
+        List<SelectListItem> listItems = new List<SelectListItem>();
+        foreach (Trilho item in Model.Trilhos)
+        {
+            listItems.Add(new SelectListItem
+            {
+                Text = item.Nome,
+                Value = item.TrihoId.ToString()
+            });
+        }
+      }
+
+
+
+<p>
+    <a asp-action="Comparar">Comparar</a>
+</p>
+
+
+
+       

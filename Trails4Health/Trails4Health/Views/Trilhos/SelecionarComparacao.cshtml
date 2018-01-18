@@ -1,0 +1,27 @@
+@model TrilhosListViewModel
+@{
+    ViewData["Title"] = "SelecionarComparacao";
+}
+
+<h2>SelecionarComparacao</h2>
+
+@*
+@Html.DropDownListFor(
+    m => m.?????, // Specifies where to store selected country Id
+                  // It needs to be null for the default selection to work!
+
+    new SelectList(Model.Trilhos, // IEnumerable<Country>, contains all countries loaded from a database
+                   "TrilhoId",   // Use Country.Id as a data source for the values of dropdown items
+                   "Nome", // Use Country.Name as a data source for the text of dropdown items
+                   1 // Specifies Australia (which has ID of 13) as the element selected by default
+                   ),
+
+    // Text of option that prompts user to select
+    "- Selecione um Trilho -"
+)
+
+
+*@
+
+
+

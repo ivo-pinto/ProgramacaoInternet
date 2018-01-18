@@ -9,7 +9,7 @@ namespace Trails4Health.Models
     public class Trilho
     {
 
-        public int TrihoId { get; set; }
+        public int TrilhoId { get; set; }
 
         [Required(ErrorMessage = "Please enter Trail Name")]
         [StringLength(maximumLength: 100, MinimumLength = 3)]

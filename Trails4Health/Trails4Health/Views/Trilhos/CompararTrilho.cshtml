@@ -1,25 +1,17 @@
-@model TrilhosListViewModel
+@model CompararTrilhoViewModels
 @{
     ViewData["Title"] = "CompararTrilho";
 }
 
 <h2>CompararFoto</h2>
 
+@*
 
-<div style="width:50%; float:left">
-    <ul>
-        <li>
-            <select>
-                @foreach (Trilho item in Model.Trilhos)
-                {
-                    <option>@Html.DisplayFor(modelItem => item.Nome)</option>
-                }
-            </select>
-        </li>
-    </ul> @*comboBox*@
-    @foreach (Trilho item in Model.Trilhos.Where<Trilho>(t => t.TrihoId))
-    {
-        <form>
+
+
+    @{
+        Trilho trilho = Model.Trilhos.Where(x => x.TrilhoId = id);}
+        <form >
             <fieldset>
                 <legend>@Html.DisplayFor(modelItem => item.Nome)</legend>
                 <div class="form-group row">
@@ -31,100 +23,157 @@
 
             </fieldset>
         </form>
-    }
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        Nome
-                    </th>
-                    <th>
-                        Inicio
-                    </th>
-                    <th>
-                        Fim
-                    </th>
-                    <th>
-                        Altitude Maxima
-                    </th>
-                    <th>
-                        Altitude Minima
-                    </th>
-                    <th>
-                        Descricao
-                    </th>
-                    <th>
-                        Interesse Historico
-                    </th>
-                    <th>
-                        Beleza Paisagistica
-                    </th>
-                    <th>
-                        Grau Dificuldade
-                    </th>
-                    <th>
-                        Duracao Media
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (Trilho item in Model.Trilhos)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Inicio)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Fim)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AltitudeMax)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AltitudeMin)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Descricao)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.InteresseHistorico)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BelezaPai)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.GrauDificuldade)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DuracaoMedia)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.TrihoId">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.TrihoId">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.TrihoId">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+*@
+
+    
 <div style="width:50%; float:right">
-    <ul>
-        <li>
-            <select>
+    <div>
+        <h4>Trilho</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho1.Nome)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho1.Nome)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho1.Inicio)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho1.Inicio)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho1.Fim)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho1.Fim)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho1.AltitudeMax)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho1.AltitudeMax)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho1.AltitudeMin)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho1.AltitudeMin)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho1.Descricao)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho1.Descricao)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho1.InteresseHistorico)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho1.InteresseHistorico)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho1.BelezaPai)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho1.BelezaPai)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho1.GrauDificuldade)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho1.GrauDificuldade)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho1.DuracaoMedia)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho1.DuracaoMedia)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho1.Visivel)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho1.Visivel)
+            </dd>
+        </dl>
+    </div>
+</div>
 
-                @foreach (Trilho item in Model.Trilhos)
-        {
-            <option>@Html.DisplayFor(modelItem => item.Nome)</option>
-}
-            </select>
-        </li>
-       
-    </ul>
+<div style="width:50%; float:left">
+    <div>
+        <h4>Trilho</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho2.Nome)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho2.Nome)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho2.Inicio)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho2.Inicio)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho2.Fim)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho2.Fim)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho2.AltitudeMax)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho2.AltitudeMax)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho2.AltitudeMin)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho2.AltitudeMin)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho2.Descricao)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho2.Descricao)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho2.InteresseHistorico)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho2.InteresseHistorico)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho2.BelezaPai)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho2.BelezaPai)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho2.GrauDificuldade)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho2.GrauDificuldade)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho2.DuracaoMedia)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho2.DuracaoMedia)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Trilho2.Visivel)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Trilho2.Visivel)
+            </dd>
+        </dl>
+    </div>
 </div>
 
 
@@ -135,13 +184,3 @@
 
 
 
-
-
-
-<div page-model="@Model.PagingInfo"
-     css-classes-enabled="true"
-     css-class-page="btn btn-sm"
-     css-class-page-normal="btn-default"
-     css-class-page-selected="btn-primary"
-     class=" bg-faded p-4 my-4 pagination mb-0">
-</div>

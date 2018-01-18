@@ -22,6 +22,7 @@ namespace Trails4Health.Controllers
         }
 
 
+
         public ViewResult Index(int page = 1)
         {
             return View(
@@ -41,23 +42,33 @@ namespace Trails4Health.Controllers
             );
         }
 
-        public ViewResult CompararTrilho(int page = 1)
+        
+        public async Task<IActionResult> CompararTrilho(int? id1, int? id2)
         {
-            return View(
-                new TrilhosListViewModel
-                {
+            id1 = 1;
+            id2 = 2;
+            if ((id1 == null)|| (id2 == null))
+            {
+                return NotFound();
+            }
 
-                    Trilhos = _context.Trilhos
-                        .Skip(PageSize * (page - 1))
-                        .Take(PageSize),
-                    PagingInfo = new PagingInfo
-                    {
-                        CurrentPage = page,
-                        ItemsPerPage = PageSize,
-                        TotalItems = _context.Trilhos.Count()
-                    }
-                }
-            );
+            CompararTrilhoViewModels ctvm = new CompararTrilhoViewModels();
+
+            var tr1 = await _context.Trilhos
+                .SingleOrDefaultAsync(m => m.TrilhoId == id1);
+
+            ctvm.Trilho1 = tr1;
+            var tr2 = await _context.Trilhos
+                .SingleOrDefaultAsync(m => m.TrilhoId == id1);
+
+            ctvm.Trilho1 = tr2;
+
+
+            if ((tr1 == null)|| (tr2 == null))
+            {
+                return NotFound();
+            }
+            return View(ctvm);
         }
 
 
@@ -76,7 +87,7 @@ namespace Trails4Health.Controllers
             }
 
             var trilho = await _context.Trilhos
-                .SingleOrDefaultAsync(m => m.TrihoId == id);
+                .SingleOrDefaultAsync(m => m.TrilhoId == id);
             if (trilho == null)
             {
                 return NotFound();
@@ -130,7 +141,7 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
-            var trilho = await _context.Trilhos.SingleOrDefaultAsync(m => m.TrihoId == id);
+            var trilho = await _context.Trilhos.SingleOrDefaultAsync(m => m.TrilhoId == id);
             if (trilho == null)
             {
                 return NotFound();
@@ -145,7 +156,7 @@ namespace Trails4Health.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Nome,Inicio,Fim,Altitude Maxima,Altitude Minima,Descricao,Interesse Historico,Beleza Paisagistica,Grau Dificuldade,Duracao Media")] Trilho trilho)
         {
-            if (id != trilho.TrihoId)
+            if (id != trilho.TrilhoId)
             {
                 return NotFound();
             }
@@ -159,7 +170,7 @@ namespace Trails4Health.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TrilhoExists(trilho.TrihoId))
+                    if (!TrilhoExists(trilho.TrilhoId))
                     {
                         return NotFound();
                     }
@@ -182,7 +193,7 @@ namespace Trails4Health.Controllers
             }
 
             var trilho = await _context.Trilhos
-               .SingleOrDefaultAsync(m => m.TrihoId == id);
+               .SingleOrDefaultAsync(m => m.TrilhoId == id);
             if (trilho == null)
             {
                 return NotFound();
@@ -196,7 +207,7 @@ namespace Trails4Health.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var trilho = await _context.Trilhos.SingleOrDefaultAsync(m => m.TrihoId == id);
+            var trilho = await _context.Trilhos.SingleOrDefaultAsync(m => m.TrilhoId == id);
             _context.Trilhos.Remove(trilho);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -204,7 +215,7 @@ namespace Trails4Health.Controllers
 
         private bool TrilhoExists(int id)
         {
-            return _context.Trilhos.Any(e => e.TrihoId == id);
+            return _context.Trilhos.Any(e => e.TrilhoId == id);
         }
     }
 }

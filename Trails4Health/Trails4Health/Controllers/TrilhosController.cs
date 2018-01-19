@@ -37,6 +37,12 @@ namespace Trails4Health.Controllers
             );
         }
 
+        public ViewResult VerFotos(int? id)
+        {
+            var applicationDbContext = _context.FotosTrilhos.Include(f => f.Trilho).Include(f => f.Foto).Where(f => f.TrilhoId == id);
+            return View(new VerFotosViewModel {  FotosTrilhos = applicationDbContext });
+        }
+
 
         // GET: Trilhos/Details/5
         public async Task<IActionResult> Details(int? id)

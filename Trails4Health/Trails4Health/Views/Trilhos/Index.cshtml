@@ -79,9 +79,12 @@
                 @Html.DisplayFor(modelItem => item.DuracaoMedia)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TrihoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TrihoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TrihoId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.TrilhoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TrilhoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TrilhoId">Delete</a>
+            </td>
+            <td>
+                <a asp-action="VerFotos" asp-route-id="@item.TrilhoId">Ver Fotos</a>
             </td>
         </tr>
 }

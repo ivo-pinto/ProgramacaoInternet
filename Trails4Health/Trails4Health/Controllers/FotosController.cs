@@ -31,47 +31,22 @@ namespace Trails4Health.Controllers
      
                 public ViewResult Index(int page = 1)
                 {
-                    return View(
-                        new FotoListViewModel
-                        {
-                            
-                            Fotos = _context.Fotos
-                                .Include(f => f.EstacaoAno).Include(f => f.Localizacao).Include(f => f.TipoFoto)
-                                .Skip(PageSize * (page - 1))
-                                .Take(PageSize),
-                            PagingInfo = new PagingInfo
-                            {
-                                CurrentPage = page,
-                                ItemsPerPage = PageSize,
-                                TotalItems = _context.Fotos.Count()
-                            }
-                            
-                        }
-                    );
+                    var flvm = new FotoListViewModel();
+                    var fotos = _context.Fotos
+                         .Include(f => f.EstacaoAno).Include(f => f.Localizacao).Include(f => f.TipoFoto).Include(f => f.FotosTrilhos)
+                         .Skip(PageSize * (page - 1))
+                         .Take(PageSize);
+                    var pagingInfo = new PagingInfo{
+                            CurrentPage = page,
+                            ItemsPerPage = PageSize,
+                            TotalItems = _context.Fotos.Count()
+                            };
+                    flvm.Fotos = fotos;
+                    flvm.PagingInfo = pagingInfo;
+                    return View(flvm);
                 }
 
 
-
-        public ViewResult CompararTrilho(int page = 1)
-        {
-            return View(
-                new FotoListViewModel
-                {
-
-                    Fotos = _context.Fotos
-                        .Include(f => f.EstacaoAno).Include(f => f.Localizacao).Include(f => f.TipoFoto)
-                        .Skip(PageSize * (page - 1))
-                        .Take(PageSize),
-                    PagingInfo = new PagingInfo
-                    {
-                        CurrentPage = page,
-                        ItemsPerPage = PageSize,
-                        TotalItems = _context.Fotos.Count()
-                    }
-
-                }
-            );
-        }
        
 
         // GET: Fotos/Details/5

@@ -83,7 +83,7 @@ namespace Trails4Health.Migrations
                 name: "Trilhos",
                 columns: table => new
                 {
-                    TrihoId = table.Column<int>(nullable: false)
+                    TrilhoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AltitudeMax = table.Column<int>(nullable: false),
                     AltitudeMin = table.Column<int>(nullable: false),
@@ -99,7 +99,7 @@ namespace Trails4Health.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Trilhos", x => x.TrihoId);
+                    table.PrimaryKey("PK_Trilhos", x => x.TrilhoId);
                 });
 
             migrationBuilder.CreateTable(
@@ -187,7 +187,7 @@ namespace Trails4Health.Migrations
                         name: "FK_EstadosTrilhos_Trilhos_TrihoId",
                         column: x => x.TrihoId,
                         principalTable: "Trilhos",
-                        principalColumn: "TrihoId",
+                        principalColumn: "TrilhoId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -212,7 +212,7 @@ namespace Trails4Health.Migrations
                         name: "FK_EtapasTrilhos_Trilhos_TrilhoId",
                         column: x => x.TrilhoId,
                         principalTable: "Trilhos",
-                        principalColumn: "TrihoId",
+                        principalColumn: "TrilhoId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -237,7 +237,7 @@ namespace Trails4Health.Migrations
                         name: "FK_FotosTrilhos_Trilhos_TrilhoId",
                         column: x => x.TrilhoId,
                         principalTable: "Trilhos",
-                        principalColumn: "TrihoId",
+                        principalColumn: "TrilhoId",
                         onDelete: ReferentialAction.Cascade);
                 });
 

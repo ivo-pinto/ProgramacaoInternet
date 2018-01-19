@@ -4,22 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<h2>Fotos dos Trilhos</h2>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.FotosTrilhoId)
-                </th>
             <th>
-                @Html.DisplayNameFor(model => model.Foto)
+                Foto
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Trilho)
+                Trilho
             </th>
             <th></th>
         </tr>
@@ -28,13 +21,18 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FotosTrilhoId)
+                @{
+                    if (item.Foto.Imagem != null)
+                    {
+                        var base64 = Convert.ToBase64String(item.Foto.Imagem);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        <img style="width:15em; height:5em;" display: block;" src="@imgSrc" alt="Card image">
+
+                    }
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Foto.FotoId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Trilho.Fim)
+                @Html.DisplayFor(modelItem => item.Trilho.Nome)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

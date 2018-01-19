@@ -7,8 +7,8 @@ using Trails4Health.Models;
 
 namespace Trails4Health.Migrations
 {
-   
-    [Migration("20180113163021_Initial")]
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20180119011755_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -215,7 +215,7 @@ namespace Trails4Health.Migrations
 
             modelBuilder.Entity("Trails4Health.Models.Trilho", b =>
                 {
-                    b.Property<int>("TrihoId")
+                    b.Property<int>("TrilhoId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AltitudeMax");
@@ -247,7 +247,7 @@ namespace Trails4Health.Migrations
 
                     b.Property<bool>("Visivel");
 
-                    b.HasKey("TrihoId");
+                    b.HasKey("TrilhoId");
 
                     b.ToTable("Trilhos");
                 });

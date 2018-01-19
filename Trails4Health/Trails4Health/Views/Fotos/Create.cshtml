@@ -43,6 +43,12 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="TrilhoId" class="col-md-2 control-label">Trilho</label>
+            <div class="col-md-10">
+                <select asp-for="TrilhoId" class="form-control" asp-items="ViewBag.TrilhoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
                 <label class="col-md-2 control-label">Ficheiro</label>
                 <input type="file" asp-for="UploadFicheiro" />
         </div>

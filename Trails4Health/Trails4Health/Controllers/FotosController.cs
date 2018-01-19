@@ -101,6 +101,7 @@ namespace Trails4Health.Controllers
             ViewData["EstacaoAnoId"] = new SelectList(_context.EstacoesAno, "EstacaoAnoId", "Nome");
             ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "Nome");
             ViewData["TipoFotoId"] = new SelectList(_context.TiposFotos, "TipoFotoId", "Nome");
+            ViewData["TrilhoId"] = new SelectList(_context.Trilhos, "TrilhoId", "Nome");
             return View();
         }
 
@@ -110,11 +111,12 @@ namespace Trails4Health.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LocalizacaoId,Visivel,Data,EstacaoAnoId,TipoFotoId,UploadFicheiro")] FotoViewModel foto)
+        public async Task<IActionResult> Create([Bind("LocalizacaoId,Visivel,Data,EstacaoAnoId,TipoFotoId,UploadFicheiro,TrilhoId,FotoId")] FotoViewModel foto)
         {
             if (ModelState.IsValid)
             {
                 var imagem = new Foto {
+                    FotoId = foto.FotoId,
                     LocalizacaoId = foto.LocalizacaoId,
                     Visivel = foto.Visivel,
                     Data = foto.Data,
@@ -127,13 +129,16 @@ namespace Trails4Health.Controllers
                     imagem.Imagem = memoryStream.ToArray();
                 }
                 //_context.Add(foto);
+                var FotoTrilho = new FotosTrilho { Foto = imagem, Trilho = _context.Trilhos.SingleOrDefault(x => x.TrilhoId == foto.TrilhoId) };
                 _context.Add(imagem);
+                _context.Add(FotoTrilho);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewData["EstacaoAnoId"] = new SelectList(_context.EstacoesAno, "EstacaoAnoId", "Nome", foto.EstacaoAnoId);
             ViewData["LocalizacaoId"] = new SelectList(_context.Localizacoes, "LocalizacaoId", "Nome", foto.LocalizacaoId);
             ViewData["TipoFotoId"] = new SelectList(_context.TiposFotos, "TipoFotoId", "Nome", foto.TipoFotoId);
+            ViewData["TrilhoId"] = new SelectList(_context.Trilhos, "TrilhoId", "TrilhoId", foto.TrilhoId);
             return View(foto);
         }
 

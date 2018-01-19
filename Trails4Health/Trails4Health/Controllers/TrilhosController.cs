@@ -47,7 +47,7 @@ namespace Trails4Health.Controllers
             }
 
             var trilho = await _context.Trilhos
-                .SingleOrDefaultAsync(m => m.TrihoId == id);
+                .SingleOrDefaultAsync(m => m.TrilhoId == id);
             if (trilho == null)
             {
                 return NotFound();
@@ -86,7 +86,7 @@ namespace Trails4Health.Controllers
                 return NotFound();
             }
 
-            var trilho = await _context.Trilhos.SingleOrDefaultAsync(m => m.TrihoId == id);
+            var trilho = await _context.Trilhos.SingleOrDefaultAsync(m => m.TrilhoId == id);
             if (trilho == null)
             {
                 return NotFound();
@@ -101,7 +101,7 @@ namespace Trails4Health.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("TrihoId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin,Descricao,InteresseHistorico,BelezaPai,GrauDificuldade,DuracaoMedia,Visivel")] Trilho trilho)
         {
-            if (id != trilho.TrihoId)
+            if (id != trilho.TrilhoId)
             {
                 return NotFound();
             }
@@ -115,7 +115,7 @@ namespace Trails4Health.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TrilhoExists(trilho.TrihoId))
+                    if (!TrilhoExists(trilho.TrilhoId))
                     {
                         return NotFound();
                     }
@@ -138,7 +138,7 @@ namespace Trails4Health.Controllers
             }
 
             var trilho = await _context.Trilhos
-                .SingleOrDefaultAsync(m => m.TrihoId == id);
+                .SingleOrDefaultAsync(m => m.TrilhoId == id);
             if (trilho == null)
             {
                 return NotFound();
@@ -152,7 +152,7 @@ namespace Trails4Health.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var trilho = await _context.Trilhos.SingleOrDefaultAsync(m => m.TrihoId == id);
+            var trilho = await _context.Trilhos.SingleOrDefaultAsync(m => m.TrilhoId == id);
             _context.Trilhos.Remove(trilho);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -160,7 +160,7 @@ namespace Trails4Health.Controllers
 
         private bool TrilhoExists(int id)
         {
-            return _context.Trilhos.Any(e => e.TrihoId == id);
+            return _context.Trilhos.Any(e => e.TrilhoId == id);
         }
     }
 }

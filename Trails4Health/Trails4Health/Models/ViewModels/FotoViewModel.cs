@@ -9,7 +9,8 @@ namespace Trails4Health.Models.ViewModels
 {
     public class FotoViewModel
     {
-        
+        public int FotoId { get; set; }
+
         //public Localizacao Localizacao { get; set; } //(FK) id da tabela localizacao
         public int LocalizacaoId { get; set; }
 
@@ -23,8 +24,12 @@ namespace Trails4Health.Models.ViewModels
         //public EstacaoAno EstacaoAno { get; set; }
 
         public int TipoFotoId { get; set; }
-       // public TipoFoto TipoFoto { get; set; }
+        // public TipoFoto TipoFoto { get; set; }
 
+        public int TrilhoId { get; set; }
+        public Trilho Trilho { get; set; }
+
+        public EstadoTrilho EstadoTrilho { get; set; }
 
         public byte[] Imagem { get; set; }
         //public string ImageMimeType { get; set; }

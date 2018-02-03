@@ -1,0 +1,51 @@
+@model FotoListViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Fotos</h2>
+
+<p>
+    <a asp-action="Create">Adicionar Nova Foto</a>
+</p>
+
+<div class="card-columns" id="row1">
+    @foreach (Foto item in Model.Fotos)
+    {
+
+        <div class="card" id="column1">
+            <h3 class="card-header">@Html.DisplayFor(modelItem => item.Localizacao.Nome)</h3>
+            @{
+                if (item.Imagem != null)
+                {
+                    var base64 = Convert.ToBase64String(item.Imagem);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    <img style="width:25em; height:15em;" display: block;" src="@imgSrc" alt="Card image">
+
+                }
+            }
+            <ul class="list-group list-group-flush" style="width:25em; height:15em;">
+                <li class="list-group-item">Data: @Html.DisplayFor(modelItem => item.Data)</li>
+                <li class="list-group-item">Estacao do Ano: @Html.DisplayFor(modelItem => item.EstacaoAno.Nome)</li>
+                <li class="list-group-item">Tipo de Foto: @Html.DisplayFor(modelItem => item.TipoFoto.Nome)</li>
+                <li class="list-group-item" align="center">
+                    <a class="card-link" asp-action="Edit" asp-route-id="@item.FotoId">Editar</a> |
+                    <a class="card-link" asp-action="Details" asp-route-id="@item.FotoId">Detalhes</a> |
+                    <a class="card-link" asp-action="Delete" asp-route-id="@item.FotoId">Apagar</a>
+                </li>
+            </ul>
+        </div>
+
+
+                }
+</div>
+
+
+
+        <div page-model="@Model.PagingInfo"
+             css-classes-enabled="true"
+             css-class-page="btn btn-sm"
+             css-class-page-normal="btn-default"
+             css-class-page-selected="btn-primary"
+             class=" bg-faded p-4 my-4 pagination mb-0">
+        </div>

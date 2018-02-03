@@ -1,0 +1,19 @@
+@model CompararViewModel
+@{
+    ViewData["Title"] = "CompararTrilhos";
+}
+
+@foreach (var item in Model.Trilho1)
+{
+        @Html.DisplayNameFor(modelItem => item.Nome)
+        @Html.DisplayFor(modelItem => item.Nome)
+
+}
+
+@foreach (var item in Model.Trilho2)
+{
+    @Html.DisplayNameFor(modelItem => item.Nome)
+    @Html.DisplayFor(modelItem => item.Nome)
+
+}
+

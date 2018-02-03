@@ -1,0 +1,24 @@
+@model TrilhosListViewModel
+@{
+    ViewData["Title"] = "SelecionarComparacao";
+}
+
+<h2>SelecionarComparacao</h2>
+
+
+<div class="form-group col-lg-4">
+    Trilhos
+    <select asp-for="@Model.Trilhos" class="form-control" asp-items="ViewBag.Nome"></select>
+</div>
+<div class="form-group col-lg-4">
+    Trilhos
+    <select asp-for="@Model.Trilhos" class="form-control" asp-items="ViewBag.Nome"></select>
+</div>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="CompararTrilho" class="btn btn-default" />
+        <a asp-controller="Trilhos" asp-action="CompararTrilho" asp-route>Comparar</a>
+    </div>
+</div>
+       

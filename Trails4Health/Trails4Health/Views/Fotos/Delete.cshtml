@@ -1,0 +1,63 @@
+@model Trails4Health.Models.Foto
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>Tem a certeza que deseja apagar a foto?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="FotoId" />
+        <dt>
+            @Html.DisplayNameFor(model => model.Imagem)
+        </dt>
+        <dd>
+            @{
+                if (Model.Imagem != null)
+                {
+                    var base64 = Convert.ToBase64String(Model.Imagem);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    <img style="width:25em; height:15em;" display: block;" src="@imgSrc" alt="Card image">
+
+                }
+            }
+        </dd>
+        <dt>
+            Visivel
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Visivel)
+        </dd>
+        <dt>
+            Data
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt>
+            Estacao do Ano
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstacaoAno.Nome)
+        </dd>
+        <dt>
+            Localizacao
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Localizacao.Nome)
+        </dd>
+        <dt>
+            Tipo de Foto
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoFoto.Nome)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Apagar" class="btn btn-default" /> |
+            <a asp-action="Index">Voltar</a>
+        </div>
+    </form>
+</div>

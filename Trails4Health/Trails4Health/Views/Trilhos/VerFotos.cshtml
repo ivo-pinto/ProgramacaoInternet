@@ -1,0 +1,36 @@
+@model VerFotosViewModel
+@{
+    ViewData["Title"] = "VerFotos";
+}
+
+<div class="card-columns" id="row1">
+    @foreach (var item in Model.FotosTrilhos)
+    {
+
+        <div class="card" id="column1">
+            <h3 class="card-header">@Html.DisplayFor(modelItem => item.Foto.Localizacao)</h3>
+            @{
+                if (item.Foto.Imagem != null)
+                {
+                    var base64 = Convert.ToBase64String(item.Foto.Imagem);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    <img style="width:25em; height:15em;" display: block;" src="@imgSrc" alt="Card image">
+
+                }
+            }
+            <ul class="list-group list-group-flush" style="width:25em; height:15em;">
+                <li class="list-group-item">Data: @Html.DisplayFor(modelItem => item.Foto.Data)</li>
+                <li class="list-group-item">Estacao do Ano: @Html.DisplayFor(modelItem => item.Foto.EstacaoAno.Nome)</li>
+                <li class="list-group-item">Tipo de Foto: @Html.DisplayFor(modelItem => item.Foto.TipoFoto.Nome)</li>
+                <li class="list-group-item" align="center">
+                    <a class="card-link" asp-action="Edit" asp-route-id="@item.FotoId">Editar</a> |
+                    <a class="card-link" asp-action="Details" asp-route-id="@item.FotoId">Detalhes</a> |
+                    <a class="card-link" asp-action="Delete" asp-route-id="@item.FotoId">Apagar</a>
+                </li>
+            </ul>
+        </div>
+
+
+                }
+</div>
+

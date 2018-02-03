@@ -1,0 +1,69 @@
+@model FotoViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Adiconar Nova Foto</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="LocalizacaoId" class="col-md-2 control-label">Localizacao</label>
+            <div class="col-md-10">
+                <select asp-for="LocalizacaoId" class ="form-control" asp-items="ViewBag.LocalizacaoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="Visivel" /> 
+                    <label asp-for="Visivel">Visivel</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Data" class="col-md-2 control-label">Data</label> 
+            <div class="col-md-10">
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="EstacaoAnoId" class="col-md-2 control-label">Estacao do Ano</label> 
+            <div class="col-md-10">
+                <select asp-for="EstacaoAnoId" class ="form-control" asp-items="ViewBag.EstacaoAnoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TipoFotoId" class="col-md-2 control-label">Tipo de Foto</label> 
+            <div class="col-md-10">
+                <select asp-for="TipoFotoId" class ="form-control" asp-items="ViewBag.TipoFotoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TrilhoId" class="col-md-2 control-label">Trilho</label>
+            <div class="col-md-10">
+                <select asp-for="TrilhoId" class="form-control" asp-items="ViewBag.TrilhoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+                <label class="col-md-2 control-label">Ficheiro</label>
+                <input type="file" asp-for="UploadFicheiro" />
+        </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Adicionar" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+</form>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

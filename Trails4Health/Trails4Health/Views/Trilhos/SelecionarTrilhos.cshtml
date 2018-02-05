@@ -5,20 +5,52 @@
 
 <h2>SelecionarComparacao</h2>
 
-
-<div class="form-group col-lg-4">
-    Trilhos
-    <select asp-for="@Model.Trilhos" class="form-control" asp-items="ViewBag.Nome"></select>
-</div>
-<div class="form-group col-lg-4">
-    Trilhos
-    <select asp-for="@Model.Trilhos" class="form-control" asp-items="ViewBag.Nome"></select>
-</div>
-
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="CompararTrilho" class="btn btn-default" />
-        <a asp-controller="Trilhos" asp-action="CompararTrilho" asp-route>Comparar</a>
+@*
+    <div class="form-group col-lg-4">
+        Trilhos
+        <select asp-for="@Model.Trilhos" class="form-control" asp-items="ViewBag.Nome"></select>
     </div>
-</div>
-       
+    <div class="form-group col-lg-4">
+        Trilhos
+        <select asp-for="@Model.Trilhos" class="form-control" asp-items="ViewBag.Nome"></select>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="CompararTrilho" class="btn btn-default" />
+            <a asp-controller="Trilhos" asp-action="CompararTrilho" asp-route>Comparar</a>
+        </div>
+    </div>
+*@
+
+
+@if (ViewBag.YouSelected != null)
+{
+
+    <div> You Selected:  @ViewBag.YouSelected</div>
+
+}
+
+@using (Html.BeginForm())
+{
+
+    <fieldset>
+
+        <legend>Multi-Select Demo</legend>
+
+        <div class="editor-field">
+
+            @Html.ListBox("Trilhos", ViewBag.TrilhosList as MultiSelectList )
+
+        </div>
+
+        <p>
+
+            <input type="submit" value="Save" />
+
+        </p>
+
+    </fieldset>
+
+}
+

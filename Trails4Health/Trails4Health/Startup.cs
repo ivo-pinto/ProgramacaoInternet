@@ -99,7 +99,7 @@ namespace Trails4Health
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-          // SeedData.EnsurePopulated(app.ApplicationServices);
+           SeedData.EnsurePopulated(app.ApplicationServices);
 
         }
     }

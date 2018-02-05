@@ -25,16 +25,22 @@ namespace Trails4Health.Controllers
             return View(await _context.Trilhos.ToListAsync());
         }
 
-        public IActionResult SelecionarTrilhos()
+        public ActionResult TrilhosSelecionados()
+        {
+            ViewBag.TrilhosList = SelecionarTrilhos(null);
+            return View();
+        }
+
+        public MultiSelectList SelecionarTrilhos(string[] selectedValues)
         {
             // Colocar registos da dbo.Trilhos numa lista
             TrilhosListViewModel tlvm = new TrilhosListViewModel();
             var trilhos = _context.Trilhos;
             tlvm.Trilhos = trilhos.ToListAsync().Result;
 
-            ViewData["TrilhoId"] = new SelectList(_context.Trilhos, "TrilhoId", "Nome");
-            ViewData["Nome"] = new SelectList(_context.Trilhos, "TrilhoId", "Nome");
-            return View(tlvm);
+
+            return new MultiSelectList(_context.Trilhos, "TrilhoId", "Nome", selectedValues);
+            
         }
 
         public ViewResult VerFotos(int? id)

@@ -9,5 +9,6 @@ namespace Trails4Health.Models.ViewModels
     {
         public IEnumerable<Trilho> Trilhos { get; set; }
         public IEnumerable<string> ValoresSelecionados { get; set; }
+
     }
 }

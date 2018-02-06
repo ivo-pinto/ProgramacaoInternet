@@ -1,92 +1,106 @@
-@model IEnumerable<Trails4Health.Models.Trilho>
+@model TrilhosListViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Trilhos</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a type="button" class="btn btn-primary" asp-action="Create">Criar Novo Trilho</a>
 </p>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
-                <th>
-                    Nome
-                </th>
-                <th>
-                    Inicio
-                </th>
-                <th>
-                    Fim
-                </th>
-                <th>
-                    Altitude Maxima
-                </th>
-                <th>
-                    Altitude Minima
-                </th>
-                <th>
-                    Descricao
-                </th>
-                <th>
-                    Interesse Historico
-                </th>
-                <th>
-                    Beleza Paisagistica
-                </th>
-                <th>
-                    Grau Dificuldade
-                </th>
-                <th>
-                    Duracao Media
-                </th>
-            <th></th>
+            <th scope="col">
+                Nome
+            </th>
+            <th scope="col">
+                Inicio
+            </th>
+            <th scope="col">
+                Fim
+            </th>
+            <th scope="col">
+                Altitude Máxima
+            </th>
+            <th scope="col">
+                Altitude Mínima
+            </th>
+            <th scope="col">
+                Descrição
+            </th>
+            <th scope="col">
+                Interesse Histórico
+            </th>
+            <th scope="col">
+                Beleza Paisagística
+            </th>
+            <th scope="col">
+                Grau Dificuldade
+            </th>
+            <th scope="col">
+                Duração Média
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
+        @foreach (Trilho item in Model.Trilhos)
+        {
+        <tr class="table-primary">
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.Inicio)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.Fim)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.AltitudeMax)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.AltitudeMin)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.Descricao)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.InteresseHistorico)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.BelezaPai)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.GrauDificuldade)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.DuracaoMedia)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TrilhoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TrilhoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TrilhoId">Delete</a>
+                <a type="button" class="btn btn-info" asp-action="Edit" asp-route-id="@item.TrilhoId">Edit</a>
             </td>
             <td>
-                <a asp-action="VerFotos" asp-route-id="@item.TrilhoId">Ver Fotos</a>
+                <a type="button" class="btn btn-info" asp-action="Details" asp-route-id="@item.TrilhoId">Details</a>
+            </td>
+            <td>
+                <a type="button" class="btn btn-info" asp-action="Delete" asp-route-id="@item.TrilhoId">Delete</a>
+            </td>
+            <td>
+                <a type="button" class="btn btn-info" asp-action="VerFotos" asp-route-id="@item.TrilhoId">Ver Fotos</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
+
+
+
+<div page-model="@Model.PagingInfo"
+     css-classes-enabled="true"
+     css-class-page="btn btn-sm"
+     css-class-page-normal="btn-default"
+     css-class-page-selected="btn-primary"
+     class=" bg-faded p-4 my-4 pagination mb-0">
+</div>

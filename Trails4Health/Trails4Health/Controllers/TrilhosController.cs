@@ -14,13 +14,35 @@ namespace Trails4Health.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        public int PageSize = 8;
+
+
+        public ViewResult Index(int page = 1)
+        {
+            var tlvm = new TrilhosListViewModel();
+            var trilhos = _context.Trilhos.Skip(PageSize * (page - 1))
+                 .Take(PageSize);
+            var pagingInfo = new PagingInfo
+            {
+                CurrentPage = page,
+                ItemsPerPage = PageSize,
+                TotalItems = _context.Fotos.Count()
+            };
+            tlvm.Trilhos = trilhos;
+            tlvm.PagingInfo = pagingInfo;
+            return View(tlvm);
+        }
+
+
+
+
         public TrilhosController(ApplicationDbContext context)
         {
             _context = context;    
         }
 
         // GET: Trilhos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index1()
         {
             return View(await _context.Trilhos.ToListAsync());
         }
@@ -86,7 +108,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TrihoId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin,Descricao,InteresseHistorico,BelezaPai,GrauDificuldade,DuracaoMedia,Visivel")] Trilho trilho)
+        public async Task<IActionResult> Create([Bind("TrilhoId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin,Descricao,InteresseHistorico,BelezaPai,GrauDificuldade,DuracaoMedia,Visivel")] Trilho trilho)
         {
             if (ModelState.IsValid)
             {
@@ -118,7 +140,7 @@ namespace Trails4Health.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TrihoId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin,Descricao,InteresseHistorico,BelezaPai,GrauDificuldade,DuracaoMedia,Visivel")] Trilho trilho)
+        public async Task<IActionResult> Edit(int id, [Bind("TrilhoId,Nome,Inicio,Fim,AltitudeMax,AltitudeMin,Descricao,InteresseHistorico,BelezaPai,GrauDificuldade,DuracaoMedia,Visivel")] Trilho trilho)
         {
             if (id != trilho.TrilhoId)
             {
